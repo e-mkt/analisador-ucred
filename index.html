@@ -1122,13 +1122,12 @@
        Update paths here if you rename files.
     ========================================================= */
     const ASSETS = {
-      ucredLight: "./assets/img/versao-light-theme.png",
-      ucredDark:  "./assets/img/versao-dark-theme.png",
-      emktLight:  "./assets/img/emkt-logo-light-mode.png",
-      emktDark:   "./assets/img/emkt-logo-dark-mode.png",
-      demoCsv:    "./assets/demo/rd_demo.csv",
-    };
-
+  ucredLight: "./assets/img/logo-ucred-light.png",
+  ucredDark:  "./assets/img/logo-ucred-dark.png",
+  emktLight:  "./assets/img/logo-emkt-light.png",
+  emktDark:   "./assets/img/logo-emkt-dark.png",
+  demoCsv:    "./assets/demo/rd_demo.csv",
+};
     const TEMPLATE = {
       base: {
         required: ["Cidade","Estado","Data de criação","Vendas","Perdidos","Em andamento","Pausados"],
@@ -1623,7 +1622,23 @@
       // compact mode when base loaded or demo loaded
       setUploadsCompact(state.baseSource !== "none");
     }
+function fillSelect(sel, items, allLabel) {
+  sel.innerHTML = "";
 
+  const optAll = document.createElement("option");
+  optAll.value = "__all";
+  optAll.textContent = allLabel;
+  sel.appendChild(optAll);
+
+  for (const it of items) {
+    const opt = document.createElement("option");
+    opt.value = it.value ?? it;
+    opt.textContent = it.label ?? it;
+    sel.appendChild(opt);
+  }
+
+  sel.value = "__all";
+}
     /* =========================================================
        UI: Filters
     ========================================================= */
