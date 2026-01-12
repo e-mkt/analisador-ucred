@@ -1,0 +1,1301 @@
+ID,Nome,Cidade,Estado,Data de criação,Vendas,Perdidos,Em andamento,Pausados,Total
+1,Empresa MG 0001,Contagem,MG,2025-12-03,0,0,1,0,1
+2,Empresa ES 0002,Vila Velha,ES,2025-10-14,1,0,0,0,1
+3,Empresa SP 0003,São Paulo,SP,2025-12-04,0,0,0,1,1
+4,Empresa SC 0004,Florianópolis,SC,2025-11-13,1,0,0,0,1
+5,Empresa MG 0005,Uberlândia,MG,2025-11-18,1,0,0,0,1
+6,Empresa MG 0006,Belo Horizonte,MG,2025-11-21,1,0,0,0,1
+7,Empresa ES 0007,Vitória,ES,2025-11-16,0,1,0,0,1
+8,Empresa RJ 0008,Nova Iguaçu,RJ,2025-11-15,1,0,0,0,1
+9,Empresa MG 0009,Juiz de Fora,MG,2025-10-10,0,1,0,0,1
+10,Empresa RN 0010,Mossoró,RN,2025-11-03,1,0,0,0,1
+11,Empresa RJ 0011,Niterói,RJ,2025-12-14,1,0,0,0,1
+12,Empresa SC 0012,Blumenau,SC,2025-11-12,0,1,0,0,1
+13,Empresa RS 0013,Porto Alegre,RS,2025-12-09,0,1,0,0,1
+14,Empresa PR 0014,Maringá,PR,2025-12-22,0,0,1,0,1
+15,Empresa SP 0015,Santos,SP,2025-10-15,1,0,0,0,1
+16,Empresa RS 0016,Porto Alegre,RS,2025-10-10,1,0,0,0,1
+17,Empresa SP 0017,Ribeirão Preto,SP,2025-10-15,1,0,0,0,1
+18,Empresa MG 0018,Contagem,MG,2025-12-09,0,0,1,0,1
+19,Empresa RR 0019,Rorainópolis,RR,2025-12-05,1,0,0,0,1
+20,Empresa MG 0020,Belo Horizonte,MG,2025-11-19,1,0,0,0,1
+21,Empresa MG 0021,Contagem,MG,2025-11-20,0,1,0,0,1
+22,Empresa DF 0022,Taguatinga,DF,2025-12-25,0,0,0,1,1
+23,Empresa SC 0023,Chapecó,SC,2025-11-13,1,0,0,0,1
+24,Empresa PR 0024,Londrina,PR,2025-10-07,1,0,0,0,1
+25,Empresa ES 0025,Vitória,ES,2025-10-05,0,1,0,0,1
+26,Empresa DF 0026,Brasília,DF,2025-12-20,0,1,0,0,1
+27,Empresa RS 0027,Pelotas,RS,2025-11-04,0,0,1,0,1
+28,Empresa PA 0028,Ananindeua,PA,2025-11-03,0,1,0,0,1
+29,Empresa SC 0029,Blumenau,SC,2025-11-23,1,0,0,0,1
+30,Empresa RJ 0030,Niterói,RJ,2025-12-01,0,0,1,0,1
+31,Empresa ES 0031,Serra,ES,2025-11-06,1,0,0,0,1
+32,Empresa RJ 0032,Niterói,RJ,2025-11-26,0,0,0,1,1
+33,Empresa MA 0033,Imperatriz,MA,2025-12-08,0,1,0,0,1
+34,Empresa ES 0034,Vitória,ES,2025-12-16,1,0,0,0,1
+35,Empresa RS 0035,Canoas,RS,2025-12-24,0,0,0,1,1
+36,Empresa MS 0036,Campo Grande,MS,2025-10-08,0,1,0,0,1
+37,Empresa SP 0037,São Paulo,SP,2025-11-21,1,0,0,0,1
+38,Empresa SC 0038,Florianópolis,SC,2025-12-26,0,0,1,0,1
+39,Empresa MG 0039,Contagem,MG,2025-12-11,1,0,0,0,1
+40,Empresa MT 0040,Rondonópolis,MT,2025-11-03,0,0,1,0,1
+41,Empresa MG 0041,Belo Horizonte,MG,2025-10-15,0,0,1,0,1
+42,Empresa SP 0042,Santos,SP,2025-10-18,1,0,0,0,1
+43,Empresa ES 0043,Vila Velha,ES,2025-11-28,1,0,0,0,1
+44,Empresa AL 0044,Arapiraca,AL,2025-10-17,0,1,0,0,1
+45,Empresa RS 0045,Canoas,RS,2025-12-02,0,0,1,0,1
+46,Empresa SP 0046,Ribeirão Preto,SP,2025-12-17,1,0,0,0,1
+47,Empresa ES 0047,Cariacica,ES,2025-12-20,1,0,0,0,1
+48,Empresa CE 0048,Juazeiro do Norte,CE,2025-11-24,1,0,0,0,1
+49,Empresa SP 0049,São Paulo,SP,2025-12-02,1,0,0,0,1
+50,Empresa ES 0050,Cariacica,ES,2025-11-25,0,0,1,0,1
+51,Empresa RJ 0051,Niterói,RJ,2025-12-15,0,1,0,0,1
+52,Empresa SE 0052,Aracaju,SE,2025-12-09,0,0,0,1,1
+53,Empresa MA 0053,Imperatriz,MA,2025-10-04,0,1,0,0,1
+54,Empresa MG 0054,Contagem,MG,2025-10-22,1,0,0,0,1
+55,Empresa MG 0055,Uberlândia,MG,2025-10-05,0,0,0,1,1
+56,Empresa ES 0056,Cariacica,ES,2025-12-06,0,0,0,1,1
+57,Empresa CE 0057,Maracanaú,CE,2025-12-13,0,1,0,0,1
+58,Empresa RJ 0058,Rio de Janeiro,RJ,2025-12-01,1,0,0,0,1
+59,Empresa ES 0059,Cariacica,ES,2025-11-20,1,0,0,0,1
+60,Empresa DF 0060,Brasília,DF,2025-12-04,1,0,0,0,1
+61,Empresa MG 0061,Uberlândia,MG,2025-12-27,0,1,0,0,1
+62,Empresa MS 0062,Dourados,MS,2025-10-17,0,1,0,0,1
+63,Empresa PR 0063,Maringá,PR,2025-10-23,1,0,0,0,1
+64,Empresa PB 0064,João Pessoa,PB,2025-12-26,0,1,0,0,1
+65,Empresa PR 0065,Curitiba,PR,2025-10-04,0,1,0,0,1
+66,Empresa SP 0066,Santos,SP,2025-11-02,0,1,0,0,1
+67,Empresa ES 0067,Vila Velha,ES,2025-10-06,1,0,0,0,1
+68,Empresa RJ 0068,Niterói,RJ,2025-10-17,0,1,0,0,1
+69,Empresa ES 0069,Serra,ES,2025-10-01,0,0,1,0,1
+70,Empresa PR 0070,Cascavel,PR,2025-10-15,1,0,0,0,1
+71,Empresa PI 0071,Picos,PI,2025-11-27,0,0,1,0,1
+72,Empresa AP 0072,Laranjal do Jari,AP,2025-10-08,0,1,0,0,1
+73,Empresa CE 0073,Maracanaú,CE,2025-12-02,0,0,1,0,1
+74,Empresa RJ 0074,Nova Iguaçu,RJ,2025-10-03,0,1,0,0,1
+75,Empresa RJ 0075,Niterói,RJ,2025-12-02,0,1,0,0,1
+76,Empresa SP 0076,São Paulo,SP,2025-10-11,0,0,0,1,1
+77,Empresa PR 0077,Curitiba,PR,2025-12-10,1,0,0,0,1
+78,Empresa RJ 0078,Nova Iguaçu,RJ,2025-10-09,0,1,0,0,1
+79,Empresa ES 0079,Vitória,ES,2025-10-03,1,0,0,0,1
+80,Empresa RS 0080,Porto Alegre,RS,2025-10-21,1,0,0,0,1
+81,Empresa SC 0081,Joinville,SC,2025-12-23,0,0,1,0,1
+82,Empresa RS 0082,Canoas,RS,2025-10-24,0,1,0,0,1
+83,Empresa SP 0083,Campinas,SP,2025-12-25,0,1,0,0,1
+84,Empresa AL 0084,Palmeira dos Índios,AL,2025-11-23,0,0,1,0,1
+85,Empresa PR 0085,Curitiba,PR,2025-10-05,0,1,0,0,1
+86,Empresa MT 0086,Rondonópolis,MT,2025-11-21,1,0,0,0,1
+87,Empresa PR 0087,Cascavel,PR,2025-10-15,0,0,1,0,1
+88,Empresa SC 0088,Florianópolis,SC,2025-12-03,0,0,1,0,1
+89,Empresa ES 0089,Serra,ES,2025-10-25,1,0,0,0,1
+90,Empresa RS 0090,Canoas,RS,2025-12-03,0,1,0,0,1
+91,Empresa PR 0091,Londrina,PR,2025-10-05,1,0,0,0,1
+92,Empresa SC 0092,Blumenau,SC,2025-11-05,1,0,0,0,1
+93,Empresa RJ 0093,Rio de Janeiro,RJ,2025-12-22,0,1,0,0,1
+94,Empresa RS 0094,Canoas,RS,2025-11-25,1,0,0,0,1
+95,Empresa MA 0095,Imperatriz,MA,2025-12-16,1,0,0,0,1
+96,Empresa SP 0096,Santos,SP,2025-11-07,1,0,0,0,1
+97,Empresa RJ 0097,Duque de Caxias,RJ,2025-10-27,0,1,0,0,1
+98,Empresa ES 0098,Serra,ES,2025-10-16,1,0,0,0,1
+99,Empresa SP 0099,Ribeirão Preto,SP,2025-11-24,1,0,0,0,1
+100,Empresa RJ 0100,Rio de Janeiro,RJ,2025-12-01,1,0,0,0,1
+101,Empresa SP 0101,São Paulo,SP,2025-12-07,0,0,1,0,1
+102,Empresa MS 0102,Dourados,MS,2025-11-13,0,1,0,0,1
+103,Empresa BA 0103,Vitória da Conquista,BA,2025-12-25,0,1,0,0,1
+104,Empresa ES 0104,Vitória,ES,2025-12-10,0,1,0,0,1
+105,Empresa RJ 0105,Nova Iguaçu,RJ,2025-11-07,0,0,1,0,1
+106,Empresa PI 0106,Teresina,PI,2025-12-21,0,1,0,0,1
+107,Empresa SE 0107,Nossa Senhora do Socorro,SE,2025-10-03,1,0,0,0,1
+108,Empresa RS 0108,Caxias do Sul,RS,2025-12-10,0,1,0,0,1
+109,Empresa GO 0109,Goiânia,GO,2025-11-11,1,0,0,0,1
+110,Empresa RJ 0110,Nova Iguaçu,RJ,2025-12-10,0,1,0,0,1
+111,Empresa PR 0111,Londrina,PR,2025-12-03,1,0,0,0,1
+112,Empresa MT 0112,Várzea Grande,MT,2025-10-11,0,0,0,1,1
+113,Empresa MG 0113,Juiz de Fora,MG,2025-10-06,1,0,0,0,1
+114,Empresa MG 0114,Uberlândia,MG,2025-10-19,1,0,0,0,1
+115,Empresa SP 0115,Ribeirão Preto,SP,2025-11-17,1,0,0,0,1
+116,Empresa ES 0116,Cariacica,ES,2025-10-12,1,0,0,0,1
+117,Empresa MG 0117,Belo Horizonte,MG,2025-10-08,1,0,0,0,1
+118,Empresa RS 0118,Pelotas,RS,2025-12-28,0,0,0,1,1
+119,Empresa SP 0119,Ribeirão Preto,SP,2025-12-16,1,0,0,0,1
+120,Empresa SP 0120,Ribeirão Preto,SP,2025-10-04,1,0,0,0,1
+121,Empresa ES 0121,Cariacica,ES,2025-10-25,1,0,0,0,1
+122,Empresa MA 0122,Caxias,MA,2025-12-21,0,0,1,0,1
+123,Empresa MS 0123,Três Lagoas,MS,2025-12-23,0,0,1,0,1
+124,Empresa RJ 0124,Niterói,RJ,2025-11-08,0,0,1,0,1
+125,Empresa RJ 0125,Nova Iguaçu,RJ,2025-10-11,0,1,0,0,1
+126,Empresa RN 0126,Parnamirim,RN,2025-10-08,1,0,0,0,1
+127,Empresa RJ 0127,Rio de Janeiro,RJ,2025-10-16,0,0,1,0,1
+128,Empresa PR 0128,Maringá,PR,2025-10-14,0,0,0,1,1
+129,Empresa ES 0129,Serra,ES,2025-12-12,0,1,0,0,1
+130,Empresa RJ 0130,Rio de Janeiro,RJ,2025-10-07,1,0,0,0,1
+131,Empresa MA 0131,Imperatriz,MA,2025-10-25,0,0,1,0,1
+132,Empresa SP 0132,Campinas,SP,2025-12-16,1,0,0,0,1
+133,Empresa SC 0133,Joinville,SC,2025-12-02,1,0,0,0,1
+134,Empresa AM 0134,Parintins,AM,2025-10-02,0,1,0,0,1
+135,Empresa RJ 0135,Rio de Janeiro,RJ,2025-12-06,1,0,0,0,1
+136,Empresa SP 0136,São Paulo,SP,2025-11-24,1,0,0,0,1
+137,Empresa RJ 0137,Nova Iguaçu,RJ,2025-10-01,1,0,0,0,1
+138,Empresa SP 0138,São Paulo,SP,2025-11-25,1,0,0,0,1
+139,Empresa RJ 0139,Nova Iguaçu,RJ,2025-10-23,0,1,0,0,1
+140,Empresa SP 0140,Campinas,SP,2025-11-24,0,0,1,0,1
+141,Empresa SP 0141,Campinas,SP,2025-12-25,1,0,0,0,1
+142,Empresa SP 0142,São Paulo,SP,2025-12-02,1,0,0,0,1
+143,Empresa SC 0143,Blumenau,SC,2025-11-11,0,0,0,1,1
+144,Empresa RS 0144,Pelotas,RS,2025-12-10,1,0,0,0,1
+145,Empresa BA 0145,Salvador,BA,2025-12-04,0,1,0,0,1
+146,Empresa MT 0146,Rondonópolis,MT,2025-12-27,0,1,0,0,1
+147,Empresa GO 0147,Goiânia,GO,2025-12-24,0,1,0,0,1
+148,Empresa PR 0148,Londrina,PR,2025-11-11,0,1,0,0,1
+149,Empresa BA 0149,Feira de Santana,BA,2025-11-06,0,1,0,0,1
+150,Empresa ES 0150,Cariacica,ES,2025-11-11,1,0,0,0,1
+151,Empresa ES 0151,Vitória,ES,2025-10-03,1,0,0,0,1
+152,Empresa SP 0152,Campinas,SP,2025-10-14,0,1,0,0,1
+153,Empresa MA 0153,Caxias,MA,2025-11-25,0,1,0,0,1
+154,Empresa RJ 0154,Duque de Caxias,RJ,2025-10-09,1,0,0,0,1
+155,Empresa PR 0155,Cascavel,PR,2025-10-08,1,0,0,0,1
+156,Empresa MG 0156,Uberlândia,MG,2025-10-09,0,0,0,1,1
+157,Empresa MG 0157,Belo Horizonte,MG,2025-12-02,1,0,0,0,1
+158,Empresa MG 0158,Contagem,MG,2025-12-02,0,0,1,0,1
+159,Empresa ES 0159,Vila Velha,ES,2025-11-27,0,1,0,0,1
+160,Empresa MS 0160,Três Lagoas,MS,2025-12-15,0,1,0,0,1
+161,Empresa AL 0161,Maceió,AL,2025-12-23,0,1,0,0,1
+162,Empresa RJ 0162,Duque de Caxias,RJ,2025-10-07,0,0,0,1,1
+163,Empresa MG 0163,Belo Horizonte,MG,2025-12-14,0,1,0,0,1
+164,Empresa RJ 0164,Rio de Janeiro,RJ,2025-10-26,0,1,0,0,1
+165,Empresa SP 0165,São Paulo,SP,2025-12-22,0,1,0,0,1
+166,Empresa PR 0166,Londrina,PR,2025-11-09,1,0,0,0,1
+167,Empresa RJ 0167,Nova Iguaçu,RJ,2025-12-10,0,0,1,0,1
+168,Empresa PI 0168,Parnaíba,PI,2025-10-25,0,0,0,1,1
+169,Empresa MG 0169,Contagem,MG,2025-12-07,0,0,0,1,1
+170,Empresa MG 0170,Contagem,MG,2025-10-03,1,0,0,0,1
+171,Empresa RN 0171,Natal,RN,2025-10-02,0,1,0,0,1
+172,Empresa RS 0172,Porto Alegre,RS,2025-11-12,0,0,1,0,1
+173,Empresa RJ 0173,Duque de Caxias,RJ,2025-10-06,0,0,1,0,1
+174,Empresa SP 0174,Campinas,SP,2025-11-27,0,0,0,1,1
+175,Empresa PA 0175,Santarém,PA,2025-10-21,0,1,0,0,1
+176,Empresa GO 0176,Aparecida de Goiânia,GO,2025-12-08,0,1,0,0,1
+177,Empresa PR 0177,Cascavel,PR,2025-10-07,1,0,0,0,1
+178,Empresa GO 0178,Anápolis,GO,2025-11-05,1,0,0,0,1
+179,Empresa PR 0179,Curitiba,PR,2025-12-27,0,0,1,0,1
+180,Empresa RJ 0180,Rio de Janeiro,RJ,2025-11-15,0,1,0,0,1
+181,Empresa RS 0181,Canoas,RS,2025-11-08,1,0,0,0,1
+182,Empresa RS 0182,Canoas,RS,2025-10-01,0,1,0,0,1
+183,Empresa MG 0183,Contagem,MG,2025-12-25,0,0,1,0,1
+184,Empresa RN 0184,Mossoró,RN,2025-10-05,0,1,0,0,1
+185,Empresa SP 0185,São Paulo,SP,2025-10-05,1,0,0,0,1
+186,Empresa SC 0186,Florianópolis,SC,2025-10-17,0,0,1,0,1
+187,Empresa PR 0187,Curitiba,PR,2025-12-20,0,0,1,0,1
+188,Empresa MA 0188,São Luís,MA,2025-12-16,0,1,0,0,1
+189,Empresa CE 0189,Juazeiro do Norte,CE,2025-10-12,0,1,0,0,1
+190,Empresa RJ 0190,Duque de Caxias,RJ,2025-12-15,1,0,0,0,1
+191,Empresa SP 0191,Campinas,SP,2025-11-20,0,1,0,0,1
+192,Empresa ES 0192,Vila Velha,ES,2025-10-06,0,1,0,0,1
+193,Empresa RJ 0193,Nova Iguaçu,RJ,2025-10-26,1,0,0,0,1
+194,Empresa AL 0194,Palmeira dos Índios,AL,2025-12-28,0,1,0,0,1
+195,Empresa SC 0195,Florianópolis,SC,2025-10-18,0,1,0,0,1
+196,Empresa RJ 0196,Duque de Caxias,RJ,2025-11-12,0,1,0,0,1
+197,Empresa ES 0197,Cariacica,ES,2025-10-20,0,0,1,0,1
+198,Empresa RJ 0198,Duque de Caxias,RJ,2025-12-28,0,1,0,0,1
+199,Empresa RS 0199,Porto Alegre,RS,2025-12-08,1,0,0,0,1
+200,Empresa RS 0200,Canoas,RS,2025-11-02,1,0,0,0,1
+201,Empresa ES 0201,Vitória,ES,2025-10-19,1,0,0,0,1
+202,Empresa RJ 0202,Niterói,RJ,2025-11-10,0,1,0,0,1
+203,Empresa SP 0203,Campinas,SP,2025-10-26,1,0,0,0,1
+204,Empresa ES 0204,Vitória,ES,2025-12-28,0,1,0,0,1
+205,Empresa RJ 0205,Rio de Janeiro,RJ,2025-10-27,0,1,0,0,1
+206,Empresa SP 0206,Ribeirão Preto,SP,2025-10-01,1,0,0,0,1
+207,Empresa RS 0207,Caxias do Sul,RS,2025-10-02,0,0,1,0,1
+208,Empresa MG 0208,Juiz de Fora,MG,2025-11-17,0,1,0,0,1
+209,Empresa SP 0209,Campinas,SP,2025-11-03,1,0,0,0,1
+210,Empresa SP 0210,São Paulo,SP,2025-11-14,0,0,1,0,1
+211,Empresa SP 0211,Campinas,SP,2025-10-04,1,0,0,0,1
+212,Empresa PR 0212,Maringá,PR,2025-12-23,0,0,0,1,1
+213,Empresa ES 0213,Serra,ES,2025-12-22,0,1,0,0,1
+214,Empresa SE 0214,Itabaiana,SE,2025-10-07,1,0,0,0,1
+215,Empresa MG 0215,Uberlândia,MG,2025-12-27,0,0,1,0,1
+216,Empresa MS 0216,Campo Grande,MS,2025-12-11,0,1,0,0,1
+217,Empresa SP 0217,Ribeirão Preto,SP,2025-12-23,1,0,0,0,1
+218,Empresa MG 0218,Uberlândia,MG,2025-12-13,0,1,0,0,1
+219,Empresa MG 0219,Juiz de Fora,MG,2025-10-04,1,0,0,0,1
+220,Empresa MS 0220,Campo Grande,MS,2025-12-01,1,0,0,0,1
+221,Empresa SC 0221,Florianópolis,SC,2025-12-24,1,0,0,0,1
+222,Empresa PE 0222,Caruaru,PE,2025-12-27,0,1,0,0,1
+223,Empresa SC 0223,Chapecó,SC,2025-10-07,1,0,0,0,1
+224,Empresa ES 0224,Serra,ES,2025-11-05,1,0,0,0,1
+225,Empresa MA 0225,Imperatriz,MA,2025-11-14,0,1,0,0,1
+226,Empresa RJ 0226,Rio de Janeiro,RJ,2025-12-12,0,0,1,0,1
+227,Empresa SE 0227,Itabaiana,SE,2025-12-20,0,0,1,0,1
+228,Empresa AL 0228,Arapiraca,AL,2025-11-04,0,1,0,0,1
+229,Empresa SC 0229,Joinville,SC,2025-12-27,1,0,0,0,1
+230,Empresa CE 0230,Maracanaú,CE,2025-10-07,0,1,0,0,1
+231,Empresa AL 0231,Maceió,AL,2025-11-04,0,1,0,0,1
+232,Empresa CE 0232,Maracanaú,CE,2025-11-27,0,1,0,0,1
+233,Empresa PR 0233,Maringá,PR,2025-12-23,1,0,0,0,1
+234,Empresa ES 0234,Cariacica,ES,2025-12-23,0,1,0,0,1
+235,Empresa RJ 0235,Duque de Caxias,RJ,2025-10-13,0,0,1,0,1
+236,Empresa RS 0236,Porto Alegre,RS,2025-11-10,1,0,0,0,1
+237,Empresa GO 0237,Anápolis,GO,2025-12-21,1,0,0,0,1
+238,Empresa ES 0238,Serra,ES,2025-11-17,1,0,0,0,1
+239,Empresa SE 0239,Nossa Senhora do Socorro,SE,2025-11-15,0,1,0,0,1
+240,Empresa MA 0240,São Luís,MA,2025-11-21,0,0,1,0,1
+241,Empresa MG 0241,Uberlândia,MG,2025-11-23,0,0,1,0,1
+242,Empresa SC 0242,Joinville,SC,2025-12-24,1,0,0,0,1
+243,Empresa PR 0243,Londrina,PR,2025-11-07,1,0,0,0,1
+244,Empresa DF 0244,Brasília,DF,2025-12-04,1,0,0,0,1
+245,Empresa MG 0245,Uberlândia,MG,2025-12-14,1,0,0,0,1
+246,Empresa ES 0246,Serra,ES,2025-10-13,0,1,0,0,1
+247,Empresa SP 0247,Campinas,SP,2025-11-21,1,0,0,0,1
+248,Empresa RJ 0248,Nova Iguaçu,RJ,2025-10-08,0,0,1,0,1
+249,Empresa SP 0249,Campinas,SP,2025-12-21,0,0,1,0,1
+250,Empresa MA 0250,Caxias,MA,2025-10-04,0,1,0,0,1
+251,Empresa ES 0251,Cariacica,ES,2025-10-13,0,0,1,0,1
+252,Empresa RS 0252,Canoas,RS,2025-11-01,0,1,0,0,1
+253,Empresa MG 0253,Uberlândia,MG,2025-12-13,0,0,1,0,1
+254,Empresa DF 0254,Brasília,DF,2025-10-07,1,0,0,0,1
+255,Empresa MA 0255,Caxias,MA,2025-11-28,0,1,0,0,1
+256,Empresa SC 0256,Chapecó,SC,2025-11-21,0,0,1,0,1
+257,Empresa RJ 0257,Nova Iguaçu,RJ,2025-12-15,1,0,0,0,1
+258,Empresa RS 0258,Porto Alegre,RS,2025-12-20,1,0,0,0,1
+259,Empresa RJ 0259,Nova Iguaçu,RJ,2025-11-01,1,0,0,0,1
+260,Empresa MS 0260,Três Lagoas,MS,2025-10-08,0,1,0,0,1
+261,Empresa MG 0261,Contagem,MG,2025-11-06,1,0,0,0,1
+262,Empresa MA 0262,Imperatriz,MA,2025-12-24,0,1,0,0,1
+263,Empresa MS 0263,Três Lagoas,MS,2025-12-27,0,0,1,0,1
+264,Empresa RJ 0264,Niterói,RJ,2025-12-16,1,0,0,0,1
+265,Empresa PB 0265,Patos,PB,2025-11-09,0,0,0,1,1
+266,Empresa RS 0266,Porto Alegre,RS,2025-12-26,1,0,0,0,1
+267,Empresa RJ 0267,Duque de Caxias,RJ,2025-11-14,0,1,0,0,1
+268,Empresa RJ 0268,Niterói,RJ,2025-12-28,1,0,0,0,1
+269,Empresa RJ 0269,Niterói,RJ,2025-11-12,0,1,0,0,1
+270,Empresa ES 0270,Vila Velha,ES,2025-12-21,1,0,0,0,1
+271,Empresa SC 0271,Joinville,SC,2025-12-06,0,0,1,0,1
+272,Empresa MG 0272,Juiz de Fora,MG,2025-12-26,0,1,0,0,1
+273,Empresa SC 0273,Florianópolis,SC,2025-12-18,0,0,1,0,1
+274,Empresa MA 0274,Imperatriz,MA,2025-12-17,1,0,0,0,1
+275,Empresa BA 0275,Salvador,BA,2025-10-08,0,0,1,0,1
+276,Empresa ES 0276,Cariacica,ES,2025-11-05,0,0,1,0,1
+277,Empresa MG 0277,Belo Horizonte,MG,2025-10-11,0,1,0,0,1
+278,Empresa SC 0278,Blumenau,SC,2025-12-12,1,0,0,0,1
+279,Empresa RR 0279,Boa Vista,RR,2025-10-12,0,0,1,0,1
+280,Empresa ES 0280,Serra,ES,2025-12-04,0,1,0,0,1
+281,Empresa MG 0281,Belo Horizonte,MG,2025-10-14,0,1,0,0,1
+282,Empresa RJ 0282,Duque de Caxias,RJ,2025-11-17,0,1,0,0,1
+283,Empresa MS 0283,Dourados,MS,2025-11-09,0,1,0,0,1
+284,Empresa PB 0284,Campina Grande,PB,2025-12-13,0,1,0,0,1
+285,Empresa TO 0285,Gurupi,TO,2025-11-07,0,0,1,0,1
+286,Empresa PE 0286,Caruaru,PE,2025-11-10,1,0,0,0,1
+287,Empresa AC 0287,Rio Branco,AC,2025-11-18,0,0,0,1,1
+288,Empresa PR 0288,Cascavel,PR,2025-11-01,1,0,0,0,1
+289,Empresa RN 0289,Parnamirim,RN,2025-12-02,0,0,1,0,1
+290,Empresa MT 0290,Várzea Grande,MT,2025-10-22,0,0,1,0,1
+291,Empresa SC 0291,Florianópolis,SC,2025-10-22,0,1,0,0,1
+292,Empresa PR 0292,Curitiba,PR,2025-12-28,1,0,0,0,1
+293,Empresa AL 0293,Arapiraca,AL,2025-12-05,0,0,1,0,1
+294,Empresa RS 0294,Pelotas,RS,2025-10-02,1,0,0,0,1
+295,Empresa ES 0295,Cariacica,ES,2025-11-02,0,0,1,0,1
+296,Empresa PI 0296,Picos,PI,2025-12-13,0,1,0,0,1
+297,Empresa SP 0297,Campinas,SP,2025-11-14,0,1,0,0,1
+298,Empresa SP 0298,Campinas,SP,2025-12-21,1,0,0,0,1
+299,Empresa ES 0299,Vitória,ES,2025-10-04,1,0,0,0,1
+300,Empresa MG 0300,Contagem,MG,2025-12-06,0,0,1,0,1
+301,Empresa MG 0301,Belo Horizonte,MG,2025-10-18,0,0,1,0,1
+302,Empresa RJ 0302,Rio de Janeiro,RJ,2025-12-01,1,0,0,0,1
+303,Empresa BA 0303,Juazeiro,BA,2025-11-24,0,1,0,0,1
+304,Empresa MT 0304,Várzea Grande,MT,2025-10-12,0,0,0,1,1
+305,Empresa RS 0305,Caxias do Sul,RS,2025-10-26,1,0,0,0,1
+306,Empresa GO 0306,Aparecida de Goiânia,GO,2025-12-16,0,1,0,0,1
+307,Empresa PB 0307,Patos,PB,2025-11-09,1,0,0,0,1
+308,Empresa RR 0308,Rorainópolis,RR,2025-12-24,0,0,0,1,1
+309,Empresa PB 0309,Patos,PB,2025-11-08,0,1,0,0,1
+310,Empresa SC 0310,Joinville,SC,2025-12-10,0,1,0,0,1
+311,Empresa RJ 0311,Nova Iguaçu,RJ,2025-10-27,0,0,1,0,1
+312,Empresa PB 0312,João Pessoa,PB,2025-12-28,0,0,0,1,1
+313,Empresa SP 0313,Santos,SP,2025-11-18,0,1,0,0,1
+314,Empresa MA 0314,Caxias,MA,2025-12-08,0,1,0,0,1
+315,Empresa SP 0315,Ribeirão Preto,SP,2025-12-09,0,1,0,0,1
+316,Empresa SP 0316,Ribeirão Preto,SP,2025-11-18,0,0,1,0,1
+317,Empresa MA 0317,Imperatriz,MA,2025-11-09,0,0,1,0,1
+318,Empresa RS 0318,Caxias do Sul,RS,2025-10-07,1,0,0,0,1
+319,Empresa PB 0319,Campina Grande,PB,2025-11-12,0,1,0,0,1
+320,Empresa MG 0320,Juiz de Fora,MG,2025-10-16,1,0,0,0,1
+321,Empresa SP 0321,São Paulo,SP,2025-10-20,1,0,0,0,1
+322,Empresa ES 0322,Vitória,ES,2025-10-28,0,0,1,0,1
+323,Empresa MG 0323,Uberlândia,MG,2025-12-09,0,1,0,0,1
+324,Empresa GO 0324,Anápolis,GO,2025-12-11,1,0,0,0,1
+325,Empresa ES 0325,Vitória,ES,2025-10-18,1,0,0,0,1
+326,Empresa RS 0326,Porto Alegre,RS,2025-12-21,1,0,0,0,1
+327,Empresa ES 0327,Serra,ES,2025-11-08,0,1,0,0,1
+328,Empresa MT 0328,Cuiabá,MT,2025-11-06,0,1,0,0,1
+329,Empresa MG 0329,Juiz de Fora,MG,2025-10-09,0,0,0,1,1
+330,Empresa ES 0330,Vitória,ES,2025-10-17,0,0,1,0,1
+331,Empresa RS 0331,Porto Alegre,RS,2025-10-11,0,0,1,0,1
+332,Empresa MS 0332,Três Lagoas,MS,2025-11-25,0,0,1,0,1
+333,Empresa RJ 0333,Duque de Caxias,RJ,2025-11-12,0,1,0,0,1
+334,Empresa MG 0334,Juiz de Fora,MG,2025-12-01,0,1,0,0,1
+335,Empresa DF 0335,Brasília,DF,2025-12-08,1,0,0,0,1
+336,Empresa RS 0336,Caxias do Sul,RS,2025-12-04,0,0,0,1,1
+337,Empresa ES 0337,Vitória,ES,2025-11-11,1,0,0,0,1
+338,Empresa ES 0338,Serra,ES,2025-10-08,0,0,1,0,1
+339,Empresa SP 0339,Campinas,SP,2025-11-05,1,0,0,0,1
+340,Empresa MG 0340,Belo Horizonte,MG,2025-10-27,1,0,0,0,1
+341,Empresa PB 0341,Campina Grande,PB,2025-10-15,0,0,0,1,1
+342,Empresa ES 0342,Vila Velha,ES,2025-11-27,1,0,0,0,1
+343,Empresa MG 0343,Uberlândia,MG,2025-11-09,0,0,0,1,1
+344,Empresa DF 0344,Taguatinga,DF,2025-10-06,1,0,0,0,1
+345,Empresa RS 0345,Caxias do Sul,RS,2025-12-01,1,0,0,0,1
+346,Empresa MG 0346,Contagem,MG,2025-10-27,0,0,0,1,1
+347,Empresa RJ 0347,Nova Iguaçu,RJ,2025-10-14,1,0,0,0,1
+348,Empresa PR 0348,Londrina,PR,2025-11-08,0,0,1,0,1
+349,Empresa ES 0349,Vitória,ES,2025-12-24,0,1,0,0,1
+350,Empresa MG 0350,Juiz de Fora,MG,2025-11-23,0,1,0,0,1
+351,Empresa RJ 0351,Niterói,RJ,2025-10-23,0,0,1,0,1
+352,Empresa ES 0352,Serra,ES,2025-11-27,0,1,0,0,1
+353,Empresa DF 0353,Brasília,DF,2025-11-25,0,1,0,0,1
+354,Empresa PB 0354,João Pessoa,PB,2025-10-27,0,0,0,1,1
+355,Empresa RJ 0355,Rio de Janeiro,RJ,2025-11-15,0,0,0,1,1
+356,Empresa RJ 0356,Niterói,RJ,2025-12-28,0,0,1,0,1
+357,Empresa PI 0357,Picos,PI,2025-12-02,0,1,0,0,1
+358,Empresa SP 0358,Ribeirão Preto,SP,2025-11-17,0,0,1,0,1
+359,Empresa MG 0359,Belo Horizonte,MG,2025-10-06,1,0,0,0,1
+360,Empresa ES 0360,Vitória,ES,2025-10-23,0,0,1,0,1
+361,Empresa SP 0361,Campinas,SP,2025-12-04,1,0,0,0,1
+362,Empresa MG 0362,Belo Horizonte,MG,2025-10-15,0,1,0,0,1
+363,Empresa RJ 0363,Rio de Janeiro,RJ,2025-10-13,0,0,1,0,1
+364,Empresa PR 0364,Londrina,PR,2025-10-19,0,1,0,0,1
+365,Empresa ES 0365,Cariacica,ES,2025-12-20,0,0,1,0,1
+366,Empresa RS 0366,Porto Alegre,RS,2025-12-11,1,0,0,0,1
+367,Empresa PI 0367,Picos,PI,2025-12-11,0,0,1,0,1
+368,Empresa AL 0368,Arapiraca,AL,2025-11-22,0,0,0,1,1
+369,Empresa SP 0369,São Paulo,SP,2025-11-17,1,0,0,0,1
+370,Empresa MG 0370,Belo Horizonte,MG,2025-10-14,0,0,0,1,1
+371,Empresa RN 0371,Parnamirim,RN,2025-10-02,1,0,0,0,1
+372,Empresa RS 0372,Pelotas,RS,2025-11-26,0,0,0,1,1
+373,Empresa RS 0373,Porto Alegre,RS,2025-11-14,1,0,0,0,1
+374,Empresa ES 0374,Serra,ES,2025-11-06,1,0,0,0,1
+375,Empresa SC 0375,Blumenau,SC,2025-10-19,0,1,0,0,1
+376,Empresa ES 0376,Vila Velha,ES,2025-12-14,0,1,0,0,1
+377,Empresa ES 0377,Serra,ES,2025-12-20,0,1,0,0,1
+378,Empresa SP 0378,Campinas,SP,2025-11-12,0,1,0,0,1
+379,Empresa SC 0379,Chapecó,SC,2025-11-10,1,0,0,0,1
+380,Empresa MG 0380,Contagem,MG,2025-12-13,1,0,0,0,1
+381,Empresa MG 0381,Uberlândia,MG,2025-11-16,1,0,0,0,1
+382,Empresa MA 0382,Imperatriz,MA,2025-10-01,1,0,0,0,1
+383,Empresa RJ 0383,Nova Iguaçu,RJ,2025-12-17,1,0,0,0,1
+384,Empresa ES 0384,Vila Velha,ES,2025-12-22,0,0,1,0,1
+385,Empresa RJ 0385,Duque de Caxias,RJ,2025-10-07,0,1,0,0,1
+386,Empresa SE 0386,Aracaju,SE,2025-12-24,0,0,0,1,1
+387,Empresa AP 0387,Laranjal do Jari,AP,2025-12-23,0,1,0,0,1
+388,Empresa AL 0388,Arapiraca,AL,2025-12-19,1,0,0,0,1
+389,Empresa MG 0389,Contagem,MG,2025-12-09,0,0,1,0,1
+390,Empresa RS 0390,Canoas,RS,2025-12-10,0,0,1,0,1
+391,Empresa SP 0391,Ribeirão Preto,SP,2025-12-01,0,0,1,0,1
+392,Empresa RN 0392,Mossoró,RN,2025-11-06,0,1,0,0,1
+393,Empresa PI 0393,Picos,PI,2025-11-08,1,0,0,0,1
+394,Empresa MS 0394,Três Lagoas,MS,2025-12-11,1,0,0,0,1
+395,Empresa ES 0395,Vitória,ES,2025-10-19,0,0,1,0,1
+396,Empresa RJ 0396,Nova Iguaçu,RJ,2025-11-17,0,0,1,0,1
+397,Empresa SP 0397,Santos,SP,2025-10-22,1,0,0,0,1
+398,Empresa DF 0398,Ceilândia,DF,2025-10-14,0,1,0,0,1
+399,Empresa MG 0399,Juiz de Fora,MG,2025-12-16,1,0,0,0,1
+400,Empresa PE 0400,Recife,PE,2025-10-11,0,1,0,0,1
+401,Empresa RJ 0401,Niterói,RJ,2025-10-10,0,1,0,0,1
+402,Empresa SE 0402,Itabaiana,SE,2025-12-17,0,1,0,0,1
+403,Empresa MG 0403,Contagem,MG,2025-10-21,0,1,0,0,1
+404,Empresa ES 0404,Cariacica,ES,2025-10-01,1,0,0,0,1
+405,Empresa PR 0405,Maringá,PR,2025-11-04,0,1,0,0,1
+406,Empresa PR 0406,Londrina,PR,2025-11-18,0,1,0,0,1
+407,Empresa SE 0407,Nossa Senhora do Socorro,SE,2025-12-19,0,1,0,0,1
+408,Empresa PR 0408,Londrina,PR,2025-11-17,1,0,0,0,1
+409,Empresa MG 0409,Contagem,MG,2025-12-20,0,1,0,0,1
+410,Empresa AL 0410,Palmeira dos Índios,AL,2025-12-11,1,0,0,0,1
+411,Empresa RJ 0411,Niterói,RJ,2025-10-21,1,0,0,0,1
+412,Empresa DF 0412,Taguatinga,DF,2025-10-20,0,1,0,0,1
+413,Empresa SP 0413,São Paulo,SP,2025-11-20,1,0,0,0,1
+414,Empresa MG 0414,Juiz de Fora,MG,2025-11-28,0,0,1,0,1
+415,Empresa RJ 0415,Nova Iguaçu,RJ,2025-12-03,1,0,0,0,1
+416,Empresa MG 0416,Contagem,MG,2025-11-23,0,1,0,0,1
+417,Empresa MA 0417,São Luís,MA,2025-10-12,0,1,0,0,1
+418,Empresa RJ 0418,Nova Iguaçu,RJ,2025-11-04,1,0,0,0,1
+419,Empresa PE 0419,Olinda,PE,2025-12-04,0,1,0,0,1
+420,Empresa GO 0420,Anápolis,GO,2025-10-10,0,1,0,0,1
+421,Empresa RJ 0421,Rio de Janeiro,RJ,2025-11-05,1,0,0,0,1
+422,Empresa MG 0422,Uberlândia,MG,2025-11-26,1,0,0,0,1
+423,Empresa MG 0423,Juiz de Fora,MG,2025-11-07,0,0,1,0,1
+424,Empresa MG 0424,Uberlândia,MG,2025-12-17,1,0,0,0,1
+425,Empresa CE 0425,Sobral,CE,2025-11-15,0,1,0,0,1
+426,Empresa MG 0426,Contagem,MG,2025-11-07,1,0,0,0,1
+427,Empresa SE 0427,Aracaju,SE,2025-11-09,0,0,1,0,1
+428,Empresa AL 0428,Palmeira dos Índios,AL,2025-12-05,0,1,0,0,1
+429,Empresa ES 0429,Vila Velha,ES,2025-12-08,1,0,0,0,1
+430,Empresa PR 0430,Curitiba,PR,2025-11-12,0,0,1,0,1
+431,Empresa MA 0431,São Luís,MA,2025-12-03,0,1,0,0,1
+432,Empresa SP 0432,Santos,SP,2025-11-28,0,0,1,0,1
+433,Empresa CE 0433,Sobral,CE,2025-10-12,0,1,0,0,1
+434,Empresa RS 0434,Canoas,RS,2025-10-23,0,1,0,0,1
+435,Empresa SP 0435,Santos,SP,2025-12-04,1,0,0,0,1
+436,Empresa MG 0436,Belo Horizonte,MG,2025-11-20,1,0,0,0,1
+437,Empresa RJ 0437,Niterói,RJ,2025-11-02,0,1,0,0,1
+438,Empresa PR 0438,Londrina,PR,2025-11-23,0,1,0,0,1
+439,Empresa MS 0439,Campo Grande,MS,2025-10-25,0,0,1,0,1
+440,Empresa ES 0440,Vitória,ES,2025-12-22,1,0,0,0,1
+441,Empresa MA 0441,Imperatriz,MA,2025-12-03,0,1,0,0,1
+442,Empresa SC 0442,Joinville,SC,2025-10-03,1,0,0,0,1
+443,Empresa MT 0443,Rondonópolis,MT,2025-12-24,0,0,1,0,1
+444,Empresa RN 0444,Parnamirim,RN,2025-10-23,0,1,0,0,1
+445,Empresa PR 0445,Cascavel,PR,2025-12-02,0,0,0,1,1
+446,Empresa SE 0446,Itabaiana,SE,2025-10-06,0,0,0,1,1
+447,Empresa SC 0447,Blumenau,SC,2025-10-02,1,0,0,0,1
+448,Empresa ES 0448,Vila Velha,ES,2025-12-05,1,0,0,0,1
+449,Empresa SC 0449,Chapecó,SC,2025-10-08,1,0,0,0,1
+450,Empresa PR 0450,Maringá,PR,2025-12-05,0,0,1,0,1
+451,Empresa MG 0451,Uberlândia,MG,2025-11-04,0,1,0,0,1
+452,Empresa CE 0452,Juazeiro do Norte,CE,2025-11-15,0,0,1,0,1
+453,Empresa MG 0453,Belo Horizonte,MG,2025-12-01,1,0,0,0,1
+454,Empresa ES 0454,Serra,ES,2025-11-04,0,0,1,0,1
+455,Empresa ES 0455,Vila Velha,ES,2025-11-15,0,1,0,0,1
+456,Empresa ES 0456,Vitória,ES,2025-10-25,0,1,0,0,1
+457,Empresa RS 0457,Pelotas,RS,2025-10-16,0,0,0,1,1
+458,Empresa RJ 0458,Rio de Janeiro,RJ,2025-11-03,0,1,0,0,1
+459,Empresa SC 0459,Blumenau,SC,2025-12-03,1,0,0,0,1
+460,Empresa SP 0460,Campinas,SP,2025-10-06,0,0,0,1,1
+461,Empresa SC 0461,Joinville,SC,2025-10-24,0,0,1,0,1
+462,Empresa RS 0462,Canoas,RS,2025-10-27,1,0,0,0,1
+463,Empresa MG 0463,Uberlândia,MG,2025-12-09,1,0,0,0,1
+464,Empresa SP 0464,São Paulo,SP,2025-12-16,0,1,0,0,1
+465,Empresa RS 0465,Porto Alegre,RS,2025-10-08,1,0,0,0,1
+466,Empresa SP 0466,São Paulo,SP,2025-12-28,0,1,0,0,1
+467,Empresa RJ 0467,Rio de Janeiro,RJ,2025-10-20,0,0,1,0,1
+468,Empresa PI 0468,Teresina,PI,2025-10-22,1,0,0,0,1
+469,Empresa RS 0469,Porto Alegre,RS,2025-11-22,0,0,0,1,1
+470,Empresa MG 0470,Contagem,MG,2025-10-15,0,0,1,0,1
+471,Empresa SC 0471,Joinville,SC,2025-11-18,1,0,0,0,1
+472,Empresa MG 0472,Contagem,MG,2025-12-20,1,0,0,0,1
+473,Empresa PE 0473,Jaboatão dos Guararapes,PE,2025-11-14,0,0,0,1,1
+474,Empresa MG 0474,Uberlândia,MG,2025-12-17,0,0,1,0,1
+475,Empresa MG 0475,Juiz de Fora,MG,2025-12-15,0,1,0,0,1
+476,Empresa RJ 0476,Nova Iguaçu,RJ,2025-11-08,0,1,0,0,1
+477,Empresa ES 0477,Vila Velha,ES,2025-10-07,0,1,0,0,1
+478,Empresa RJ 0478,Rio de Janeiro,RJ,2025-10-22,1,0,0,0,1
+479,Empresa SP 0479,Campinas,SP,2025-11-23,1,0,0,0,1
+480,Empresa ES 0480,Cariacica,ES,2025-12-26,0,1,0,0,1
+481,Empresa SE 0481,Nossa Senhora do Socorro,SE,2025-12-25,0,0,0,1,1
+482,Empresa SC 0482,Florianópolis,SC,2025-11-22,1,0,0,0,1
+483,Empresa MG 0483,Contagem,MG,2025-12-05,1,0,0,0,1
+484,Empresa RS 0484,Caxias do Sul,RS,2025-10-02,1,0,0,0,1
+485,Empresa PR 0485,Cascavel,PR,2025-10-23,1,0,0,0,1
+486,Empresa DF 0486,Ceilândia,DF,2025-12-07,0,1,0,0,1
+487,Empresa MS 0487,Campo Grande,MS,2025-11-27,0,1,0,0,1
+488,Empresa AL 0488,Arapiraca,AL,2025-10-12,0,1,0,0,1
+489,Empresa RS 0489,Canoas,RS,2025-10-20,1,0,0,0,1
+490,Empresa RJ 0490,Rio de Janeiro,RJ,2025-10-22,1,0,0,0,1
+491,Empresa SP 0491,São Paulo,SP,2025-12-19,0,1,0,0,1
+492,Empresa RN 0492,Natal,RN,2025-10-09,0,1,0,0,1
+493,Empresa RS 0493,Canoas,RS,2025-12-19,0,0,1,0,1
+494,Empresa SC 0494,Blumenau,SC,2025-12-01,1,0,0,0,1
+495,Empresa PA 0495,Ananindeua,PA,2025-12-26,0,0,1,0,1
+496,Empresa SP 0496,Ribeirão Preto,SP,2025-12-23,0,0,1,0,1
+497,Empresa ES 0497,Serra,ES,2025-11-07,1,0,0,0,1
+498,Empresa ES 0498,Vila Velha,ES,2025-10-12,0,0,1,0,1
+499,Empresa SP 0499,Ribeirão Preto,SP,2025-12-11,1,0,0,0,1
+500,Empresa RS 0500,Caxias do Sul,RS,2025-10-15,0,0,1,0,1
+501,Empresa SC 0501,Joinville,SC,2025-12-05,1,0,0,0,1
+502,Empresa RJ 0502,Duque de Caxias,RJ,2025-11-17,0,1,0,0,1
+503,Empresa ES 0503,Vitória,ES,2025-12-25,0,1,0,0,1
+504,Empresa PR 0504,Maringá,PR,2025-12-26,0,0,1,0,1
+505,Empresa CE 0505,Fortaleza,CE,2025-11-25,0,1,0,0,1
+506,Empresa MG 0506,Uberlândia,MG,2025-12-23,1,0,0,0,1
+507,Empresa RJ 0507,Duque de Caxias,RJ,2025-12-26,0,1,0,0,1
+508,Empresa MG 0508,Juiz de Fora,MG,2025-12-05,1,0,0,0,1
+509,Empresa SP 0509,Ribeirão Preto,SP,2025-11-19,0,0,1,0,1
+510,Empresa DF 0510,Brasília,DF,2025-11-10,1,0,0,0,1
+511,Empresa SC 0511,Blumenau,SC,2025-10-07,0,1,0,0,1
+512,Empresa MG 0512,Uberlândia,MG,2025-11-15,1,0,0,0,1
+513,Empresa PI 0513,Picos,PI,2025-12-03,0,0,1,0,1
+514,Empresa MG 0514,Uberlândia,MG,2025-12-18,1,0,0,0,1
+515,Empresa RJ 0515,Niterói,RJ,2025-12-07,1,0,0,0,1
+516,Empresa RJ 0516,Rio de Janeiro,RJ,2025-10-24,1,0,0,0,1
+517,Empresa ES 0517,Vitória,ES,2025-10-27,0,0,1,0,1
+518,Empresa MG 0518,Belo Horizonte,MG,2025-10-18,0,1,0,0,1
+519,Empresa RJ 0519,Rio de Janeiro,RJ,2025-10-11,0,0,1,0,1
+520,Empresa SP 0520,Ribeirão Preto,SP,2025-11-26,1,0,0,0,1
+521,Empresa SP 0521,São Paulo,SP,2025-10-20,1,0,0,0,1
+522,Empresa SP 0522,Santos,SP,2025-12-28,1,0,0,0,1
+523,Empresa MS 0523,Campo Grande,MS,2025-11-23,0,0,1,0,1
+524,Empresa ES 0524,Vitória,ES,2025-10-05,0,1,0,0,1
+525,Empresa PE 0525,Jaboatão dos Guararapes,PE,2025-11-18,0,0,1,0,1
+526,Empresa CE 0526,Sobral,CE,2025-10-20,0,1,0,0,1
+527,Empresa PR 0527,Maringá,PR,2025-12-18,0,0,0,1,1
+528,Empresa RJ 0528,Duque de Caxias,RJ,2025-11-09,1,0,0,0,1
+529,Empresa SP 0529,São Paulo,SP,2025-12-25,0,0,0,1,1
+530,Empresa MG 0530,Contagem,MG,2025-12-03,0,0,0,1,1
+531,Empresa PR 0531,Curitiba,PR,2025-11-07,0,1,0,0,1
+532,Empresa RJ 0532,Niterói,RJ,2025-12-28,0,0,1,0,1
+533,Empresa GO 0533,Aparecida de Goiânia,GO,2025-10-25,0,0,1,0,1
+534,Empresa SP 0534,Campinas,SP,2025-12-12,0,0,1,0,1
+535,Empresa MG 0535,Uberlândia,MG,2025-12-01,1,0,0,0,1
+536,Empresa PR 0536,Cascavel,PR,2025-12-12,1,0,0,0,1
+537,Empresa RS 0537,Canoas,RS,2025-12-21,0,0,1,0,1
+538,Empresa ES 0538,Serra,ES,2025-12-08,1,0,0,0,1
+539,Empresa SP 0539,Santos,SP,2025-10-16,1,0,0,0,1
+540,Empresa PR 0540,Cascavel,PR,2025-12-28,0,0,1,0,1
+541,Empresa GO 0541,Anápolis,GO,2025-10-11,1,0,0,0,1
+542,Empresa MA 0542,São Luís,MA,2025-11-20,0,1,0,0,1
+543,Empresa ES 0543,Vila Velha,ES,2025-12-24,1,0,0,0,1
+544,Empresa RN 0544,Natal,RN,2025-11-05,0,0,0,1,1
+545,Empresa ES 0545,Vitória,ES,2025-10-01,1,0,0,0,1
+546,Empresa RJ 0546,Rio de Janeiro,RJ,2025-12-15,0,1,0,0,1
+547,Empresa RJ 0547,Nova Iguaçu,RJ,2025-12-02,0,1,0,0,1
+548,Empresa ES 0548,Vitória,ES,2025-10-20,1,0,0,0,1
+549,Empresa ES 0549,Vitória,ES,2025-10-11,1,0,0,0,1
+550,Empresa SP 0550,Campinas,SP,2025-11-01,1,0,0,0,1
+551,Empresa PR 0551,Curitiba,PR,2025-11-27,0,1,0,0,1
+552,Empresa MS 0552,Campo Grande,MS,2025-12-08,0,0,1,0,1
+553,Empresa MG 0553,Belo Horizonte,MG,2025-10-03,0,0,0,1,1
+554,Empresa ES 0554,Cariacica,ES,2025-12-12,1,0,0,0,1
+555,Empresa ES 0555,Cariacica,ES,2025-11-18,1,0,0,0,1
+556,Empresa RJ 0556,Nova Iguaçu,RJ,2025-11-18,1,0,0,0,1
+557,Empresa PA 0557,Ananindeua,PA,2025-12-26,0,1,0,0,1
+558,Empresa AC 0558,Rio Branco,AC,2025-11-09,0,0,1,0,1
+559,Empresa PR 0559,Londrina,PR,2025-12-03,0,0,1,0,1
+560,Empresa AL 0560,Arapiraca,AL,2025-12-11,0,0,1,0,1
+561,Empresa RJ 0561,Nova Iguaçu,RJ,2025-12-01,0,1,0,0,1
+562,Empresa RS 0562,Pelotas,RS,2025-11-13,1,0,0,0,1
+563,Empresa SC 0563,Chapecó,SC,2025-11-03,1,0,0,0,1
+564,Empresa SC 0564,Blumenau,SC,2025-10-26,0,1,0,0,1
+565,Empresa RJ 0565,Duque de Caxias,RJ,2025-12-16,0,0,1,0,1
+566,Empresa SP 0566,Campinas,SP,2025-12-03,0,0,1,0,1
+567,Empresa SC 0567,Joinville,SC,2025-11-27,1,0,0,0,1
+568,Empresa PR 0568,Cascavel,PR,2025-10-27,0,0,1,0,1
+569,Empresa PR 0569,Maringá,PR,2025-11-27,0,0,1,0,1
+570,Empresa SP 0570,Campinas,SP,2025-12-13,1,0,0,0,1
+571,Empresa RJ 0571,Nova Iguaçu,RJ,2025-12-09,1,0,0,0,1
+572,Empresa RR 0572,Boa Vista,RR,2025-11-16,0,0,1,0,1
+573,Empresa MG 0573,Belo Horizonte,MG,2025-12-12,0,1,0,0,1
+574,Empresa SC 0574,Blumenau,SC,2025-11-26,1,0,0,0,1
+575,Empresa MG 0575,Belo Horizonte,MG,2025-11-02,0,1,0,0,1
+576,Empresa RJ 0576,Duque de Caxias,RJ,2025-10-09,0,0,1,0,1
+577,Empresa SP 0577,São Paulo,SP,2025-10-14,0,0,0,1,1
+578,Empresa RJ 0578,Rio de Janeiro,RJ,2025-12-13,1,0,0,0,1
+579,Empresa RS 0579,Canoas,RS,2025-11-20,0,0,1,0,1
+580,Empresa SP 0580,Campinas,SP,2025-12-07,0,0,0,1,1
+581,Empresa PE 0581,Recife,PE,2025-12-11,0,0,1,0,1
+582,Empresa SP 0582,Ribeirão Preto,SP,2025-11-14,0,1,0,0,1
+583,Empresa DF 0583,Brasília,DF,2025-11-15,0,0,0,1,1
+584,Empresa RS 0584,Canoas,RS,2025-12-06,0,0,1,0,1
+585,Empresa SP 0585,Campinas,SP,2025-11-27,1,0,0,0,1
+586,Empresa MG 0586,Contagem,MG,2025-11-22,1,0,0,0,1
+587,Empresa SP 0587,Ribeirão Preto,SP,2025-10-08,0,0,1,0,1
+588,Empresa PR 0588,Curitiba,PR,2025-11-28,0,0,1,0,1
+589,Empresa PR 0589,Londrina,PR,2025-12-16,0,0,1,0,1
+590,Empresa SC 0590,Chapecó,SC,2025-12-05,0,0,0,1,1
+591,Empresa CE 0591,Sobral,CE,2025-11-17,0,0,0,1,1
+592,Empresa RJ 0592,Duque de Caxias,RJ,2025-10-13,1,0,0,0,1
+593,Empresa SE 0593,Itabaiana,SE,2025-11-14,0,0,1,0,1
+594,Empresa MG 0594,Contagem,MG,2025-12-28,0,1,0,0,1
+595,Empresa MG 0595,Belo Horizonte,MG,2025-10-21,1,0,0,0,1
+596,Empresa SP 0596,Campinas,SP,2025-11-26,1,0,0,0,1
+597,Empresa ES 0597,Serra,ES,2025-10-03,1,0,0,0,1
+598,Empresa RS 0598,Porto Alegre,RS,2025-10-26,1,0,0,0,1
+599,Empresa MG 0599,Contagem,MG,2025-11-24,0,1,0,0,1
+600,Empresa AL 0600,Maceió,AL,2025-11-21,1,0,0,0,1
+601,Empresa ES 0601,Cariacica,ES,2025-10-24,0,1,0,0,1
+602,Empresa RN 0602,Natal,RN,2025-12-22,0,0,1,0,1
+603,Empresa SE 0603,Aracaju,SE,2025-10-23,0,1,0,0,1
+604,Empresa ES 0604,Vila Velha,ES,2025-12-02,1,0,0,0,1
+605,Empresa RS 0605,Canoas,RS,2025-12-05,0,0,1,0,1
+606,Empresa GO 0606,Goiânia,GO,2025-10-15,1,0,0,0,1
+607,Empresa RJ 0607,Niterói,RJ,2025-11-09,1,0,0,0,1
+608,Empresa CE 0608,Juazeiro do Norte,CE,2025-11-02,0,1,0,0,1
+609,Empresa RJ 0609,Niterói,RJ,2025-12-23,1,0,0,0,1
+610,Empresa MG 0610,Contagem,MG,2025-11-13,1,0,0,0,1
+611,Empresa BA 0611,Feira de Santana,BA,2025-12-17,0,1,0,0,1
+612,Empresa RJ 0612,Rio de Janeiro,RJ,2025-12-16,0,0,1,0,1
+613,Empresa GO 0613,Anápolis,GO,2025-10-10,0,1,0,0,1
+614,Empresa PR 0614,Londrina,PR,2025-10-09,0,0,1,0,1
+615,Empresa MA 0615,Caxias,MA,2025-12-02,0,1,0,0,1
+616,Empresa ES 0616,Serra,ES,2025-10-05,0,1,0,0,1
+617,Empresa RJ 0617,Duque de Caxias,RJ,2025-11-08,1,0,0,0,1
+618,Empresa ES 0618,Serra,ES,2025-12-24,0,1,0,0,1
+619,Empresa ES 0619,Vila Velha,ES,2025-11-15,1,0,0,0,1
+620,Empresa ES 0620,Cariacica,ES,2025-12-05,1,0,0,0,1
+621,Empresa BA 0621,Vitória da Conquista,BA,2025-12-24,0,1,0,0,1
+622,Empresa ES 0622,Serra,ES,2025-10-21,0,0,1,0,1
+623,Empresa MG 0623,Uberlândia,MG,2025-10-08,1,0,0,0,1
+624,Empresa ES 0624,Serra,ES,2025-11-06,0,1,0,0,1
+625,Empresa RJ 0625,Duque de Caxias,RJ,2025-12-10,1,0,0,0,1
+626,Empresa MG 0626,Juiz de Fora,MG,2025-12-18,0,1,0,0,1
+627,Empresa AL 0627,Maceió,AL,2025-12-16,0,0,1,0,1
+628,Empresa PR 0628,Londrina,PR,2025-10-06,1,0,0,0,1
+629,Empresa ES 0629,Cariacica,ES,2025-11-17,1,0,0,0,1
+630,Empresa PR 0630,Curitiba,PR,2025-12-07,1,0,0,0,1
+631,Empresa SC 0631,Florianópolis,SC,2025-12-03,0,1,0,0,1
+632,Empresa AC 0632,Rio Branco,AC,2025-11-23,0,1,0,0,1
+633,Empresa ES 0633,Cariacica,ES,2025-11-06,1,0,0,0,1
+634,Empresa MT 0634,Rondonópolis,MT,2025-10-26,1,0,0,0,1
+635,Empresa SC 0635,Joinville,SC,2025-10-12,0,0,1,0,1
+636,Empresa MG 0636,Uberlândia,MG,2025-12-03,0,0,0,1,1
+637,Empresa RN 0637,Natal,RN,2025-11-25,0,1,0,0,1
+638,Empresa ES 0638,Vila Velha,ES,2025-12-02,0,0,1,0,1
+639,Empresa BA 0639,Vitória da Conquista,BA,2025-11-26,0,0,0,1,1
+640,Empresa SC 0640,Chapecó,SC,2025-10-27,0,1,0,0,1
+641,Empresa ES 0641,Cariacica,ES,2025-12-26,0,1,0,0,1
+642,Empresa SP 0642,Santos,SP,2025-12-19,0,1,0,0,1
+643,Empresa DF 0643,Brasília,DF,2025-12-26,0,0,1,0,1
+644,Empresa MA 0644,São Luís,MA,2025-10-15,0,1,0,0,1
+645,Empresa AL 0645,Arapiraca,AL,2025-12-13,0,0,1,0,1
+646,Empresa RS 0646,Canoas,RS,2025-11-03,1,0,0,0,1
+647,Empresa RS 0647,Canoas,RS,2025-12-01,1,0,0,0,1
+648,Empresa PR 0648,Cascavel,PR,2025-11-20,1,0,0,0,1
+649,Empresa MG 0649,Belo Horizonte,MG,2025-11-28,0,1,0,0,1
+650,Empresa RJ 0650,Rio de Janeiro,RJ,2025-12-06,0,0,1,0,1
+651,Empresa MG 0651,Belo Horizonte,MG,2025-10-21,1,0,0,0,1
+652,Empresa CE 0652,Maracanaú,CE,2025-10-05,0,1,0,0,1
+653,Empresa SP 0653,Santos,SP,2025-11-17,0,0,1,0,1
+654,Empresa PR 0654,Cascavel,PR,2025-11-01,0,0,1,0,1
+655,Empresa MG 0655,Contagem,MG,2025-11-22,1,0,0,0,1
+656,Empresa ES 0656,Cariacica,ES,2025-10-25,0,0,1,0,1
+657,Empresa PR 0657,Maringá,PR,2025-11-10,1,0,0,0,1
+658,Empresa SC 0658,Chapecó,SC,2025-12-26,0,1,0,0,1
+659,Empresa MT 0659,Rondonópolis,MT,2025-11-01,1,0,0,0,1
+660,Empresa BA 0660,Juazeiro,BA,2025-11-25,0,1,0,0,1
+661,Empresa SP 0661,São Paulo,SP,2025-12-16,1,0,0,0,1
+662,Empresa MS 0662,Campo Grande,MS,2025-10-19,0,1,0,0,1
+663,Empresa AM 0663,Itacoatiara,AM,2025-11-09,0,0,1,0,1
+664,Empresa ES 0664,Cariacica,ES,2025-11-14,0,1,0,0,1
+665,Empresa PI 0665,Parnaíba,PI,2025-12-23,0,1,0,0,1
+666,Empresa MS 0666,Campo Grande,MS,2025-12-16,0,0,1,0,1
+667,Empresa PE 0667,Caruaru,PE,2025-10-26,0,0,1,0,1
+668,Empresa MG 0668,Uberlândia,MG,2025-12-19,1,0,0,0,1
+669,Empresa RJ 0669,Niterói,RJ,2025-10-16,1,0,0,0,1
+670,Empresa SP 0670,Ribeirão Preto,SP,2025-10-09,1,0,0,0,1
+671,Empresa SP 0671,Santos,SP,2025-10-20,0,1,0,0,1
+672,Empresa CE 0672,Sobral,CE,2025-10-09,0,0,1,0,1
+673,Empresa SP 0673,São Paulo,SP,2025-10-12,0,0,1,0,1
+674,Empresa RJ 0674,Rio de Janeiro,RJ,2025-10-25,1,0,0,0,1
+675,Empresa SC 0675,Blumenau,SC,2025-11-12,1,0,0,0,1
+676,Empresa ES 0676,Vitória,ES,2025-12-22,0,0,1,0,1
+677,Empresa BA 0677,Vitória da Conquista,BA,2025-10-06,0,0,0,1,1
+678,Empresa SC 0678,Florianópolis,SC,2025-12-13,0,0,1,0,1
+679,Empresa PE 0679,Olinda,PE,2025-11-26,0,1,0,0,1
+680,Empresa CE 0680,Maracanaú,CE,2025-12-10,1,0,0,0,1
+681,Empresa ES 0681,Cariacica,ES,2025-10-01,0,0,1,0,1
+682,Empresa SC 0682,Chapecó,SC,2025-11-19,0,0,1,0,1
+683,Empresa CE 0683,Juazeiro do Norte,CE,2025-10-28,0,0,1,0,1
+684,Empresa RJ 0684,Rio de Janeiro,RJ,2025-12-27,0,0,0,1,1
+685,Empresa RJ 0685,Niterói,RJ,2025-12-23,1,0,0,0,1
+686,Empresa BA 0686,Vitória da Conquista,BA,2025-11-08,0,1,0,0,1
+687,Empresa ES 0687,Serra,ES,2025-10-17,1,0,0,0,1
+688,Empresa PE 0688,Caruaru,PE,2025-10-21,0,0,1,0,1
+689,Empresa ES 0689,Cariacica,ES,2025-11-20,0,0,1,0,1
+690,Empresa SP 0690,São Paulo,SP,2025-11-10,0,1,0,0,1
+691,Empresa RJ 0691,Niterói,RJ,2025-10-26,0,0,1,0,1
+692,Empresa ES 0692,Vila Velha,ES,2025-12-01,0,0,1,0,1
+693,Empresa RJ 0693,Rio de Janeiro,RJ,2025-12-09,0,0,1,0,1
+694,Empresa RS 0694,Canoas,RS,2025-11-19,1,0,0,0,1
+695,Empresa PR 0695,Maringá,PR,2025-12-11,0,1,0,0,1
+696,Empresa SP 0696,Campinas,SP,2025-11-22,0,0,1,0,1
+697,Empresa PR 0697,Maringá,PR,2025-11-04,1,0,0,0,1
+698,Empresa MG 0698,Belo Horizonte,MG,2025-12-17,1,0,0,0,1
+699,Empresa MA 0699,Imperatriz,MA,2025-10-25,0,0,1,0,1
+700,Empresa RR 0700,Boa Vista,RR,2025-12-24,0,1,0,0,1
+701,Empresa RJ 0701,Niterói,RJ,2025-11-27,0,0,1,0,1
+702,Empresa SC 0702,Blumenau,SC,2025-11-21,1,0,0,0,1
+703,Empresa RS 0703,Pelotas,RS,2025-10-24,1,0,0,0,1
+704,Empresa ES 0704,Cariacica,ES,2025-12-11,1,0,0,0,1
+705,Empresa SP 0705,Ribeirão Preto,SP,2025-12-11,0,0,1,0,1
+706,Empresa MG 0706,Belo Horizonte,MG,2025-11-09,0,1,0,0,1
+707,Empresa RJ 0707,Rio de Janeiro,RJ,2025-12-07,0,0,1,0,1
+708,Empresa MT 0708,Várzea Grande,MT,2025-12-06,0,0,1,0,1
+709,Empresa CE 0709,Juazeiro do Norte,CE,2025-10-07,0,0,1,0,1
+710,Empresa PR 0710,Curitiba,PR,2025-12-26,1,0,0,0,1
+711,Empresa MA 0711,Caxias,MA,2025-11-03,0,0,1,0,1
+712,Empresa SP 0712,Ribeirão Preto,SP,2025-12-07,1,0,0,0,1
+713,Empresa RJ 0713,Nova Iguaçu,RJ,2025-12-04,0,1,0,0,1
+714,Empresa MG 0714,Contagem,MG,2025-11-19,0,0,1,0,1
+715,Empresa RS 0715,Porto Alegre,RS,2025-11-24,1,0,0,0,1
+716,Empresa SP 0716,Campinas,SP,2025-12-16,0,1,0,0,1
+717,Empresa MG 0717,Belo Horizonte,MG,2025-12-20,1,0,0,0,1
+718,Empresa PR 0718,Curitiba,PR,2025-11-26,0,0,1,0,1
+719,Empresa ES 0719,Vila Velha,ES,2025-10-07,0,0,1,0,1
+720,Empresa ES 0720,Cariacica,ES,2025-10-08,0,0,1,0,1
+721,Empresa SP 0721,Santos,SP,2025-10-15,1,0,0,0,1
+722,Empresa BA 0722,Salvador,BA,2025-10-26,0,1,0,0,1
+723,Empresa RS 0723,Porto Alegre,RS,2025-11-13,0,0,1,0,1
+724,Empresa ES 0724,Vitória,ES,2025-11-20,0,1,0,0,1
+725,Empresa SE 0725,Aracaju,SE,2025-12-22,0,1,0,0,1
+726,Empresa SP 0726,São Paulo,SP,2025-11-07,1,0,0,0,1
+727,Empresa RN 0727,Natal,RN,2025-10-21,0,0,1,0,1
+728,Empresa PR 0728,Curitiba,PR,2025-11-12,0,1,0,0,1
+729,Empresa MG 0729,Belo Horizonte,MG,2025-10-09,1,0,0,0,1
+730,Empresa CE 0730,Maracanaú,CE,2025-11-11,0,0,1,0,1
+731,Empresa ES 0731,Vitória,ES,2025-10-23,0,0,1,0,1
+732,Empresa SP 0732,Ribeirão Preto,SP,2025-12-20,0,1,0,0,1
+733,Empresa ES 0733,Vitória,ES,2025-12-23,0,0,1,0,1
+734,Empresa PR 0734,Cascavel,PR,2025-12-02,1,0,0,0,1
+735,Empresa MT 0735,Rondonópolis,MT,2025-12-09,0,0,1,0,1
+736,Empresa AL 0736,Arapiraca,AL,2025-11-06,0,1,0,0,1
+737,Empresa RR 0737,Rorainópolis,RR,2025-12-27,0,0,1,0,1
+738,Empresa PE 0738,Jaboatão dos Guararapes,PE,2025-12-01,0,1,0,0,1
+739,Empresa MG 0739,Uberlândia,MG,2025-12-11,1,0,0,0,1
+740,Empresa MA 0740,Imperatriz,MA,2025-12-18,0,1,0,0,1
+741,Empresa RJ 0741,Nova Iguaçu,RJ,2025-11-12,1,0,0,0,1
+742,Empresa SP 0742,Campinas,SP,2025-10-02,0,1,0,0,1
+743,Empresa RS 0743,Porto Alegre,RS,2025-12-07,1,0,0,0,1
+744,Empresa DF 0744,Ceilândia,DF,2025-10-23,1,0,0,0,1
+745,Empresa MT 0745,Várzea Grande,MT,2025-12-23,0,0,0,1,1
+746,Empresa SP 0746,Campinas,SP,2025-11-01,1,0,0,0,1
+747,Empresa PB 0747,Patos,PB,2025-12-21,0,0,1,0,1
+748,Empresa ES 0748,Vitória,ES,2025-12-10,1,0,0,0,1
+749,Empresa SC 0749,Florianópolis,SC,2025-10-03,1,0,0,0,1
+750,Empresa SP 0750,Santos,SP,2025-12-15,1,0,0,0,1
+751,Empresa RJ 0751,Nova Iguaçu,RJ,2025-11-23,1,0,0,0,1
+752,Empresa AC 0752,Cruzeiro do Sul,AC,2025-11-27,0,1,0,0,1
+753,Empresa MG 0753,Belo Horizonte,MG,2025-12-26,1,0,0,0,1
+754,Empresa ES 0754,Vila Velha,ES,2025-10-03,1,0,0,0,1
+755,Empresa SC 0755,Blumenau,SC,2025-12-06,1,0,0,0,1
+756,Empresa ES 0756,Cariacica,ES,2025-10-03,0,1,0,0,1
+757,Empresa ES 0757,Serra,ES,2025-10-28,0,0,0,1,1
+758,Empresa MS 0758,Dourados,MS,2025-11-06,1,0,0,0,1
+759,Empresa PB 0759,Campina Grande,PB,2025-11-17,0,1,0,0,1
+760,Empresa CE 0760,Sobral,CE,2025-12-25,1,0,0,0,1
+761,Empresa PR 0761,Cascavel,PR,2025-12-08,0,1,0,0,1
+762,Empresa ES 0762,Vitória,ES,2025-10-13,0,0,1,0,1
+763,Empresa ES 0763,Cariacica,ES,2025-11-04,1,0,0,0,1
+764,Empresa RS 0764,Porto Alegre,RS,2025-11-16,0,1,0,0,1
+765,Empresa MG 0765,Contagem,MG,2025-11-04,1,0,0,0,1
+766,Empresa SP 0766,Ribeirão Preto,SP,2025-10-11,0,1,0,0,1
+767,Empresa MG 0767,Contagem,MG,2025-12-19,0,1,0,0,1
+768,Empresa TO 0768,Araguaína,TO,2025-10-14,0,1,0,0,1
+769,Empresa MG 0769,Uberlândia,MG,2025-10-03,0,1,0,0,1
+770,Empresa SP 0770,Campinas,SP,2025-10-15,0,1,0,0,1
+771,Empresa RJ 0771,Duque de Caxias,RJ,2025-10-23,0,0,0,1,1
+772,Empresa MG 0772,Belo Horizonte,MG,2025-11-26,0,1,0,0,1
+773,Empresa SP 0773,São Paulo,SP,2025-11-08,0,0,1,0,1
+774,Empresa PR 0774,Maringá,PR,2025-10-26,0,0,1,0,1
+775,Empresa ES 0775,Serra,ES,2025-12-21,1,0,0,0,1
+776,Empresa SP 0776,São Paulo,SP,2025-11-28,1,0,0,0,1
+777,Empresa MG 0777,Juiz de Fora,MG,2025-11-11,0,1,0,0,1
+778,Empresa MT 0778,Cuiabá,MT,2025-12-01,0,1,0,0,1
+779,Empresa ES 0779,Cariacica,ES,2025-11-28,0,0,0,1,1
+780,Empresa MG 0780,Juiz de Fora,MG,2025-10-16,1,0,0,0,1
+781,Empresa PA 0781,Santarém,PA,2025-10-25,0,1,0,0,1
+782,Empresa RJ 0782,Nova Iguaçu,RJ,2025-12-01,0,1,0,0,1
+783,Empresa MA 0783,São Luís,MA,2025-10-26,0,1,0,0,1
+784,Empresa SP 0784,Campinas,SP,2025-10-18,1,0,0,0,1
+785,Empresa GO 0785,Goiânia,GO,2025-12-05,0,1,0,0,1
+786,Empresa AL 0786,Maceió,AL,2025-10-06,1,0,0,0,1
+787,Empresa PI 0787,Parnaíba,PI,2025-12-22,0,1,0,0,1
+788,Empresa RJ 0788,Nova Iguaçu,RJ,2025-10-14,0,0,1,0,1
+789,Empresa ES 0789,Serra,ES,2025-10-25,0,0,0,1,1
+790,Empresa PI 0790,Teresina,PI,2025-11-28,0,1,0,0,1
+791,Empresa SC 0791,Florianópolis,SC,2025-11-16,0,1,0,0,1
+792,Empresa RS 0792,Caxias do Sul,RS,2025-11-19,0,0,1,0,1
+793,Empresa PR 0793,Maringá,PR,2025-12-14,1,0,0,0,1
+794,Empresa SC 0794,Florianópolis,SC,2025-12-02,0,1,0,0,1
+795,Empresa RJ 0795,Rio de Janeiro,RJ,2025-11-11,0,1,0,0,1
+796,Empresa SC 0796,Joinville,SC,2025-11-11,0,0,1,0,1
+797,Empresa SP 0797,São Paulo,SP,2025-12-07,0,1,0,0,1
+798,Empresa MG 0798,Juiz de Fora,MG,2025-11-23,1,0,0,0,1
+799,Empresa RS 0799,Caxias do Sul,RS,2025-12-21,1,0,0,0,1
+800,Empresa ES 0800,Vila Velha,ES,2025-12-20,0,1,0,0,1
+801,Empresa SP 0801,Santos,SP,2025-11-12,1,0,0,0,1
+802,Empresa PE 0802,Caruaru,PE,2025-12-23,1,0,0,0,1
+803,Empresa PR 0803,Cascavel,PR,2025-11-21,0,0,1,0,1
+804,Empresa MA 0804,Caxias,MA,2025-10-19,0,0,0,1,1
+805,Empresa RJ 0805,Duque de Caxias,RJ,2025-10-03,0,1,0,0,1
+806,Empresa AL 0806,Maceió,AL,2025-12-20,0,1,0,0,1
+807,Empresa RS 0807,Porto Alegre,RS,2025-10-01,0,0,1,0,1
+808,Empresa MG 0808,Belo Horizonte,MG,2025-10-06,1,0,0,0,1
+809,Empresa PR 0809,Curitiba,PR,2025-10-03,0,0,0,1,1
+810,Empresa GO 0810,Anápolis,GO,2025-11-17,0,1,0,0,1
+811,Empresa SP 0811,Santos,SP,2025-11-03,1,0,0,0,1
+812,Empresa ES 0812,Vitória,ES,2025-12-09,1,0,0,0,1
+813,Empresa PE 0813,Jaboatão dos Guararapes,PE,2025-11-05,0,1,0,0,1
+814,Empresa DF 0814,Brasília,DF,2025-12-14,0,1,0,0,1
+815,Empresa PR 0815,Maringá,PR,2025-12-26,0,1,0,0,1
+816,Empresa MG 0816,Juiz de Fora,MG,2025-12-15,0,0,1,0,1
+817,Empresa MA 0817,Caxias,MA,2025-10-22,0,1,0,0,1
+818,Empresa ES 0818,Vila Velha,ES,2025-12-07,1,0,0,0,1
+819,Empresa PR 0819,Maringá,PR,2025-11-17,0,1,0,0,1
+820,Empresa PR 0820,Londrina,PR,2025-12-08,0,1,0,0,1
+821,Empresa SP 0821,Campinas,SP,2025-12-07,0,0,0,1,1
+822,Empresa AP 0822,Macapá,AP,2025-10-08,0,1,0,0,1
+823,Empresa RJ 0823,Nova Iguaçu,RJ,2025-11-24,1,0,0,0,1
+824,Empresa PE 0824,Recife,PE,2025-10-11,0,1,0,0,1
+825,Empresa MG 0825,Contagem,MG,2025-10-11,1,0,0,0,1
+826,Empresa RJ 0826,Nova Iguaçu,RJ,2025-11-25,1,0,0,0,1
+827,Empresa SC 0827,Chapecó,SC,2025-11-03,1,0,0,0,1
+828,Empresa PR 0828,Cascavel,PR,2025-11-16,0,0,0,1,1
+829,Empresa RJ 0829,Nova Iguaçu,RJ,2025-12-24,0,0,0,1,1
+830,Empresa PR 0830,Cascavel,PR,2025-10-09,1,0,0,0,1
+831,Empresa SE 0831,Aracaju,SE,2025-10-22,0,1,0,0,1
+832,Empresa ES 0832,Serra,ES,2025-11-03,1,0,0,0,1
+833,Empresa SC 0833,Florianópolis,SC,2025-10-25,0,1,0,0,1
+834,Empresa SC 0834,Florianópolis,SC,2025-11-27,0,1,0,0,1
+835,Empresa CE 0835,Juazeiro do Norte,CE,2025-10-25,0,0,1,0,1
+836,Empresa RS 0836,Porto Alegre,RS,2025-12-15,0,0,0,1,1
+837,Empresa RJ 0837,Nova Iguaçu,RJ,2025-11-06,0,1,0,0,1
+838,Empresa SP 0838,Ribeirão Preto,SP,2025-12-24,0,0,1,0,1
+839,Empresa RS 0839,Porto Alegre,RS,2025-12-17,1,0,0,0,1
+840,Empresa RJ 0840,Nova Iguaçu,RJ,2025-12-23,1,0,0,0,1
+841,Empresa PE 0841,Jaboatão dos Guararapes,PE,2025-10-24,0,0,1,0,1
+842,Empresa SC 0842,Chapecó,SC,2025-10-01,0,0,1,0,1
+843,Empresa PR 0843,Maringá,PR,2025-11-02,0,0,0,1,1
+844,Empresa RJ 0844,Duque de Caxias,RJ,2025-12-10,1,0,0,0,1
+845,Empresa SP 0845,Santos,SP,2025-10-08,1,0,0,0,1
+846,Empresa SC 0846,Joinville,SC,2025-12-21,0,0,1,0,1
+847,Empresa RR 0847,Boa Vista,RR,2025-12-27,0,1,0,0,1
+848,Empresa RJ 0848,Nova Iguaçu,RJ,2025-11-10,1,0,0,0,1
+849,Empresa RS 0849,Porto Alegre,RS,2025-11-28,1,0,0,0,1
+850,Empresa MG 0850,Belo Horizonte,MG,2025-12-27,0,1,0,0,1
+851,Empresa RJ 0851,Nova Iguaçu,RJ,2025-12-26,0,0,1,0,1
+852,Empresa PE 0852,Jaboatão dos Guararapes,PE,2025-10-04,1,0,0,0,1
+853,Empresa AL 0853,Maceió,AL,2025-11-20,1,0,0,0,1
+854,Empresa PR 0854,Cascavel,PR,2025-12-10,0,0,1,0,1
+855,Empresa MS 0855,Três Lagoas,MS,2025-12-19,0,1,0,0,1
+856,Empresa PB 0856,Patos,PB,2025-12-19,0,0,0,1,1
+857,Empresa SC 0857,Florianópolis,SC,2025-11-14,1,0,0,0,1
+858,Empresa GO 0858,Goiânia,GO,2025-10-18,0,1,0,0,1
+859,Empresa DF 0859,Ceilândia,DF,2025-12-02,0,1,0,0,1
+860,Empresa PR 0860,Londrina,PR,2025-11-03,1,0,0,0,1
+861,Empresa RJ 0861,Rio de Janeiro,RJ,2025-10-24,0,1,0,0,1
+862,Empresa RJ 0862,Nova Iguaçu,RJ,2025-10-21,0,0,1,0,1
+863,Empresa GO 0863,Anápolis,GO,2025-11-11,0,1,0,0,1
+864,Empresa PA 0864,Belém,PA,2025-12-05,0,1,0,0,1
+865,Empresa MG 0865,Juiz de Fora,MG,2025-10-21,0,1,0,0,1
+866,Empresa PE 0866,Recife,PE,2025-12-07,0,1,0,0,1
+867,Empresa GO 0867,Aparecida de Goiânia,GO,2025-11-05,0,1,0,0,1
+868,Empresa SP 0868,São Paulo,SP,2025-11-20,0,1,0,0,1
+869,Empresa PR 0869,Cascavel,PR,2025-10-21,0,1,0,0,1
+870,Empresa ES 0870,Serra,ES,2025-12-06,0,0,1,0,1
+871,Empresa RJ 0871,Niterói,RJ,2025-11-06,1,0,0,0,1
+872,Empresa MG 0872,Belo Horizonte,MG,2025-12-23,0,1,0,0,1
+873,Empresa SP 0873,São Paulo,SP,2025-11-01,0,1,0,0,1
+874,Empresa ES 0874,Cariacica,ES,2025-10-15,1,0,0,0,1
+875,Empresa RJ 0875,Nova Iguaçu,RJ,2025-12-08,0,0,0,1,1
+876,Empresa SP 0876,Santos,SP,2025-11-10,1,0,0,0,1
+877,Empresa RS 0877,Porto Alegre,RS,2025-10-19,1,0,0,0,1
+878,Empresa MG 0878,Contagem,MG,2025-11-15,0,0,1,0,1
+879,Empresa RS 0879,Pelotas,RS,2025-11-07,0,1,0,0,1
+880,Empresa MG 0880,Juiz de Fora,MG,2025-10-23,1,0,0,0,1
+881,Empresa ES 0881,Serra,ES,2025-12-11,1,0,0,0,1
+882,Empresa RS 0882,Caxias do Sul,RS,2025-11-27,0,1,0,0,1
+883,Empresa SP 0883,Santos,SP,2025-11-23,0,0,1,0,1
+884,Empresa SP 0884,Santos,SP,2025-10-21,0,1,0,0,1
+885,Empresa SC 0885,Joinville,SC,2025-11-22,0,0,1,0,1
+886,Empresa MA 0886,Imperatriz,MA,2025-12-06,0,1,0,0,1
+887,Empresa MG 0887,Uberlândia,MG,2025-10-26,0,0,0,1,1
+888,Empresa RS 0888,Canoas,RS,2025-11-12,0,1,0,0,1
+889,Empresa RJ 0889,Nova Iguaçu,RJ,2025-10-09,1,0,0,0,1
+890,Empresa RS 0890,Porto Alegre,RS,2025-11-13,1,0,0,0,1
+891,Empresa SE 0891,Aracaju,SE,2025-10-11,0,1,0,0,1
+892,Empresa SP 0892,São Paulo,SP,2025-10-07,1,0,0,0,1
+893,Empresa CE 0893,Sobral,CE,2025-10-02,0,1,0,0,1
+894,Empresa ES 0894,Vila Velha,ES,2025-11-03,0,0,1,0,1
+895,Empresa MG 0895,Belo Horizonte,MG,2025-12-28,0,0,1,0,1
+896,Empresa MG 0896,Juiz de Fora,MG,2025-12-02,1,0,0,0,1
+897,Empresa ES 0897,Vitória,ES,2025-11-23,0,1,0,0,1
+898,Empresa MG 0898,Belo Horizonte,MG,2025-10-20,1,0,0,0,1
+899,Empresa GO 0899,Anápolis,GO,2025-10-28,0,1,0,0,1
+900,Empresa RJ 0900,Nova Iguaçu,RJ,2025-10-01,0,0,0,1,1
+901,Empresa PR 0901,Londrina,PR,2025-10-05,0,0,1,0,1
+902,Empresa SC 0902,Florianópolis,SC,2025-11-20,0,1,0,0,1
+903,Empresa SP 0903,São Paulo,SP,2025-11-01,0,1,0,0,1
+904,Empresa SP 0904,Campinas,SP,2025-12-26,0,1,0,0,1
+905,Empresa MG 0905,Contagem,MG,2025-10-21,1,0,0,0,1
+906,Empresa SE 0906,Aracaju,SE,2025-12-12,0,1,0,0,1
+907,Empresa SC 0907,Chapecó,SC,2025-12-14,1,0,0,0,1
+908,Empresa MG 0908,Uberlândia,MG,2025-12-07,1,0,0,0,1
+909,Empresa DF 0909,Ceilândia,DF,2025-12-11,0,0,1,0,1
+910,Empresa SC 0910,Blumenau,SC,2025-10-28,0,1,0,0,1
+911,Empresa DF 0911,Taguatinga,DF,2025-12-25,1,0,0,0,1
+912,Empresa ES 0912,Cariacica,ES,2025-12-19,0,1,0,0,1
+913,Empresa PR 0913,Curitiba,PR,2025-11-05,1,0,0,0,1
+914,Empresa ES 0914,Cariacica,ES,2025-11-24,0,0,1,0,1
+915,Empresa SP 0915,Santos,SP,2025-10-16,0,0,1,0,1
+916,Empresa ES 0916,Serra,ES,2025-10-12,1,0,0,0,1
+917,Empresa SP 0917,Santos,SP,2025-11-28,1,0,0,0,1
+918,Empresa SC 0918,Chapecó,SC,2025-12-02,0,0,1,0,1
+919,Empresa RJ 0919,Rio de Janeiro,RJ,2025-11-28,0,1,0,0,1
+920,Empresa PR 0920,Maringá,PR,2025-12-13,0,0,1,0,1
+921,Empresa ES 0921,Cariacica,ES,2025-11-03,1,0,0,0,1
+922,Empresa AL 0922,Maceió,AL,2025-11-16,0,0,1,0,1
+923,Empresa RJ 0923,Duque de Caxias,RJ,2025-12-20,1,0,0,0,1
+924,Empresa ES 0924,Vila Velha,ES,2025-12-09,1,0,0,0,1
+925,Empresa MG 0925,Contagem,MG,2025-12-08,1,0,0,0,1
+926,Empresa GO 0926,Goiânia,GO,2025-12-20,0,1,0,0,1
+927,Empresa AC 0927,Sena Madureira,AC,2025-11-20,0,0,1,0,1
+928,Empresa ES 0928,Cariacica,ES,2025-12-26,1,0,0,0,1
+929,Empresa SP 0929,Campinas,SP,2025-12-16,0,0,1,0,1
+930,Empresa MS 0930,Campo Grande,MS,2025-11-04,0,1,0,0,1
+931,Empresa MG 0931,Juiz de Fora,MG,2025-12-16,0,1,0,0,1
+932,Empresa RJ 0932,Rio de Janeiro,RJ,2025-11-25,0,0,0,1,1
+933,Empresa RJ 0933,Rio de Janeiro,RJ,2025-11-04,0,0,0,1,1
+934,Empresa RJ 0934,Duque de Caxias,RJ,2025-11-18,1,0,0,0,1
+935,Empresa PE 0935,Caruaru,PE,2025-11-10,0,1,0,0,1
+936,Empresa RJ 0936,Nova Iguaçu,RJ,2025-12-21,1,0,0,0,1
+937,Empresa GO 0937,Anápolis,GO,2025-10-07,0,1,0,0,1
+938,Empresa GO 0938,Aparecida de Goiânia,GO,2025-12-03,0,1,0,0,1
+939,Empresa ES 0939,Vila Velha,ES,2025-11-22,1,0,0,0,1
+940,Empresa BA 0940,Vitória da Conquista,BA,2025-12-07,0,1,0,0,1
+941,Empresa PR 0941,Maringá,PR,2025-10-14,1,0,0,0,1
+942,Empresa ES 0942,Cariacica,ES,2025-11-23,0,1,0,0,1
+943,Empresa AL 0943,Palmeira dos Índios,AL,2025-10-06,0,0,0,1,1
+944,Empresa MG 0944,Belo Horizonte,MG,2025-10-24,0,1,0,0,1
+945,Empresa SP 0945,Ribeirão Preto,SP,2025-12-01,1,0,0,0,1
+946,Empresa PI 0946,Teresina,PI,2025-12-09,0,1,0,0,1
+947,Empresa ES 0947,Vitória,ES,2025-12-14,0,1,0,0,1
+948,Empresa PR 0948,Maringá,PR,2025-12-18,1,0,0,0,1
+949,Empresa MS 0949,Dourados,MS,2025-11-06,1,0,0,0,1
+950,Empresa ES 0950,Vila Velha,ES,2025-11-19,0,1,0,0,1
+951,Empresa RS 0951,Canoas,RS,2025-11-01,0,0,1,0,1
+952,Empresa MG 0952,Juiz de Fora,MG,2025-12-01,1,0,0,0,1
+953,Empresa MA 0953,São Luís,MA,2025-12-19,0,1,0,0,1
+954,Empresa ES 0954,Vila Velha,ES,2025-12-27,1,0,0,0,1
+955,Empresa AM 0955,Manaus,AM,2025-11-06,0,1,0,0,1
+956,Empresa RJ 0956,Rio de Janeiro,RJ,2025-11-03,0,1,0,0,1
+957,Empresa SP 0957,Campinas,SP,2025-12-06,1,0,0,0,1
+958,Empresa ES 0958,Cariacica,ES,2025-12-19,1,0,0,0,1
+959,Empresa MG 0959,Belo Horizonte,MG,2025-10-02,1,0,0,0,1
+960,Empresa MG 0960,Contagem,MG,2025-10-22,1,0,0,0,1
+961,Empresa SP 0961,São Paulo,SP,2025-10-15,1,0,0,0,1
+962,Empresa SP 0962,São Paulo,SP,2025-10-03,0,1,0,0,1
+963,Empresa RJ 0963,Duque de Caxias,RJ,2025-10-22,0,1,0,0,1
+964,Empresa SP 0964,Ribeirão Preto,SP,2025-12-14,1,0,0,0,1
+965,Empresa ES 0965,Vila Velha,ES,2025-12-21,1,0,0,0,1
+966,Empresa SP 0966,Santos,SP,2025-10-22,0,0,1,0,1
+967,Empresa RS 0967,Pelotas,RS,2025-10-19,0,0,1,0,1
+968,Empresa MG 0968,Belo Horizonte,MG,2025-11-05,0,1,0,0,1
+969,Empresa MG 0969,Belo Horizonte,MG,2025-12-26,0,0,1,0,1
+970,Empresa RJ 0970,Niterói,RJ,2025-10-19,0,0,0,1,1
+971,Empresa MG 0971,Uberlândia,MG,2025-11-27,1,0,0,0,1
+972,Empresa PA 0972,Marabá,PA,2025-10-03,0,1,0,0,1
+973,Empresa MG 0973,Juiz de Fora,MG,2025-12-09,0,0,1,0,1
+974,Empresa SP 0974,São Paulo,SP,2025-12-01,1,0,0,0,1
+975,Empresa BA 0975,Vitória da Conquista,BA,2025-12-11,0,0,1,0,1
+976,Empresa SC 0976,Chapecó,SC,2025-12-21,0,0,1,0,1
+977,Empresa SE 0977,Aracaju,SE,2025-11-07,0,1,0,0,1
+978,Empresa RJ 0978,Duque de Caxias,RJ,2025-11-19,0,0,0,1,1
+979,Empresa SC 0979,Joinville,SC,2025-11-14,1,0,0,0,1
+980,Empresa PR 0980,Maringá,PR,2025-10-25,0,1,0,0,1
+981,Empresa RJ 0981,Nova Iguaçu,RJ,2025-10-28,0,1,0,0,1
+982,Empresa RJ 0982,Duque de Caxias,RJ,2025-11-23,1,0,0,0,1
+983,Empresa RJ 0983,Niterói,RJ,2025-12-28,1,0,0,0,1
+984,Empresa RJ 0984,Rio de Janeiro,RJ,2025-12-24,0,1,0,0,1
+985,Empresa PI 0985,Picos,PI,2025-12-09,0,1,0,0,1
+986,Empresa RS 0986,Porto Alegre,RS,2025-11-14,1,0,0,0,1
+987,Empresa MS 0987,Campo Grande,MS,2025-11-16,1,0,0,0,1
+988,Empresa CE 0988,Maracanaú,CE,2025-10-07,0,1,0,0,1
+989,Empresa MG 0989,Uberlândia,MG,2025-12-28,0,0,0,1,1
+990,Empresa MG 0990,Uberlândia,MG,2025-10-21,1,0,0,0,1
+991,Empresa RJ 0991,Rio de Janeiro,RJ,2025-12-28,1,0,0,0,1
+992,Empresa MG 0992,Belo Horizonte,MG,2025-11-07,1,0,0,0,1
+993,Empresa SE 0993,Aracaju,SE,2025-10-09,0,1,0,0,1
+994,Empresa RJ 0994,Rio de Janeiro,RJ,2025-11-06,1,0,0,0,1
+995,Empresa RJ 0995,Rio de Janeiro,RJ,2025-12-11,1,0,0,0,1
+996,Empresa MG 0996,Juiz de Fora,MG,2025-10-22,0,1,0,0,1
+997,Empresa ES 0997,Vila Velha,ES,2025-12-28,0,0,1,0,1
+998,Empresa RJ 0998,Rio de Janeiro,RJ,2025-10-11,0,1,0,0,1
+999,Empresa BA 0999,Juazeiro,BA,2025-10-07,0,1,0,0,1
+1000,Empresa AP 1000,Macapá,AP,2025-12-04,0,1,0,0,1
+1001,Empresa SP 1001,Campinas,SP,2025-11-08,1,0,0,0,1
+1002,Empresa RJ 1002,Duque de Caxias,RJ,2025-11-23,0,1,0,0,1
+1003,Empresa AC 1003,Sena Madureira,AC,2025-11-08,0,1,0,0,1
+1004,Empresa SP 1004,Ribeirão Preto,SP,2025-10-04,0,0,0,1,1
+1005,Empresa RN 1005,Natal,RN,2025-11-28,0,1,0,0,1
+1006,Empresa ES 1006,Vitória,ES,2025-10-01,0,1,0,0,1
+1007,Empresa RJ 1007,Duque de Caxias,RJ,2025-11-23,1,0,0,0,1
+1008,Empresa SP 1008,São Paulo,SP,2025-11-28,0,1,0,0,1
+1009,Empresa SP 1009,Santos,SP,2025-12-20,0,1,0,0,1
+1010,Empresa RS 1010,Porto Alegre,RS,2025-11-23,1,0,0,0,1
+1011,Empresa RJ 1011,Niterói,RJ,2025-11-28,1,0,0,0,1
+1012,Empresa ES 1012,Serra,ES,2025-10-01,1,0,0,0,1
+1013,Empresa SC 1013,Chapecó,SC,2025-11-09,1,0,0,0,1
+1014,Empresa RN 1014,Natal,RN,2025-12-12,0,0,1,0,1
+1015,Empresa SP 1015,Campinas,SP,2025-12-11,0,1,0,0,1
+1016,Empresa RS 1016,Canoas,RS,2025-12-18,1,0,0,0,1
+1017,Empresa SC 1017,Joinville,SC,2025-10-21,0,1,0,0,1
+1018,Empresa PR 1018,Maringá,PR,2025-10-18,1,0,0,0,1
+1019,Empresa ES 1019,Vila Velha,ES,2025-10-10,0,1,0,0,1
+1020,Empresa SC 1020,Joinville,SC,2025-12-24,0,0,1,0,1
+1021,Empresa RS 1021,Canoas,RS,2025-11-06,0,0,1,0,1
+1022,Empresa PR 1022,Curitiba,PR,2025-11-02,0,1,0,0,1
+1023,Empresa SC 1023,Joinville,SC,2025-10-28,1,0,0,0,1
+1024,Empresa DF 1024,Brasília,DF,2025-11-08,0,1,0,0,1
+1025,Empresa RN 1025,Parnamirim,RN,2025-10-06,0,1,0,0,1
+1026,Empresa PE 1026,Recife,PE,2025-10-12,1,0,0,0,1
+1027,Empresa ES 1027,Vitória,ES,2025-10-10,0,1,0,0,1
+1028,Empresa ES 1028,Vila Velha,ES,2025-12-15,0,1,0,0,1
+1029,Empresa RO 1029,Porto Velho,RO,2025-12-24,0,1,0,0,1
+1030,Empresa SP 1030,Campinas,SP,2025-11-18,0,1,0,0,1
+1031,Empresa RN 1031,Natal,RN,2025-12-08,0,1,0,0,1
+1032,Empresa SC 1032,Joinville,SC,2025-10-10,1,0,0,0,1
+1033,Empresa MG 1033,Contagem,MG,2025-12-12,0,1,0,0,1
+1034,Empresa SP 1034,São Paulo,SP,2025-11-25,0,0,1,0,1
+1035,Empresa PE 1035,Olinda,PE,2025-10-12,0,1,0,0,1
+1036,Empresa MT 1036,Cuiabá,MT,2025-11-05,0,1,0,0,1
+1037,Empresa MG 1037,Juiz de Fora,MG,2025-12-08,1,0,0,0,1
+1038,Empresa BA 1038,Vitória da Conquista,BA,2025-10-21,1,0,0,0,1
+1039,Empresa MG 1039,Uberlândia,MG,2025-11-01,0,0,1,0,1
+1040,Empresa MG 1040,Juiz de Fora,MG,2025-12-06,1,0,0,0,1
+1041,Empresa PI 1041,Parnaíba,PI,2025-11-22,0,0,1,0,1
+1042,Empresa ES 1042,Vila Velha,ES,2025-11-17,0,0,1,0,1
+1043,Empresa SP 1043,Ribeirão Preto,SP,2025-10-04,1,0,0,0,1
+1044,Empresa PR 1044,Londrina,PR,2025-11-18,1,0,0,0,1
+1045,Empresa RS 1045,Porto Alegre,RS,2025-10-28,1,0,0,0,1
+1046,Empresa ES 1046,Cariacica,ES,2025-10-25,0,0,0,1,1
+1047,Empresa SC 1047,Joinville,SC,2025-12-06,0,1,0,0,1
+1048,Empresa SP 1048,São Paulo,SP,2025-12-06,0,1,0,0,1
+1049,Empresa ES 1049,Vitória,ES,2025-12-28,0,0,1,0,1
+1050,Empresa MG 1050,Belo Horizonte,MG,2025-10-27,1,0,0,0,1
+1051,Empresa RJ 1051,Rio de Janeiro,RJ,2025-11-15,1,0,0,0,1
+1052,Empresa SP 1052,São Paulo,SP,2025-12-28,1,0,0,0,1
+1053,Empresa ES 1053,Cariacica,ES,2025-12-25,1,0,0,0,1
+1054,Empresa RJ 1054,Rio de Janeiro,RJ,2025-11-13,1,0,0,0,1
+1055,Empresa MT 1055,Cuiabá,MT,2025-11-03,0,1,0,0,1
+1056,Empresa RN 1056,Parnamirim,RN,2025-11-25,0,1,0,0,1
+1057,Empresa PB 1057,João Pessoa,PB,2025-12-27,0,1,0,0,1
+1058,Empresa SC 1058,Joinville,SC,2025-11-19,0,0,1,0,1
+1059,Empresa RO 1059,Porto Velho,RO,2025-10-12,0,0,0,1,1
+1060,Empresa ES 1060,Vitória,ES,2025-10-16,0,1,0,0,1
+1061,Empresa RN 1061,Natal,RN,2025-12-14,0,0,1,0,1
+1062,Empresa PR 1062,Londrina,PR,2025-12-22,1,0,0,0,1
+1063,Empresa SP 1063,Ribeirão Preto,SP,2025-12-17,0,1,0,0,1
+1064,Empresa MG 1064,Belo Horizonte,MG,2025-12-10,1,0,0,0,1
+1065,Empresa MG 1065,Belo Horizonte,MG,2025-10-21,1,0,0,0,1
+1066,Empresa DF 1066,Ceilândia,DF,2025-12-23,1,0,0,0,1
+1067,Empresa SP 1067,São Paulo,SP,2025-10-15,1,0,0,0,1
+1068,Empresa MT 1068,Cuiabá,MT,2025-11-08,0,1,0,0,1
+1069,Empresa SP 1069,Ribeirão Preto,SP,2025-11-25,0,1,0,0,1
+1070,Empresa AL 1070,Palmeira dos Índios,AL,2025-11-28,0,0,0,1,1
+1071,Empresa SP 1071,Santos,SP,2025-11-20,0,1,0,0,1
+1072,Empresa RJ 1072,Niterói,RJ,2025-10-01,1,0,0,0,1
+1073,Empresa SP 1073,Santos,SP,2025-12-15,0,0,1,0,1
+1074,Empresa ES 1074,Cariacica,ES,2025-11-23,0,0,1,0,1
+1075,Empresa PE 1075,Caruaru,PE,2025-12-03,1,0,0,0,1
+1076,Empresa MG 1076,Belo Horizonte,MG,2025-12-18,1,0,0,0,1
+1077,Empresa MG 1077,Uberlândia,MG,2025-12-14,0,1,0,0,1
+1078,Empresa RS 1078,Porto Alegre,RS,2025-11-04,0,1,0,0,1
+1079,Empresa RS 1079,Porto Alegre,RS,2025-12-04,1,0,0,0,1
+1080,Empresa PR 1080,Maringá,PR,2025-12-10,1,0,0,0,1
+1081,Empresa RJ 1081,Nova Iguaçu,RJ,2025-11-10,0,1,0,0,1
+1082,Empresa SC 1082,Florianópolis,SC,2025-10-17,0,1,0,0,1
+1083,Empresa ES 1083,Serra,ES,2025-11-17,1,0,0,0,1
+1084,Empresa MG 1084,Contagem,MG,2025-12-17,1,0,0,0,1
+1085,Empresa AM 1085,Parintins,AM,2025-12-09,0,0,0,1,1
+1086,Empresa MA 1086,São Luís,MA,2025-12-21,1,0,0,0,1
+1087,Empresa AL 1087,Maceió,AL,2025-10-23,0,1,0,0,1
+1088,Empresa MG 1088,Contagem,MG,2025-11-23,0,1,0,0,1
+1089,Empresa ES 1089,Vila Velha,ES,2025-11-21,0,1,0,0,1
+1090,Empresa MG 1090,Contagem,MG,2025-11-14,1,0,0,0,1
+1091,Empresa SC 1091,Blumenau,SC,2025-11-19,1,0,0,0,1
+1092,Empresa SP 1092,Campinas,SP,2025-12-25,1,0,0,0,1
+1093,Empresa PR 1093,Curitiba,PR,2025-10-24,1,0,0,0,1
+1094,Empresa PR 1094,Maringá,PR,2025-12-09,0,0,1,0,1
+1095,Empresa RJ 1095,Duque de Caxias,RJ,2025-11-26,0,0,1,0,1
+1096,Empresa MG 1096,Juiz de Fora,MG,2025-10-19,0,1,0,0,1
+1097,Empresa ES 1097,Vila Velha,ES,2025-10-18,1,0,0,0,1
+1098,Empresa PE 1098,Jaboatão dos Guararapes,PE,2025-11-09,0,1,0,0,1
+1099,Empresa MT 1099,Cuiabá,MT,2025-11-01,0,1,0,0,1
+1100,Empresa PR 1100,Curitiba,PR,2025-12-08,1,0,0,0,1
+1101,Empresa ES 1101,Cariacica,ES,2025-12-19,0,1,0,0,1
+1102,Empresa SP 1102,Santos,SP,2025-10-02,1,0,0,0,1
+1103,Empresa TO 1103,Palmas,TO,2025-12-19,1,0,0,0,1
+1104,Empresa SC 1104,Chapecó,SC,2025-11-27,1,0,0,0,1
+1105,Empresa RN 1105,Mossoró,RN,2025-11-06,0,1,0,0,1
+1106,Empresa SC 1106,Blumenau,SC,2025-11-07,0,0,1,0,1
+1107,Empresa RS 1107,Porto Alegre,RS,2025-12-12,0,1,0,0,1
+1108,Empresa RJ 1108,Duque de Caxias,RJ,2025-12-14,0,0,1,0,1
+1109,Empresa SP 1109,Ribeirão Preto,SP,2025-12-11,0,0,1,0,1
+1110,Empresa PR 1110,Curitiba,PR,2025-10-22,0,1,0,0,1
+1111,Empresa PR 1111,Londrina,PR,2025-10-22,1,0,0,0,1
+1112,Empresa MT 1112,Rondonópolis,MT,2025-12-21,0,0,1,0,1
+1113,Empresa AL 1113,Maceió,AL,2025-11-03,0,1,0,0,1
+1114,Empresa SP 1114,Ribeirão Preto,SP,2025-11-03,1,0,0,0,1
+1115,Empresa AL 1115,Palmeira dos Índios,AL,2025-11-11,0,1,0,0,1
+1116,Empresa SP 1116,São Paulo,SP,2025-12-17,1,0,0,0,1
+1117,Empresa SP 1117,Campinas,SP,2025-10-01,1,0,0,0,1
+1118,Empresa PI 1118,Parnaíba,PI,2025-12-12,0,0,1,0,1
+1119,Empresa SC 1119,Blumenau,SC,2025-10-13,0,1,0,0,1
+1120,Empresa ES 1120,Cariacica,ES,2025-11-13,1,0,0,0,1
+1121,Empresa ES 1121,Cariacica,ES,2025-12-26,0,1,0,0,1
+1122,Empresa SP 1122,Santos,SP,2025-10-14,0,1,0,0,1
+1123,Empresa ES 1123,Cariacica,ES,2025-12-08,1,0,0,0,1
+1124,Empresa ES 1124,Serra,ES,2025-11-20,0,1,0,0,1
+1125,Empresa MG 1125,Contagem,MG,2025-12-19,0,0,1,0,1
+1126,Empresa RS 1126,Canoas,RS,2025-12-21,0,0,1,0,1
+1127,Empresa MT 1127,Rondonópolis,MT,2025-12-18,1,0,0,0,1
+1128,Empresa ES 1128,Vila Velha,ES,2025-11-23,1,0,0,0,1
+1129,Empresa AL 1129,Palmeira dos Índios,AL,2025-10-09,0,1,0,0,1
+1130,Empresa MG 1130,Uberlândia,MG,2025-11-05,0,0,0,1,1
+1131,Empresa BA 1131,Feira de Santana,BA,2025-11-13,0,0,0,1,1
+1132,Empresa SP 1132,Campinas,SP,2025-12-25,1,0,0,0,1
+1133,Empresa RJ 1133,Nova Iguaçu,RJ,2025-10-04,1,0,0,0,1
+1134,Empresa PI 1134,Picos,PI,2025-12-24,1,0,0,0,1
+1135,Empresa MG 1135,Contagem,MG,2025-10-10,0,1,0,0,1
+1136,Empresa ES 1136,Cariacica,ES,2025-11-05,0,1,0,0,1
+1137,Empresa BA 1137,Feira de Santana,BA,2025-12-05,0,0,1,0,1
+1138,Empresa ES 1138,Vitória,ES,2025-12-27,1,0,0,0,1
+1139,Empresa CE 1139,Maracanaú,CE,2025-12-27,0,0,1,0,1
+1140,Empresa TO 1140,Palmas,TO,2025-12-11,0,0,1,0,1
+1141,Empresa MG 1141,Contagem,MG,2025-10-09,0,1,0,0,1
+1142,Empresa RJ 1142,Niterói,RJ,2025-10-23,1,0,0,0,1
+1143,Empresa MA 1143,Imperatriz,MA,2025-12-10,0,1,0,0,1
+1144,Empresa SC 1144,Chapecó,SC,2025-12-18,1,0,0,0,1
+1145,Empresa RJ 1145,Nova Iguaçu,RJ,2025-12-06,1,0,0,0,1
+1146,Empresa DF 1146,Brasília,DF,2025-12-13,1,0,0,0,1
+1147,Empresa ES 1147,Cariacica,ES,2025-11-04,1,0,0,0,1
+1148,Empresa MG 1148,Contagem,MG,2025-12-26,0,1,0,0,1
+1149,Empresa MG 1149,Contagem,MG,2025-10-14,1,0,0,0,1
+1150,Empresa PR 1150,Cascavel,PR,2025-11-10,1,0,0,0,1
+1151,Empresa RN 1151,Mossoró,RN,2025-11-03,0,0,0,1,1
+1152,Empresa SP 1152,Ribeirão Preto,SP,2025-10-09,1,0,0,0,1
+1153,Empresa MG 1153,Contagem,MG,2025-10-01,0,1,0,0,1
+1154,Empresa RJ 1154,Nova Iguaçu,RJ,2025-12-18,0,1,0,0,1
+1155,Empresa RS 1155,Caxias do Sul,RS,2025-11-17,1,0,0,0,1
+1156,Empresa SP 1156,Santos,SP,2025-12-25,0,0,1,0,1
+1157,Empresa MG 1157,Juiz de Fora,MG,2025-12-21,0,1,0,0,1
+1158,Empresa ES 1158,Serra,ES,2025-12-27,0,1,0,0,1
+1159,Empresa MA 1159,Imperatriz,MA,2025-12-15,0,0,0,1,1
+1160,Empresa SC 1160,Florianópolis,SC,2025-10-08,1,0,0,0,1
+1161,Empresa RJ 1161,Nova Iguaçu,RJ,2025-12-12,1,0,0,0,1
+1162,Empresa RJ 1162,Rio de Janeiro,RJ,2025-11-15,0,0,1,0,1
+1163,Empresa MS 1163,Três Lagoas,MS,2025-11-06,1,0,0,0,1
+1164,Empresa SC 1164,Chapecó,SC,2025-11-13,1,0,0,0,1
+1165,Empresa SP 1165,São Paulo,SP,2025-12-19,0,1,0,0,1
+1166,Empresa PR 1166,Curitiba,PR,2025-11-26,1,0,0,0,1
+1167,Empresa SP 1167,Santos,SP,2025-11-18,1,0,0,0,1
+1168,Empresa ES 1168,Vila Velha,ES,2025-12-23,1,0,0,0,1
+1169,Empresa RJ 1169,Duque de Caxias,RJ,2025-10-18,1,0,0,0,1
+1170,Empresa ES 1170,Vitória,ES,2025-10-11,1,0,0,0,1
+1171,Empresa SC 1171,Blumenau,SC,2025-11-08,1,0,0,0,1
+1172,Empresa MG 1172,Contagem,MG,2025-12-12,0,0,1,0,1
+1173,Empresa SP 1173,São Paulo,SP,2025-10-12,0,1,0,0,1
+1174,Empresa SC 1174,Florianópolis,SC,2025-11-13,1,0,0,0,1
+1175,Empresa AL 1175,Maceió,AL,2025-11-28,0,1,0,0,1
+1176,Empresa RS 1176,Pelotas,RS,2025-11-19,0,0,1,0,1
+1177,Empresa RJ 1177,Nova Iguaçu,RJ,2025-11-27,0,1,0,0,1
+1178,Empresa DF 1178,Brasília,DF,2025-11-25,1,0,0,0,1
+1179,Empresa RS 1179,Pelotas,RS,2025-11-14,0,0,1,0,1
+1180,Empresa PR 1180,Cascavel,PR,2025-12-16,0,0,1,0,1
+1181,Empresa SP 1181,São Paulo,SP,2025-12-10,0,1,0,0,1
+1182,Empresa RN 1182,Parnamirim,RN,2025-11-28,0,1,0,0,1
+1183,Empresa SC 1183,Joinville,SC,2025-12-07,0,0,0,1,1
+1184,Empresa ES 1184,Vitória,ES,2025-10-24,1,0,0,0,1
+1185,Empresa SP 1185,Santos,SP,2025-10-25,0,1,0,0,1
+1186,Empresa MS 1186,Dourados,MS,2025-12-14,1,0,0,0,1
+1187,Empresa PB 1187,Patos,PB,2025-12-18,0,1,0,0,1
+1188,Empresa SC 1188,Florianópolis,SC,2025-10-08,1,0,0,0,1
+1189,Empresa SP 1189,Santos,SP,2025-12-01,0,0,1,0,1
+1190,Empresa RS 1190,Porto Alegre,RS,2025-11-09,1,0,0,0,1
+1191,Empresa RJ 1191,Duque de Caxias,RJ,2025-10-06,0,1,0,0,1
+1192,Empresa SP 1192,Ribeirão Preto,SP,2025-11-17,0,1,0,0,1
+1193,Empresa AL 1193,Arapiraca,AL,2025-11-20,0,0,1,0,1
+1194,Empresa RS 1194,Canoas,RS,2025-11-05,1,0,0,0,1
+1195,Empresa ES 1195,Vila Velha,ES,2025-12-08,1,0,0,0,1
+1196,Empresa PR 1196,Londrina,PR,2025-11-27,0,1,0,0,1
+1197,Empresa PE 1197,Recife,PE,2025-10-21,0,1,0,0,1
+1198,Empresa SP 1198,Campinas,SP,2025-10-11,1,0,0,0,1
+1199,Empresa ES 1199,Cariacica,ES,2025-10-17,0,0,1,0,1
+1200,Empresa DF 1200,Ceilândia,DF,2025-11-28,0,1,0,0,1
+1201,Empresa RJ 1201,Nova Iguaçu,RJ,2025-10-16,1,0,0,0,1
+1202,Empresa RJ 1202,Rio de Janeiro,RJ,2025-12-16,1,0,0,0,1
+1203,Empresa PR 1203,Cascavel,PR,2025-12-24,1,0,0,0,1
+1204,Empresa PE 1204,Caruaru,PE,2025-10-26,0,1,0,0,1
+1205,Empresa RS 1205,Porto Alegre,RS,2025-11-25,0,1,0,0,1
+1206,Empresa SP 1206,Ribeirão Preto,SP,2025-11-26,1,0,0,0,1
+1207,Empresa AL 1207,Maceió,AL,2025-11-03,0,1,0,0,1
+1208,Empresa SP 1208,Campinas,SP,2025-12-03,0,0,0,1,1
+1209,Empresa ES 1209,Vila Velha,ES,2025-10-16,0,1,0,0,1
+1210,Empresa RS 1210,Pelotas,RS,2025-12-14,0,0,0,1,1
+1211,Empresa ES 1211,Serra,ES,2025-10-07,0,0,1,0,1
+1212,Empresa MG 1212,Belo Horizonte,MG,2025-12-22,0,1,0,0,1
+1213,Empresa SP 1213,Ribeirão Preto,SP,2025-11-01,0,1,0,0,1
+1214,Empresa SC 1214,Florianópolis,SC,2025-11-19,0,0,1,0,1
+1215,Empresa PR 1215,Cascavel,PR,2025-12-16,0,0,1,0,1
+1216,Empresa SP 1216,Campinas,SP,2025-11-14,1,0,0,0,1
+1217,Empresa ES 1217,Cariacica,ES,2025-12-12,0,1,0,0,1
+1218,Empresa SE 1218,Nossa Senhora do Socorro,SE,2025-11-17,0,1,0,0,1
+1219,Empresa RJ 1219,Niterói,RJ,2025-11-04,1,0,0,0,1
+1220,Empresa ES 1220,Cariacica,ES,2025-11-22,0,1,0,0,1
+1221,Empresa RS 1221,Pelotas,RS,2025-12-21,1,0,0,0,1
+1222,Empresa SC 1222,Chapecó,SC,2025-12-06,1,0,0,0,1
+1223,Empresa PR 1223,Maringá,PR,2025-12-04,0,0,1,0,1
+1224,Empresa ES 1224,Serra,ES,2025-12-25,0,0,0,1,1
+1225,Empresa PR 1225,Curitiba,PR,2025-12-19,1,0,0,0,1
+1226,Empresa RS 1226,Porto Alegre,RS,2025-10-14,0,1,0,0,1
+1227,Empresa MG 1227,Uberlândia,MG,2025-11-05,0,1,0,0,1
+1228,Empresa ES 1228,Cariacica,ES,2025-10-24,1,0,0,0,1
+1229,Empresa MG 1229,Belo Horizonte,MG,2025-11-08,0,1,0,0,1
+1230,Empresa ES 1230,Serra,ES,2025-12-22,1,0,0,0,1
+1231,Empresa MG 1231,Juiz de Fora,MG,2025-11-27,0,1,0,0,1
+1232,Empresa RN 1232,Mossoró,RN,2025-11-08,0,1,0,0,1
+1233,Empresa PE 1233,Recife,PE,2025-11-27,0,0,0,1,1
+1234,Empresa RS 1234,Caxias do Sul,RS,2025-12-14,0,0,1,0,1
+1235,Empresa SP 1235,Ribeirão Preto,SP,2025-12-25,0,1,0,0,1
+1236,Empresa ES 1236,Cariacica,ES,2025-11-17,0,0,1,0,1
+1237,Empresa PR 1237,Londrina,PR,2025-11-07,0,1,0,0,1
+1238,Empresa SP 1238,Campinas,SP,2025-12-17,1,0,0,0,1
+1239,Empresa DF 1239,Taguatinga,DF,2025-12-01,1,0,0,0,1
+1240,Empresa MG 1240,Uberlândia,MG,2025-12-15,1,0,0,0,1
+1241,Empresa PR 1241,Maringá,PR,2025-11-05,0,0,1,0,1
+1242,Empresa RJ 1242,Duque de Caxias,RJ,2025-11-24,1,0,0,0,1
+1243,Empresa SP 1243,Campinas,SP,2025-12-06,0,1,0,0,1
+1244,Empresa MG 1244,Uberlândia,MG,2025-10-27,0,0,1,0,1
+1245,Empresa SP 1245,Ribeirão Preto,SP,2025-10-12,0,0,1,0,1
+1246,Empresa RJ 1246,Niterói,RJ,2025-12-17,1,0,0,0,1
+1247,Empresa RJ 1247,Niterói,RJ,2025-10-12,0,0,0,1,1
+1248,Empresa SE 1248,Nossa Senhora do Socorro,SE,2025-11-05,0,1,0,0,1
+1249,Empresa RJ 1249,Rio de Janeiro,RJ,2025-12-24,0,1,0,0,1
+1250,Empresa RJ 1250,Rio de Janeiro,RJ,2025-10-27,1,0,0,0,1
+1251,Empresa MG 1251,Uberlândia,MG,2025-12-26,1,0,0,0,1
+1252,Empresa AL 1252,Palmeira dos Índios,AL,2025-12-19,0,1,0,0,1
+1253,Empresa ES 1253,Vitória,ES,2025-10-09,0,0,1,0,1
+1254,Empresa SP 1254,Campinas,SP,2025-10-18,0,0,1,0,1
+1255,Empresa ES 1255,Serra,ES,2025-10-28,0,0,1,0,1
+1256,Empresa RJ 1256,Duque de Caxias,RJ,2025-12-24,1,0,0,0,1
+1257,Empresa PE 1257,Jaboatão dos Guararapes,PE,2025-10-20,1,0,0,0,1
+1258,Empresa AC 1258,Rio Branco,AC,2025-11-12,0,1,0,0,1
+1259,Empresa RS 1259,Pelotas,RS,2025-10-06,0,0,1,0,1
+1260,Empresa MS 1260,Campo Grande,MS,2025-11-04,0,1,0,0,1
+1261,Empresa RJ 1261,Nova Iguaçu,RJ,2025-10-24,1,0,0,0,1
+1262,Empresa PR 1262,Curitiba,PR,2025-11-03,1,0,0,0,1
+1263,Empresa MG 1263,Belo Horizonte,MG,2025-11-26,1,0,0,0,1
+1264,Empresa ES 1264,Vila Velha,ES,2025-12-14,0,1,0,0,1
+1265,Empresa RS 1265,Pelotas,RS,2025-10-15,1,0,0,0,1
+1266,Empresa MG 1266,Uberlândia,MG,2025-11-18,1,0,0,0,1
+1267,Empresa RJ 1267,Rio de Janeiro,RJ,2025-11-20,0,0,0,1,1
+1268,Empresa BA 1268,Salvador,BA,2025-11-20,1,0,0,0,1
+1269,Empresa PE 1269,Olinda,PE,2025-10-04,1,0,0,0,1
+1270,Empresa RS 1270,Pelotas,RS,2025-11-05,0,0,1,0,1
+1271,Empresa ES 1271,Serra,ES,2025-11-21,1,0,0,0,1
+1272,Empresa RN 1272,Parnamirim,RN,2025-12-11,0,1,0,0,1
+1273,Empresa PR 1273,Maringá,PR,2025-12-12,0,0,1,0,1
+1274,Empresa SC 1274,Blumenau,SC,2025-12-18,0,1,0,0,1
+1275,Empresa MG 1275,Belo Horizonte,MG,2025-12-10,0,1,0,0,1
+1276,Empresa SC 1276,Chapecó,SC,2025-10-26,0,0,0,1,1
+1277,Empresa MG 1277,Contagem,MG,2025-12-18,1,0,0,0,1
+1278,Empresa DF 1278,Ceilândia,DF,2025-10-22,0,1,0,0,1
+1279,Empresa SC 1279,Florianópolis,SC,2025-12-02,1,0,0,0,1
+1280,Empresa PR 1280,Cascavel,PR,2025-11-25,1,0,0,0,1
+1281,Empresa PI 1281,Parnaíba,PI,2025-12-01,0,0,0,1,1
+1282,Empresa PE 1282,Jaboatão dos Guararapes,PE,2025-11-26,0,1,0,0,1
+1283,Empresa PE 1283,Olinda,PE,2025-12-22,0,1,0,0,1
+1284,Empresa RJ 1284,Rio de Janeiro,RJ,2025-12-23,0,0,1,0,1
+1285,Empresa SC 1285,Joinville,SC,2025-10-16,0,0,1,0,1
+1286,Empresa PE 1286,Recife,PE,2025-12-02,0,0,0,1,1
+1287,Empresa ES 1287,Cariacica,ES,2025-11-09,0,1,0,0,1
+1288,Empresa RS 1288,Canoas,RS,2025-11-17,0,1,0,0,1
+1289,Empresa MG 1289,Contagem,MG,2025-10-04,0,1,0,0,1
+1290,Empresa SC 1290,Chapecó,SC,2025-12-22,0,0,1,0,1
+1291,Empresa GO 1291,Goiânia,GO,2025-10-01,0,1,0,0,1
+1292,Empresa ES 1292,Cariacica,ES,2025-11-22,0,0,1,0,1
+1293,Empresa RJ 1293,Niterói,RJ,2025-11-15,0,0,1,0,1
+1294,Empresa ES 1294,Cariacica,ES,2025-12-11,1,0,0,0,1
+1295,Empresa AL 1295,Palmeira dos Índios,AL,2025-12-16,0,0,1,0,1
+1296,Empresa RJ 1296,Rio de Janeiro,RJ,2025-11-19,1,0,0,0,1
+1297,Empresa ES 1297,Serra,ES,2025-11-23,1,0,0,0,1
+1298,Empresa MG 1298,Belo Horizonte,MG,2025-11-27,0,0,1,0,1
+1299,Empresa RJ 1299,Niterói,RJ,2025-12-04,1,0,0,0,1
+1300,Empresa SP 1300,Santos,SP,2025-12-09,0,1,0,0,1
