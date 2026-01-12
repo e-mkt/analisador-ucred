@@ -1,0 +1,2565 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Analisador CRM | eMKT</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/tabulator-tables@6.2.1/dist/css/tabulator.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #0b1220;
+      --muted: #5a6475;
+      --line: rgba(17, 24, 39, .10);
+      --shadow: 0 18px 45px rgba(15, 23, 42, .10);
+      --shadow2: 0 10px 24px rgba(15, 23, 42, .08);
+
+      --radius-xl: 22px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+
+      --ok: #16a34a;
+      --bad: #ef4444;
+      --warn: #f59e0b;
+      --okSoft: rgba(22,163,74,.85);
+      --badSoft: rgba(239,68,68,.86);
+
+      --accent: #0ea5a4;
+      --accent2: #06b6d4;
+
+      --focus: 0 0 0 4px rgba(14,165,164,.16);
+
+      --container: 1200px;
+
+      /* Header pill */
+      --navBorder: rgba(17,24,39,.10);
+      --navText: rgba(11,18,32,.86);
+      --navMuted: rgba(11,18,32,.56);
+      --navBg: rgba(255,255,255,.86);
+      --navGradA: rgba(255,255,255,.92);
+      --navGradB: rgba(240,243,250,.88);
+
+      /* Table (light) */
+      --tblBg: #ffffff;
+      --tblBgAlt: #f7f8fb;
+      --tblBorder: rgba(17,24,39,.14);
+      --tblHead: #f0f3f8;
+      --tblText: rgba(11,18,32,.92);
+      --tblMuted: rgba(11,18,32,.62);
+    }
+
+    html[data-theme="dark"]{
+      /* less black, elegant */
+      --bg: #141823;
+      --card: #171d2a;
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --line: rgba(255,255,255,.10);
+      --shadow: 0 18px 45px rgba(0,0,0,.48);
+      --shadow2: 0 10px 24px rgba(0,0,0,.34);
+
+      --ok: #34d399;
+      --bad: #fb7185;
+      --warn: #fbbf24;
+      --okSoft: rgba(52,211,153,.82);
+      --badSoft: rgba(251,113,133,.84);
+
+      --focus: 0 0 0 4px rgba(52,211,153,.18);
+
+      --navBorder: rgba(255,255,255,.10);
+      --navText: rgba(255,255,255,.92);
+      --navMuted: rgba(255,255,255,.62);
+      --navBg: rgba(10,12,18,.75);
+      --navGradA: rgba(12,14,20,.86);
+      --navGradB: rgba(18,24,34,.78);
+
+      /* Table (dark) */
+      --tblBg: #0f131d;
+      --tblBgAlt: #131a26;
+      --tblBorder: rgba(255,255,255,.18);
+      --tblHead: #171e2b;
+      --tblText: rgba(255,255,255,.92);
+      --tblMuted: rgba(255,255,255,.66);
+    }
+
+    *{ box-sizing:border-box; }
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top: 84px; /* will be overwritten by JS for precision */
+    }
+    body{
+      margin:0;
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(900px 500px at 15% -10%, rgba(14,165,164,.14), transparent 55%),
+        radial-gradient(800px 520px at 100% 0%, rgba(6,182,212,.10), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      transition: background-color .18s ease, color .18s ease;
+    }
+
+    .shell{
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 22px 18px 56px;
+    }
+
+    /* Floating sticky header pill */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      padding: 12px 0;
+      background: transparent;
+      backdrop-filter: blur(10px);
+    }
+    .topbar-inner{
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--navBorder);
+      background: linear-gradient(180deg, var(--navGradA), var(--navGradB));
+      box-shadow: 0 12px 30px rgba(0,0,0,.08);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 10px;
+    }
+    html[data-theme="dark"] .topbar-inner{
+      box-shadow: 0 18px 40px rgba(0,0,0,.38);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 160px;
+    }
+    .brand img{
+      height: 30px;
+      width: auto;
+      display:block;
+    }
+
+    .navlinks{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .navlinks a{
+      color: var(--navMuted);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .2px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background-color .15s ease, color .15s ease;
+    }
+    .navlinks a:hover{
+      color: var(--navText);
+      background: color-mix(in srgb, var(--navText) 10%, transparent);
+    }
+
+    .right{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap: 10px;
+    }
+
+    /* iOS/macOS-like theme toggle */
+    .theme-btn{
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--navBorder);
+      background: color-mix(in srgb, var(--navText) 6%, transparent);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition: transform .10s ease, filter .18s ease;
+      color: var(--navText);
+    }
+    .theme-btn:hover{ filter: brightness(1.06); transform: translateY(-1px); }
+    .theme-btn:active{ transform: translateY(0) scale(.98); }
+    .theme-btn svg{ width: 18px; height: 18px; display:block; }
+
+    /* Sections */
+    .hero{
+      margin-top: 8px;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-top: 22px;
+      transition: background-color .18s ease, border-color .18s ease;
+    }
+    .card h2{
+      margin:0 0 14px;
+      font-size: 13px;
+      letter-spacing: .18px;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--text) 70%, transparent);
+    }
+
+    .hero h1{
+      margin:0;
+      font-size: 28px;
+      letter-spacing: -0.7px;
+    }
+    .hero p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 980px;
+    }
+
+    /* Uploads */
+    .upload-head{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .upload-toggle{
+      display:none;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 900;
+      font-size: 12px;
+      cursor:pointer;
+      color: var(--text);
+      transition: transform .10s ease;
+    }
+    .upload-toggle:hover{ transform: translateY(-1px); }
+    .upload-toggle:active{ transform: translateY(0) scale(.99); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 920px){
+      .topbar-inner{ grid-template-columns: 1fr auto; }
+      .navlinks{ display:none; }
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      border: 1px dashed color-mix(in srgb, var(--text) 18%, transparent);
+      background: color-mix(in srgb, var(--card) 88%, transparent);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+    }
+
+    .help{
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 10px;
+      line-height: 1.35;
+    }
+
+    /* File picker (Apple style) */
+    .file-row{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .file-input{
+      position:absolute;
+      opacity:0;
+      pointer-events:none;
+      width:1px;
+      height:1px;
+    }
+    .file-btn{
+      flex:0 0 auto;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      cursor:pointer;
+      font-weight: 900;
+      font-size: 12px;
+      color: var(--text);
+      transition: transform .10s ease, filter .15s ease;
+    }
+    .file-btn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    .file-btn:active{ transform: translateY(0) scale(.99); }
+
+    .file-name{
+      flex:1 1 auto;
+      min-width: 180px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      color: var(--muted);
+      font-size: 12px;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .file-name.has-file{
+      color: var(--text);
+    }
+
+    /* Status row */
+    .status-row{
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 88%, transparent);
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .status-row b{ color: var(--text); }
+    .pill{
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--ok) 12%, transparent);
+      color: var(--ok);
+      white-space: nowrap;
+    }
+    .pill.neutral{
+      background: color-mix(in srgb, var(--text) 10%, transparent);
+      color: var(--muted);
+    }
+    .pill.warn{
+      background: color-mix(in srgb, var(--warn) 14%, transparent);
+      color: var(--warn);
+    }
+
+    .chips{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .chip{
+      background: color-mix(in srgb, var(--card) 88%, transparent);
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .chip b{ color: var(--text); }
+
+    /* Upload actions */
+    .actions{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      align-items:center;
+    }
+    .btn{
+      width:auto;
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      cursor:pointer;
+      font-weight: 900;
+      font-size: 13px;
+      color: var(--text);
+      box-shadow: var(--shadow2);
+      transition: transform .10s ease, filter .15s ease;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+    }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    .btn:active{ transform: translateY(0) scale(.99); }
+    .btn.primary{
+      border-color: color-mix(in srgb, var(--ok) 30%, var(--line));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--ok) 18%, transparent), color-mix(in srgb, var(--ok) 10%, transparent));
+    }
+    .btn.ghost{
+      box-shadow:none;
+      background: transparent;
+    }
+    .btn:disabled{
+      opacity:.50;
+      cursor:not-allowed;
+      transform:none;
+      filter:none;
+      box-shadow:none;
+    }
+    .btn .ico{
+      width: 14px; height: 14px;
+      display:inline-block;
+      opacity:.70;
+    }
+
+    /* Compact uploads */
+    .uploads.compact .grid,
+    .uploads.compact .panel,
+    .uploads.compact .help,
+    .uploads.compact .chips{
+      display:none;
+    }
+    .uploads.compact .upload-toggle{
+      display:inline-flex;
+    }
+    .uploads.compact .status-row{
+      margin-top: 10px;
+    }
+
+    /* Results */
+    .row{
+      display:flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .row .field{ flex:1; min-width: 220px; }
+    .row .field.sm{ flex:0; min-width: 240px; }
+
+    select, input[type="text"], button{
+      font-family: var(--font-sans);
+    }
+    select, .input{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      color: var(--text);
+      outline:none;
+    }
+    select:focus, .input:focus{
+      box-shadow: var(--focus);
+      border-color: color-mix(in srgb, var(--ok) 30%, var(--line));
+    }
+
+    /* hover pop */
+    .hover-pop{
+      transition: transform .14s ease, box-shadow .18s ease, border-color .18s ease;
+      will-change: transform;
+      transform-origin: center;
+    }
+    .hover-pop:hover{
+      transform: scale(1.018);
+      border-color: color-mix(in srgb, var(--ok) 18%, var(--line));
+      box-shadow: 0 16px 42px rgba(0,0,0,.10);
+    }
+    html[data-theme="dark"] .hover-pop:hover{
+      box-shadow: 0 18px 46px rgba(0,0,0,.42);
+    }
+
+    /* KPI */
+    .kpis{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    @media (max-width: 900px){ .kpis{ grid-template-columns: repeat(2, 1fr); } }
+    .kpi{
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--card) 88%, transparent), var(--card));
+      box-shadow: var(--shadow2);
+      min-height: 118px;
+    }
+    .kpi .label{ font-size: 12px; color: var(--muted); }
+    .kpi .value{ font-size: 22px; font-weight: 950; margin-top: 8px; letter-spacing: -0.4px; }
+    .kpi .hint{ font-size: 12px; color: var(--muted); margin-top: 6px; }
+    .kpi .subpct{ font-weight: 800; font-size: 14px; opacity: .95; margin-left: 8px; }
+    .kpi .subpct.ok{ color: var(--okSoft); }
+    .kpi .subpct.bad{ color: var(--badSoft); }
+
+    /* Signals grid (3 columns x 4 rows including headers) */
+    .signals{
+      margin-top: 18px;
+    }
+    .signals-head{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 10px;
+    }
+    .signals-head .h{
+      font-size: 13px;
+      letter-spacing: .18px;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--text) 70%, transparent);
+      font-weight: 900;
+    }
+    .signals-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 1020px){
+      .signals-head{ grid-template-columns: 1fr; }
+      .signals-grid{ grid-template-columns: 1fr; }
+    }
+
+    .signal-card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--card);
+      box-shadow: var(--shadow2);
+      padding: 16px;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      height: 230px; /* enforce equal height */
+      overflow:hidden;
+    }
+    .signal-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      min-height: 46px;
+    }
+    .signal-title{
+      font-weight: 950;
+      font-size: 14px;
+      margin:0;
+      letter-spacing: -0.2px;
+    }
+    .signal-sub{
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      margin-top: 3px;
+      display:-webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow:hidden;
+    }
+    .badge{
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+      background: color-mix(in srgb, var(--text) 10%, transparent);
+      color: var(--muted);
+      border: none;
+    }
+    .badge.good{
+      background: color-mix(in srgb, var(--ok) 12%, transparent);
+      color: var(--ok);
+    }
+    .badge.bad{
+      background: color-mix(in srgb, var(--bad) 12%, transparent);
+      color: var(--bad);
+    }
+
+    .metric-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      flex: 1;
+      position: relative;
+    }
+    .metric-box{
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 86%, transparent);
+      border-radius: 16px;
+      padding: 10px 12px;
+      min-height: 58px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      cursor:pointer;
+      text-align:left;
+      position: relative;
+      overflow:hidden;
+    }
+    .metric-box:focus{
+      outline:none;
+      box-shadow: var(--focus);
+      border-color: color-mix(in srgb, var(--ok) 30%, var(--line));
+    }
+    .metric-k{ font-size: 11px; color: var(--muted); }
+    .metric-v{ margin-top: 4px; font-size: 15px; font-weight: 950; letter-spacing: -0.2px; color: var(--text); }
+
+    /* info icon appears only on hover */
+    .metric-info{
+      position:absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 12px;
+      color: color-mix(in srgb, var(--text) 55%, transparent);
+      opacity:0;
+      transform: translateY(-2px);
+      transition: opacity .12s ease, transform .12s ease;
+      pointer-events:none;
+    }
+    .metric-box:hover .metric-info{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* expanded tooltip occupies 2x2 */
+    .metric-expanded{
+      display:none;
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+      border: 1px solid color-mix(in srgb, var(--line) 95%, transparent);
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      border-radius: 16px;
+      padding: 14px 14px 12px;
+      position: relative;
+      transform: rotateY(-6deg) scale(.99);
+      transition: transform .18s ease, opacity .18s ease;
+      opacity: 0;
+    }
+    .metric-grid.is-open .metric-box{
+      opacity:0;
+      pointer-events:none;
+    }
+    .metric-grid.is-open .metric-expanded{
+      display:block;
+      opacity: 1;
+      transform: rotateY(0deg) scale(1);
+    }
+    @media (prefers-reduced-motion: reduce){
+      .metric-expanded{ transition:none; transform:none; }
+      .hover-pop, .btn, .file-btn{ transition:none; }
+    }
+    .metric-expanded .close{
+      position:absolute;
+      top: 10px;
+      right: 10px;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 90%, transparent);
+      cursor:pointer;
+      color: var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+    }
+    .metric-expanded .t{
+      font-weight: 950;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: var(--text);
+      padding-right: 34px;
+    }
+    .metric-expanded .p{
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--muted);
+      margin: 0;
+    }
+    .metric-expanded .a{
+      margin-top: 10px;
+      font-size: 12px;
+      color: color-mix(in srgb, var(--text) 78%, transparent);
+      font-weight: 900;
+    }
+
+    /* Charts */
+    .charts{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    @media (max-width: 980px){ .charts{ grid-template-columns: 1fr; } }
+    .chart-card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--card);
+      box-shadow: var(--shadow2);
+      padding: 16px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      min-height: 340px;
+      position: relative;
+    }
+    .chart-card h3{
+      margin:0;
+      font-size: 13px;
+      color: color-mix(in srgb, var(--text) 80%, transparent);
+      letter-spacing: .1px;
+      font-weight: 950;
+    }
+    .chart-hint{
+      font-size: 12px;
+      color: color-mix(in srgb, var(--text) 50%, transparent);
+      font-weight: 500;
+    }
+    .chart-clearwrap{
+      font-size: 12px;
+      color: color-mix(in srgb, var(--text) 50%, transparent);
+      font-weight: 500;
+    }
+    .chart-clear{
+      font-size: 12px;
+      color: color-mix(in srgb, var(--text) 55%, transparent);
+      font-weight: 500;
+      text-decoration: underline;
+    }
+    .chart-clear:hover{ color: color-mix(in srgb, var(--text) 72%, transparent); }
+    .chart-wrap{
+      position: relative;
+      width: 100%;
+      height: 260px;
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--card) 86%, transparent);
+      border: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
+      overflow:hidden;
+    }
+    .chart-wrap canvas{
+      position:absolute;
+      inset: 0;
+      width:100% !important;
+      height:100% !important;
+      display:block;
+    }
+
+    /* Unified tooltip for charts */
+    .chart-tooltip{
+      position: fixed;
+      left: 0;
+      top: 0;
+      transform: translate3d(-9999px,-9999px,0) translate(-50%,-110%);
+      pointer-events:none;
+      opacity:0;
+      transition: opacity .10s ease, transform .14s ease;
+      background: rgba(18,22,30,.92);
+      color: rgba(255,255,255,.94);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 12px;
+      padding: 10px 12px;
+      width: max-content;
+      max-width: 320px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      z-index: 80;
+      font-family: var(--font-sans);
+    }
+    html[data-theme="dark"] .chart-tooltip{
+      background: rgba(10,12,18,.92);
+    }
+    .chart-tooltip .ttl{
+      font-weight: 950;
+      font-size: 13px;
+      margin-bottom: 6px;
+      white-space: nowrap;
+    }
+    .chart-tooltip .line{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      margin: 4px 0;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .chart-tooltip .sq{
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      display:inline-block;
+      flex:0 0 auto;
+    }
+
+    /* Table */
+    .table-card{
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--card);
+      box-shadow: var(--shadow2);
+      padding: 16px;
+    }
+    .table-toolbar{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .table-toolbar .spacer{ flex:1; }
+    .table-meta{
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .table-meta b{ color: var(--text); }
+
+    .tabulator{
+      font-family: var(--font-sans);
+      border: 1px solid var(--tblBorder) !important;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--tblBg) !important;
+    }
+    .tabulator .tabulator-header{
+      background: var(--tblHead) !important;
+      border-bottom: 1px solid var(--tblBorder) !important;
+    }
+    .tabulator .tabulator-col-title{
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--tblText) !important;
+    }
+    .tabulator .tabulator-header-filter input{
+      border-radius: 12px;
+      border: 1px solid var(--tblBorder) !important;
+      padding: 6px 8px;
+      font-size: 12px;
+      background: var(--tblBgAlt) !important;
+      color: var(--tblText) !important;
+      outline: none;
+    }
+    .tabulator .tabulator-tableholder,
+    .tabulator .tabulator-table{
+      background: var(--tblBg) !important;
+    }
+    .tabulator .tabulator-row{
+      background: var(--tblBg) !important;
+      border-bottom: 1px solid var(--tblBorder) !important;
+    }
+    .tabulator .tabulator-row:nth-child(even){
+      background: var(--tblBgAlt) !important;
+    }
+    .tabulator .tabulator-cell{
+      color: var(--tblText) !important;
+      background: transparent !important;
+      padding: 10px 10px;
+      font-size: 12px;
+      border-right: 1px solid var(--tblBorder) !important;
+    }
+    .tabulator .tabulator-footer{
+      background: var(--tblHead) !important;
+      border-top: 1px solid var(--tblBorder) !important;
+      color: var(--tblMuted) !important;
+      padding: 8px 10px;
+    }
+    .tabulator .tabulator-paginator{
+      font-size: 12px;
+      color: var(--tblMuted) !important;
+    }
+
+    /* Hide Tabulator built-in page size label */
+    .tabulator-page-size{ display:none !important; }
+
+    footer{
+      margin-top: 28px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 12px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 8px;
+    }
+    footer .emkt{
+      height: 22px;
+      width: auto;
+      opacity: .95;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner" id="topbarInner">
+      <div class="brand">
+        <img id="ucredLogo" alt="Ucred" />
+      </div>
+
+      <nav class="navlinks" aria-label="Navegação">
+        <a href="#uploads">Uploads</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#insights">Insights</a>
+        <a href="#graficos">Gráficos</a>
+        <a href="#tabela">Tabela</a>
+      </nav>
+
+      <div class="right">
+        <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 12.8A8.5 8.5 0 0 1 11.2 3 7 7 0 1 0 21 12.8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="shell">
+    <section class="card hero" aria-label="Introdução">
+      <h1>Performance por região</h1>
+      <p>
+        Analise onde você <b>ganha</b> e <b>perde</b> por Região, Estado, Microrregião e Cidade.
+        O IBGE é aplicado automaticamente. Se quiser, use um mapa interno para clusters próprios.
+      </p>
+    </section>
+
+    <section id="uploads" class="card uploads" aria-label="Uploads">
+      <div class="upload-head">
+        <h2 style="margin:0;">Uploads</h2>
+        <button id="uploadsToggle" class="upload-toggle" type="button">Editar uploads</button>
+      </div>
+
+      <div id="uploadsBody">
+        <div class="grid">
+          <div class="panel">
+            <label>Base CRM (CSV/XLSX)</label>
+
+            <div class="file-row">
+              <input id="baseFile" class="file-input" type="file" accept=".csv,.xlsx,.xls" />
+              <button id="basePick" class="file-btn" type="button">
+                Selecionar arquivo
+              </button>
+              <div id="baseName" class="file-name">Nenhum arquivo selecionado</div>
+            </div>
+
+            <div class="help">
+              Colunas aceitas (obrigatórias): <b>Cidade</b>, <b>Estado</b>, <b>Data de criação</b>, <b>Vendas</b>, <b>Perdidos</b>, <b>Em andamento</b>, <b>Pausados</b>.
+              <br>
+              Colunas opcionais: <b>ID (opcional)</b>, <b>Nome (opcional)</b>. Outras colunas serão ignoradas.
+            </div>
+          </div>
+
+          <div class="panel">
+            <label>Mapa interno (opcional)</label>
+
+            <div class="file-row">
+              <input id="mapFile" class="file-input" type="file" accept=".csv" />
+              <button id="mapPick" class="file-btn" type="button">
+                Selecionar arquivo
+              </button>
+              <div id="mapName" class="file-name">Nenhum arquivo selecionado</div>
+            </div>
+
+            <div class="help">
+              Colunas aceitas (obrigatórias): <b>cidade</b>, <b>uf</b>, <b>microrregiao</b>.
+              <br>
+              Coluna opcional: <b>regiao (opcional)</b>. Outras colunas serão ignoradas.
+            </div>
+          </div>
+        </div>
+
+        <div id="uploadsStatus" class="status-row" style="margin-top:16px;">
+          <span>Carregando mapa IBGE…</span>
+          <span class="pill warn">aguarde</span>
+        </div>
+
+        <div id="uploadsChips" class="chips" hidden></div>
+
+        <div class="actions" id="uploadActions">
+          <button id="primaryAction" class="btn primary" type="button">Ver demo</button>
+
+          <button id="tplBaseBtn" class="btn" type="button" title="Baixar template de base">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v10m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M4 17v3h16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Template de base
+          </button>
+
+          <button id="tplMapBtn" class="btn" type="button" title="Baixar template de mapa">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v10m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M4 17v3h16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Template de mapa
+          </button>
+
+          <button id="clearAllBtn" class="btn" type="button" style="display:none;">Limpar</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultados" class="card" hidden aria-label="Resultados">
+      <h2>Resultados</h2>
+
+      <div class="row">
+        <div class="field">
+          <label>Mês</label>
+          <select id="monthFilter"></select>
+        </div>
+        <div class="field">
+          <label>Região</label>
+          <select id="regionFilter"></select>
+        </div>
+        <div class="field">
+          <label>Estado</label>
+          <select id="ufFilter"></select>
+        </div>
+        <div class="field sm">
+          <label>Base da taxa</label>
+          <select id="rateBase">
+            <option value="closed" selected>Fechadas (Vendas + Perdidos)</option>
+            <option value="total">Total (inclui abertas)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="clearFiltersBtn" class="btn" type="button">Limpar filtros</button>
+        <button id="exportSummaryBtn" class="btn" type="button">Baixar resumo</button>
+        <button id="exportTableBtn" class="btn" type="button">Baixar tabela</button>
+      </div>
+
+      <div class="kpis" id="kpis"></div>
+
+      <div id="insights" class="signals">
+        <div class="signals-head">
+          <div class="h">Oportunidades</div>
+          <div class="h">Riscos</div>
+          <div class="h">Insights</div>
+        </div>
+        <div class="signals-grid" id="signalsGrid"></div>
+      </div>
+
+      <div id="graficos" style="height:1px; margin-top:18px;"></div>
+
+      <div class="charts">
+        <div class="chart-card">
+          <h3>
+            Volume por Região <span class="chart-hint">(clique para filtrar)</span>
+            <span id="clearRegionWrap" class="chart-clearwrap" hidden> • <a id="clearRegionLink" class="chart-clear" href="#">Remover filtro</a></span>
+          </h3>
+          <div class="chart-wrap"><canvas id="chartVolReg"></canvas></div>
+        </div>
+
+        <div class="chart-card">
+          <h3>Taxa de ganho por Região</h3>
+          <div class="chart-wrap"><canvas id="chartWinReg"></canvas></div>
+        </div>
+
+        <div class="chart-card">
+          <h3>Volume por Estado</h3>
+          <div class="chart-wrap"><canvas id="chartVolUf"></canvas></div>
+        </div>
+
+        <div class="chart-card">
+          <h3>Evolução mensal (Ganhos x Perdidos)</h3>
+          <div class="chart-wrap"><canvas id="chartMonthly"></canvas></div>
+        </div>
+      </div>
+
+      <div id="tabela" style="height:1px; margin-top:18px;"></div>
+
+      <div class="table-card">
+        <h3>Tabela</h3>
+
+        <div class="table-toolbar">
+          <input id="tableSearch" class="input" type="text" placeholder="Buscar cidade, microrregião, estado ou região…" style="flex:1; min-width:260px;" />
+          <div class="spacer"></div>
+
+          <label style="margin:0; font-size:12px; color:var(--muted);">Linhas por página</label>
+          <select id="pageSize" style="width:auto; min-width: 92px;">
+            <option value="10">10</option>
+            <option value="25" selected>25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+
+          <div id="tableMeta" class="table-meta">—</div>
+        </div>
+
+        <div id="cityTable"></div>
+
+        <div class="hint">Dica: use a busca acima e/ou os filtros no cabeçalho das colunas.</div>
+      </div>
+    </section>
+
+    <footer>
+      <div>Desenvolvido por</div>
+      <img id="emktLogo" class="emkt" alt="eMKT" />
+    </footer>
+  </main>
+
+  <div id="chartTooltip" class="chart-tooltip" aria-hidden="true"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tabulator-tables@6.2.1/dist/js/tabulator.min.js"></script>
+
+  <script>
+    /* =========================================================
+       CONFIG (Assets hosted on GitHub Pages)
+       Update paths here if you rename files.
+    ========================================================= */
+    const ASSETS = {
+      ucredLight: "./assets/img/versao-light-theme.png",
+      ucredDark:  "./assets/img/versao-dark-theme.png",
+      emktLight:  "./assets/img/emkt-logo-light-mode.png",
+      emktDark:   "./assets/img/emkt-logo-dark-mode.png",
+      demoCsv:    "./assets/demo/rd_demo.csv",
+    };
+
+    const TEMPLATE = {
+      base: {
+        required: ["Cidade","Estado","Data de criação","Vendas","Perdidos","Em andamento","Pausados"],
+        optional: ["ID (opcional)","Nome (opcional)"],
+      },
+      map: {
+        required: ["cidade","uf","microrregiao"],
+        optional: ["regiao (opcional)"],
+      }
+    };
+
+    const REGION_UFS = {
+      "Norte": ["AC","AM","AP","PA","RO","RR","TO"],
+      "Nordeste": ["AL","BA","CE","MA","PB","PE","PI","RN","SE"],
+      "Centro-Oeste": ["DF","GO","MS","MT"],
+      "Sudeste": ["ES","MG","RJ","SP"],
+      "Sul": ["PR","RS","SC"]
+    };
+
+    const UF_TO_REGIAO = {
+      AC:"Norte", AL:"Nordeste", AM:"Norte", AP:"Norte", BA:"Nordeste", CE:"Nordeste", DF:"Centro-Oeste",
+      ES:"Sudeste", GO:"Centro-Oeste", MA:"Nordeste", MG:"Sudeste", MS:"Centro-Oeste", MT:"Centro-Oeste",
+      PA:"Norte", PB:"Nordeste", PE:"Nordeste", PI:"Nordeste", PR:"Sul", RJ:"Sudeste", RN:"Nordeste",
+      RO:"Norte", RR:"Norte", RS:"Sul", SC:"Sul", SE:"Nordeste", SP:"Sudeste", TO:"Norte"
+    };
+
+    /* =========================================================
+       DOM
+    ========================================================= */
+    const $ = (s) => document.querySelector(s);
+
+    const topbar = $("#topbarInner");
+    const ucredLogo = $("#ucredLogo");
+    const emktLogo = $("#emktLogo");
+
+    const themeToggle = $("#themeToggle");
+    const themeIcon = $("#themeIcon");
+
+    const uploadsSection = $("#uploads");
+    const uploadsBody = $("#uploadsBody");
+    const uploadsToggle = $("#uploadsToggle");
+    const uploadsStatus = $("#uploadsStatus");
+    const uploadsChips = $("#uploadsChips");
+
+    const baseFile = $("#baseFile");
+    const mapFile = $("#mapFile");
+    const basePick = $("#basePick");
+    const mapPick = $("#mapPick");
+    const baseName = $("#baseName");
+    const mapName = $("#mapName");
+
+    const primaryAction = $("#primaryAction");
+    const tplBaseBtn = $("#tplBaseBtn");
+    const tplMapBtn = $("#tplMapBtn");
+    const clearAllBtn = $("#clearAllBtn");
+
+    const resultsSection = $("#resultados");
+    const monthFilter = $("#monthFilter");
+    const regionFilter = $("#regionFilter");
+    const ufFilter = $("#ufFilter");
+    const rateBase = $("#rateBase");
+
+    const clearFiltersBtn = $("#clearFiltersBtn");
+    const exportSummaryBtn = $("#exportSummaryBtn");
+    const exportTableBtn = $("#exportTableBtn");
+
+    const kpisEl = $("#kpis");
+    const signalsGrid = $("#signalsGrid");
+
+    const clearRegionWrap = $("#clearRegionWrap");
+    const clearRegionLink = $("#clearRegionLink");
+
+    const tableSearch = $("#tableSearch");
+    const pageSizeSel = $("#pageSize");
+    const tableMeta = $("#tableMeta");
+
+    const chartTooltip = $("#chartTooltip");
+
+    /* =========================================================
+       STATE
+    ========================================================= */
+    const state = {
+      theme: "light",
+      baseSource: "none", // none | demo | file
+      baseFileName: "",
+      mapFileName: "",
+      baseRows: [],
+      baseFields: [],
+      mapIndex: null,
+      mapHasRegion: false,
+      enriched: [],
+      agg: null,
+      compactUploads: false,
+      ibgeIndex: new Map(),
+      openMetric: null, // {gridEl}
+      table: null,
+      charts: {
+        volReg: null,
+        winReg: null,
+        volUf: null,
+        monthly: null
+      }
+    };
+
+    /* =========================================================
+       UTILS
+    ========================================================= */
+    const MONTHS_PT = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+
+    function norm(v){
+      return (v ?? "").toString().trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+    function int(n){ return (n ?? 0).toLocaleString("pt-BR"); }
+    function pct(x){ return (x == null || Number.isNaN(x)) ? "—" : (x*100).toFixed(1).replace(".", ",") + "%"; }
+
+    function monthKey(raw){
+      if(!raw) return "";
+      const s = raw.toString().trim();
+      const m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+      if(m) return `${m[1]}-${m[2]}`;
+      const m2 = s.match(/^(\d{2})\/(\d{2})\/(\d{4})/);
+      if(m2) return `${m2[3]}-${m2[2]}`;
+      return "";
+    }
+    function formatMonthLabel(key){
+      if(!key || key === "(sem data)") return "sem data";
+      const mm = key.match(/^(\d{4})-(\d{2})$/);
+      if(!mm) return key;
+      const yy = mm[1].slice(2);
+      const m = parseInt(mm[2], 10);
+      const mon = MONTHS_PT[m-1] || mm[2];
+      return `${mon}/${yy}`;
+    }
+
+    function setStatus(msg, pillText=""){
+      uploadsStatus.innerHTML = `<span>${msg}</span><span class="pill ${pillText==="aguarde"?"warn":""}">${pillText}</span>`;
+    }
+
+    function showChips(items){
+      uploadsChips.innerHTML = "";
+      items.forEach(html => {
+        const el = document.createElement("div");
+        el.className = "chip";
+        el.innerHTML = html;
+        uploadsChips.appendChild(el);
+      });
+      uploadsChips.hidden = items.length === 0;
+    }
+
+    function setFileName(el, name){
+      if(!name){
+        el.textContent = "Nenhum arquivo selecionado";
+        el.classList.remove("has-file");
+      }else{
+        el.textContent = name;
+        el.classList.add("has-file");
+      }
+    }
+
+    function downloadCSV(filename, header, sampleRows){
+      const rows = [header.join(",")].concat(sampleRows || []);
+      const blob = new Blob([rows.join("\n")], {type:"text/csv;charset=utf-8;"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(a.href), 800);
+    }
+
+    function updateScrollPadding(){
+      const h = document.querySelector(".topbar")?.getBoundingClientRect().height || 72;
+      const offset = Math.round(h + 10); // precise, small
+      document.documentElement.style.scrollPaddingTop = offset + "px";
+    }
+
+    /* =========================================================
+       THEME
+    ========================================================= */
+    function setThemeIcon(theme){
+      if(theme === "dark"){
+        themeIcon.innerHTML = `
+          <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        `;
+      }else{
+        themeIcon.innerHTML = `
+          <path d="M21 12.8A8.5 8.5 0 0 1 11.2 3 7 7 0 1 0 21 12.8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        `;
+      }
+    }
+
+    function applyTheme(theme){
+      state.theme = theme;
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("crmAnalyzerTheme", theme);
+      setThemeIcon(theme);
+
+      ucredLogo.src = (theme === "dark") ? ASSETS.ucredDark : ASSETS.ucredLight;
+      emktLogo.src  = (theme === "dark") ? ASSETS.emktDark : ASSETS.emktLight;
+
+      // SF font in charts
+      Chart.defaults.font.family = getComputedStyle(document.documentElement).getPropertyValue('--font-sans').trim();
+
+      // refresh visuals
+      Object.values(state.charts).forEach(ch => ch && ch.update());
+      state.table && state.table.redraw(true);
+
+      updateScrollPadding();
+    }
+
+    function initTheme(){
+      const saved = localStorage.getItem("crmAnalyzerTheme");
+      const theme = (saved === "dark" || saved === "light") ? saved : "light";
+      applyTheme(theme);
+
+      themeToggle.addEventListener("click", () => {
+        applyTheme(state.theme === "dark" ? "light" : "dark");
+      });
+    }
+
+    /* =========================================================
+       DATA LOADERS
+    ========================================================= */
+    async function loadIBGEIndex(){
+      const url = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios?view=nivelado";
+      try{
+        const res = await fetch(url, { cache: "force-cache" });
+        if(!res.ok) throw new Error("IBGE");
+        const data = await res.json();
+
+        const idx = new Map();
+        for(const r of data){
+          const city = r["municipio-nome"];
+          const uf = r["UF-sigla"];
+          const reg = r["regiao-nome"];
+          const meso = r["mesorregiao-nome"]; // we use as microrregião (Zona da Mata)
+          if(!city || !uf) continue;
+          const key = norm(city) + "|" + norm(uf).toUpperCase();
+          idx.set(key, { regiao: reg || "", uf, microrregiao: meso || "", cidade: city || "" });
+        }
+        state.ibgeIndex = idx;
+        setStatus(`<b>IBGE pronto</b> · ${int(idx.size)} municípios`, "ok");
+      }catch(e){
+        setStatus(`<b>IBGE indisponível</b> · usando fallback por UF`, "atenção");
+      }
+    }
+
+    function parseAny(file){
+      const name = (file?.name || "").toLowerCase();
+      if(name.endsWith(".csv")) return parseCSVFile(file);
+      if(name.endsWith(".xlsx") || name.endsWith(".xls")) return parseXLSXFile(file);
+      return Promise.reject(new Error("Formato não suportado"));
+    }
+
+    function parseCSVFile(file){
+      return new Promise((resolve, reject) => {
+        Papa.parse(file, {
+          header:true,
+          skipEmptyLines:true,
+          transformHeader: h => (h ?? "").toString().trim(),
+          complete: (res) => resolve(res.data || []),
+          error: reject
+        });
+      });
+    }
+
+    function parseXLSXFile(file){
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try{
+            const data = new Uint8Array(e.target.result);
+            const wb = XLSX.read(data, { type:"array" });
+            const sheet = wb.Sheets[wb.SheetNames[0]];
+            const json = XLSX.utils.sheet_to_json(sheet, { defval:"" });
+            resolve(json || []);
+          }catch(err){ reject(err); }
+        };
+        reader.onerror = () => reject(reader.error);
+        reader.readAsArrayBuffer(file);
+      });
+    }
+
+    async function loadDemo(){
+      setStatus(`<b>Carregando demo…</b>`, "aguarde");
+      const res = await fetch(ASSETS.demoCsv, { cache:"no-store" });
+      if(!res.ok) throw new Error("Não consegui carregar a demo. Verifique assets/demo/rd_demo.csv");
+      const text = await res.text();
+      const parsed = Papa.parse(text, { header:true, skipEmptyLines:true });
+      return parsed.data || [];
+    }
+
+    async function parseInternalMap(file){
+      const rows = await parseCSVFile(file);
+      if(!rows?.length) throw new Error("Mapa interno vazio");
+
+      const fields = Object.keys(rows[0] || {}).filter(Boolean);
+      const colCity = findField(fields, ["cidade","municipio","município"]);
+      const colUF = findField(fields, ["uf","estado"]);
+      const colMicro = findField(fields, ["microrregiao","microrregião","mesorregiao","mesorregião","cluster"]);
+      const colRegion = findField(fields, ["regiao","região"]);
+
+      if(!colCity || !colUF || !colMicro) throw new Error("Mapa interno inválido: precisa de cidade, uf e microrregiao.");
+
+      const idx = new Map();
+      for(const r of rows){
+        const city = r[colCity];
+        const uf = (r[colUF] ?? "").toString().trim().toUpperCase();
+        if(!city || !uf) continue;
+        const key = norm(city) + "|" + norm(uf).toUpperCase();
+        idx.set(key, {
+          regiao: colRegion ? (r[colRegion] ?? "") : "",
+          microrregiao: (r[colMicro] ?? "")
+        });
+      }
+
+      return { idx, hasRegion: !!colRegion };
+    }
+
+    function findField(fields, candidates){
+      const fNorm = fields.map(f => ({ raw:f, n:norm(f) }));
+      for(const c of candidates){
+        const cn = norm(c);
+        const exact = fNorm.find(x => x.n === cn);
+        if(exact) return exact.raw;
+      }
+      for(const c of candidates){
+        const cn = norm(c);
+        const incl = fNorm.find(x => x.n.includes(cn));
+        if(incl) return incl.raw;
+      }
+      return "";
+    }
+
+    /* =========================================================
+       TRANSFORM / AGGREGATE
+    ========================================================= */
+    function inferStatus(row){
+      // expected columns
+      const v = Number(row[findField(state.baseFields, ["Vendas","vendas"])] ?? 0);
+      const p = Number(row[findField(state.baseFields, ["Perdidos","perdidos"])] ?? 0);
+      const ea = Number(row[findField(state.baseFields, ["Em andamento","em andamento","emandamento","em_andamento"])] ?? 0);
+      const pa = Number(row[findField(state.baseFields, ["Pausados","pausados"])] ?? 0);
+
+      if(v > 0) return "won";
+      if(p > 0) return "lost";
+      if(ea > 0) return "open";
+      if(pa > 0) return "paused";
+      return "open";
+    }
+
+    function enrichBase(rows){
+      const colCity = findField(state.baseFields, ["Cidade","cidade","Município","Municipio","municipio"]);
+      const colUF = findField(state.baseFields, ["Estado","estado","UF","uf"]);
+      const colDate = findField(state.baseFields, ["Data de criação","data de criação","data de criacao","criado em","created","data"]);
+
+      const out = [];
+      for(const row of rows){
+        const cityRaw = (row[colCity] ?? "").toString().trim();
+        const ufRaw = (row[colUF] ?? "").toString().trim().toUpperCase();
+        const created = colDate ? (row[colDate] ?? "") : "";
+        const mk = monthKey(created);
+        const month = mk ? mk : "(sem data)";
+        const key = norm(cityRaw) + "|" + norm(ufRaw).toUpperCase();
+
+        let regiao = UF_TO_REGIAO[ufRaw] || "(não identificado)";
+        let microrregiao = "(não identificado)";
+        let cidade = cityRaw || "(não identificado)";
+        let uf = ufRaw || "(não identificado)";
+
+        const ib = state.ibgeIndex.get(key);
+        if(ib){
+          if(ib.regiao) regiao = ib.regiao;
+          if(ib.microrregiao) microrregiao = ib.microrregiao;
+          if(ib.cidade) cidade = ib.cidade;
+          if(ib.uf) uf = ib.uf;
+        }
+
+        if(state.mapIndex){
+          const it = state.mapIndex.get(key);
+          if(it){
+            if(state.mapHasRegion && it.regiao) regiao = it.regiao;
+            if(it.microrregiao) microrregiao = it.microrregiao;
+          }
+        }
+
+        const status = inferStatus(row);
+        out.push({ status, regiao, uf, microrregiao, cidade, created, month });
+      }
+      return out;
+    }
+
+    function aggregate(enriched){
+      const monthSel = monthFilter.value || "__all";
+      const regSel = regionFilter.value || "__all";
+      const ufSel = ufFilter.value || "__all";
+      const rb = rateBase.value || "closed";
+
+      const rows = enriched.filter(r => {
+        if(monthSel !== "__all" && r.month !== monthSel) return false;
+        if(regSel !== "__all" && r.regiao !== regSel) return false;
+        if(ufSel !== "__all" && r.uf !== ufSel) return false;
+        return true;
+      });
+
+      const byRegion = new Map();
+      const byUF = new Map();
+      const byCity = new Map();
+      const byMonth = new Map();
+
+      for(const r of rows){
+        if(!byRegion.has(r.regiao)) byRegion.set(r.regiao, { regiao:r.regiao, total:0, won:0, lost:0, open:0, paused:0 });
+        const R = byRegion.get(r.regiao); R.total++; R[r.status]++;
+
+        const ufKey = r.regiao+"||"+r.uf;
+        if(!byUF.has(ufKey)) byUF.set(ufKey, { regiao:r.regiao, uf:r.uf, total:0, won:0, lost:0, open:0, paused:0 });
+        const U = byUF.get(ufKey); U.total++; U[r.status]++;
+
+        const cityKey = r.regiao+"||"+r.uf+"||"+r.microrregiao+"||"+r.cidade;
+        if(!byCity.has(cityKey)) byCity.set(cityKey, { regiao:r.regiao, uf:r.uf, microrregiao:r.microrregiao, cidade:r.cidade, total:0, won:0, lost:0, open:0, paused:0 });
+        const C = byCity.get(cityKey); C.total++; C[r.status]++;
+
+        if(!byMonth.has(r.month)) byMonth.set(r.month, { month:r.month, total:0, won:0, lost:0, open:0, paused:0 });
+        const M = byMonth.get(r.month); M.total++; M[r.status]++;
+      }
+
+      function withRates(o){
+        const closed = o.won + o.lost;
+        const denom = (rb === "closed") ? closed : o.total;
+        return { ...o, closed, winRate: denom ? (o.won/denom) : null, lossRate: denom ? (o.lost/denom) : null };
+      }
+
+      const regions = Array.from(byRegion.values()).map(withRates).sort((a,b)=>b.total-a.total);
+      const ufs = Array.from(byUF.values()).map(withRates).sort((a,b)=>b.total-a.total);
+      const cities = Array.from(byCity.values()).map(withRates).sort((a,b)=>b.total-a.total);
+      const months = Array.from(byMonth.values()).map(withRates).sort((a,b)=>a.month.localeCompare(b.month));
+
+      return { rows, regions, ufs, cities, months };
+    }
+
+    /* =========================================================
+       UI: Uploads mode + buttons
+    ========================================================= */
+    function setUploadsCompact(isCompact){
+      state.compactUploads = isCompact;
+      uploadsSection.classList.toggle("compact", isCompact);
+      uploadsToggle.style.display = isCompact ? "inline-flex" : "none";
+      uploadsToggle.textContent = isCompact ? "Editar uploads" : "Ocultar";
+    }
+
+    function updatePrimaryAction(){
+      if(state.baseSource === "none"){
+        primaryAction.textContent = "Ver demo";
+        primaryAction.disabled = false;
+      }else{
+        primaryAction.textContent = "Analisar dados";
+        primaryAction.disabled = false;
+      }
+    }
+
+    function updateClearButton(){
+      const shouldShow = (state.baseSource !== "none") || !!state.mapIndex;
+      clearAllBtn.style.display = shouldShow ? "inline-flex" : "none";
+    }
+
+    function updateUploadsUI(){
+      // file names
+      setFileName(baseName, state.baseFileName);
+      setFileName(mapName, state.mapFileName);
+
+      updatePrimaryAction();
+      updateClearButton();
+
+      // chips
+      const chips = [];
+      if(state.baseSource === "demo") chips.push(`<b>Fonte</b>: Demo`);
+      if(state.baseSource === "file") chips.push(`<b>Fonte</b>: Upload`);
+
+      // show detected column names (if any)
+      if(state.baseFields?.length){
+        const cityField = findField(state.baseFields, ["Cidade","cidade","Município","Municipio","municipio"]);
+        const ufField = findField(state.baseFields, ["Estado","estado","UF","uf"]);
+        const dateField = findField(state.baseFields, ["Data de criação","data de criação","data de criacao","criado em","created","data"]);
+        chips.push(`<b>Cidade</b>: ${cityField || "—"}`);
+        chips.push(`<b>Estado</b>: ${ufField || "—"}`);
+        chips.push(`<b>Data</b>: ${dateField || "—"}`);
+      }
+      showChips(chips);
+
+      // compact mode when base loaded or demo loaded
+      setUploadsCompact(state.baseSource !== "none");
+    }
+
+    /* =========================================================
+       UI: Filters
+    ========================================================= */
+    function setupFilters(enriched){
+      const monthKeys = Array.from(new Set(enriched.map(r=>r.month))).filter(Boolean).sort();
+      const months = monthKeys.map(k => ({ value:k, label: formatMonthLabel(k) }));
+
+      const regions = Array.from(new Set(enriched.map(r=>r.regiao))).filter(Boolean).sort();
+      const ufs = Array.from(new Set(enriched.map(r=>r.uf))).filter(Boolean).sort();
+
+      fillSelect(monthFilter, months, "Todos os meses");
+      fillSelect(regionFilter, regions.map(r=>({value:r,label:r})), "Todas as regiões");
+      fillSelect(ufFilter, ufs.map(u=>({value:u,label:u})), "Todos os estados");
+      updateClearRegionLink();
+    }
+
+    function rebuildUFOptionsByRegion(regionValue){
+      const allUFs = Array.from(new Set(state.enriched.map(r=>r.uf))).filter(Boolean).sort();
+      if(regionValue === "__all"){
+        fillSelect(ufFilter, allUFs.map(u=>({value:u,label:u})), "Todos os estados");
+        return;
+      }
+      const allowed = (REGION_UFS[regionValue] || []).slice().sort();
+      const allowedExisting = allowed.filter(u => allUFs.includes(u));
+      fillSelect(ufFilter, allowedExisting.map(u=>({value:u,label:u})), "Todos os estados");
+    }
+
+    function updateClearRegionLink(){
+      clearRegionWrap.hidden = (regionFilter.value === "__all");
+    }
+
+    /* =========================================================
+       UI: KPI
+    ========================================================= */
+    function renderKPIs(rows){
+      const t = rows.reduce((acc, r) => {
+        acc.total++;
+        acc[r.status] = (acc[r.status] ?? 0) + 1;
+        return acc;
+      }, {total:0, won:0, lost:0, open:0, paused:0});
+
+      const active = t.open + t.paused;
+      const denom = (rateBase.value === "closed") ? (t.won + t.lost) : t.total;
+      const wr = denom ? (t.won/denom) : null;
+      const lr = denom ? (t.lost/denom) : null;
+
+      kpisEl.innerHTML = `
+        <div class="kpi hover-pop"><div class="label">Registros</div><div class="value">${int(t.total)}</div><div class="hint">após filtros</div></div>
+        <div class="kpi hover-pop"><div class="label">Ganhas</div><div class="value"><span style="color:var(--ok)">${int(t.won)}</span><span class="subpct ok">| ${pct(wr)}</span></div><div class="hint">quantidade | taxa</div></div>
+        <div class="kpi hover-pop"><div class="label">Perdidas</div><div class="value"><span style="color:var(--bad)">${int(t.lost)}</span><span class="subpct bad">| ${pct(lr)}</span></div><div class="hint">quantidade | taxa</div></div>
+        <div class="kpi hover-pop"><div class="label">Em negociação</div><div class="value">${int(active)}</div><div class="hint">ativas</div></div>
+      `;
+    }
+
+    /* =========================================================
+       UI: Metric expanded (2x2)
+    ========================================================= */
+    function closeOpenMetric(){
+      if(!state.openMetric) return;
+      const grid = state.openMetric;
+      grid.classList.remove("is-open");
+      grid._activeKey = null;
+      state.openMetric = null;
+    }
+
+    function openMetric(gridEl, info){
+      if(state.openMetric && state.openMetric !== gridEl){
+        closeOpenMetric();
+      }
+      state.openMetric = gridEl;
+
+      const expanded = gridEl.querySelector(".metric-expanded");
+      expanded.querySelector(".t").textContent = info.title;
+      expanded.querySelector(".p").textContent = info.text;
+      expanded.querySelector(".a").textContent = info.action ? ("Ação: " + info.action) : "";
+      expanded.querySelector(".a").style.display = info.action ? "block" : "none";
+
+      gridEl.classList.add("is-open");
+      gridEl._activeKey = info.key;
+    }
+
+    function metricExplain(key, context){
+      // context: "opp" | "risk" | "insight"
+      const base = {
+        volume: {
+          title: "Volume",
+          text: "Total de registros neste recorte.",
+          action: "Se o volume é alto e a taxa de ganho é baixa, revise segmentação e abordagem."
+        },
+        won: {
+          title: "Ganhas",
+          text: "Fechamentos ganhos neste recorte.",
+          action: "Escale onde há ganho consistente (mídia, SDR, foco comercial)."
+        },
+        lost: {
+          title: "Perdidas",
+          text: "Fechamentos perdidos neste recorte.",
+          action: "Concentre diagnóstico: qualificação, oferta, preço, SLA e follow-up."
+        },
+        active: {
+          title: "Em negociação",
+          text: "Negócios ainda abertos (inclui pausados).",
+          action: "Se ficar alto por muito tempo, é gargalo de follow-up ou SLA."
+        },
+        txwin: {
+          title: "Taxa de ganho",
+          text: "Percentual de ganhos sobre fechadas (ganhas + perdidas).",
+          action: "Use para comparar qualidade entre regiões/estados/cidades."
+        },
+        txlost: {
+          title: "Taxa de perda",
+          text: "Percentual de perdas sobre fechadas (ganhas + perdidas).",
+          action: "Se disparar, ajuste qualificação e critérios de entrada."
+        },
+        saldo: {
+          title: "Saldo (Ganhos − Perdidos)",
+          text: "Diferença líquida de fechamentos no período.",
+          action: "Saldo positivo indica melhora; negativo indica piora."
+        },
+        period: {
+          title: "Período",
+          text: "Intervalo usado para calcular a tendência.",
+          action: "Compare meses para entender evolução do funil."
+        }
+      };
+      return base[key] || { title:"Info", text:"", action:"" };
+    }
+
+    function wireMetricGrid(cardEl, context){
+      const grid = cardEl.querySelector(".metric-grid");
+      if(!grid) return;
+
+      // create expanded if missing
+      let expanded = grid.querySelector(".metric-expanded");
+      if(!expanded){
+        expanded = document.createElement("div");
+        expanded.className = "metric-expanded";
+        expanded.innerHTML = `
+          <button class="close" type="button" aria-label="Fechar">×</button>
+          <div class="t">Info</div>
+          <p class="p"></p>
+          <div class="a"></div>
+        `;
+        grid.appendChild(expanded);
+      }
+
+      expanded.querySelector(".close").addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeOpenMetric();
+      });
+
+      grid.querySelectorAll(".metric-box").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const key = btn.dataset.key;
+          const info = metricExplain(key, context);
+          info.key = key;
+          openMetric(grid, info);
+        });
+      });
+    }
+
+    // close on outside click / ESC
+    document.addEventListener("click", (e) => {
+      if(!state.openMetric) return;
+      if(state.openMetric.contains(e.target)) return;
+      closeOpenMetric();
+    });
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") closeOpenMetric();
+    });
+
+    /* =========================================================
+       UI: Signals (3x3 grid)
+    ========================================================= */
+    function makeSignalCard(kind, data){
+      // kind: "opp" | "risk" | "insight"
+      const badgeClass = data.badgeType === "good" ? "badge good" : (data.badgeType === "bad" ? "badge bad" : "badge");
+      const badgeText = data.badgeText || "auto";
+
+      const metricBoxes = data.metrics.map(m => {
+        return `
+          <button class="metric-box" type="button" data-key="${m.key}">
+            <span class="metric-info">ⓘ</span>
+            <div class="metric-k">${m.label}</div>
+            <div class="metric-v">${m.value}</div>
+          </button>
+        `;
+      }).join("");
+
+      const el = document.createElement("div");
+      el.className = "signal-card hover-pop";
+      el.innerHTML = `
+        <div class="signal-top">
+          <div>
+            <div class="signal-title">${data.title}</div>
+            <div class="signal-sub">${data.subtitle}</div>
+          </div>
+          <div class="${badgeClass}">${badgeText}</div>
+        </div>
+        <div class="metric-grid">
+          ${metricBoxes}
+        </div>
+      `;
+      // wire expanded behavior
+      wireMetricGrid(el, kind);
+      return el;
+    }
+
+    function renderSignals(agg){
+      // pick top 3 opp and top 3 risk based on cities
+      const rb = rateBase.value;
+      const denom = (m) => rb === "closed" ? (m.won + m.lost) : m.total;
+
+      const cities = agg.cities.slice();
+
+      const opp = cities
+        .filter(m => denom(m) >= 8 && m.winRate != null)
+        .sort((a,b) => (b.winRate - a.winRate) || (b.total - a.total))
+        .slice(0, 3);
+
+      const risks = cities
+        .filter(m => denom(m) >= 8 && m.lossRate != null)
+        .sort((a,b) => (b.lossRate - a.lossRate) || (b.total - a.total))
+        .slice(0, 3);
+
+      // insights: 3 cards
+      const series = (regionFilter.value === "__all") ? agg.regions : agg.cities;
+      const best = series.slice().filter(x=>x.winRate!=null).sort((a,b)=> (b.winRate-a.winRate) || (b.total-a.total))[0];
+      const worst = series.slice().filter(x=>x.lossRate!=null).sort((a,b)=> (b.lossRate-a.lossRate) || (b.total-a.total))[0];
+
+      const totals = agg.rows.reduce((acc, r) => {
+        acc.total++;
+        acc[r.status] = (acc[r.status] ?? 0) + 1;
+        return acc;
+      }, {total:0, won:0, lost:0, open:0, paused:0});
+      const active = totals.open + totals.paused;
+      const closed = totals.won + totals.lost;
+      const closeRate = totals.total ? closed/totals.total : null;
+      const activeRate = totals.total ? active/totals.total : null;
+
+      const months = agg.months.slice().filter(m=>m.month && m.month !== "(sem data)");
+      let deltaTxt = "—";
+      let periodTxt = "—";
+      if(months.length >= 2){
+        const first = months[0], last = months[months.length-1];
+        const delta = (last.won - last.lost) - (first.won - first.lost);
+        const arrow = delta >= 0 ? "↑" : "↓";
+        deltaTxt = `${arrow} ${int(Math.abs(delta))}`;
+        periodTxt = `${formatMonthLabel(first.month)} → ${formatMonthLabel(last.month)}`;
+      }
+
+      const oppCards = opp.map(m => ({
+        title: m.cidade,
+        subtitle: `${m.regiao} · ${m.uf} · ${m.microrregiao}`,
+        badgeType: "good",
+        badgeText: `Ganho ${pct(m.winRate)}`,
+        metrics: [
+          { key:"volume", label:"Volume", value:int(m.total) },
+          { key:"won", label:"Ganhas", value:`<span style="color:var(--ok)">${int(m.won)}</span>` },
+          { key:"active", label:"Em negociação", value:int((m.open||0)+(m.paused||0)) },
+          { key:"lost", label:"Perdidas", value:int(m.lost) },
+        ]
+      }));
+
+      const riskCards = risks.map(m => ({
+        title: m.cidade,
+        subtitle: `${m.regiao} · ${m.uf} · ${m.microrregiao}`,
+        badgeType: "bad",
+        badgeText: `Perda ${pct(m.lossRate)}`,
+        metrics: [
+          { key:"volume", label:"Volume", value:int(m.total) },
+          { key:"lost", label:"Perdidas", value:`<span style="color:var(--bad)">${int(m.lost)}</span>` },
+          { key:"active", label:"Em negociação", value:int((m.open||0)+(m.paused||0)) },
+          { key:"won", label:"Ganhas", value:int(m.won) },
+        ]
+      }));
+
+      const insightCards = [
+        {
+          title: "Destaque positivo",
+          subtitle: best ? ((regionFilter.value === "__all") ? best.regiao : `${best.cidade} · ${best.uf}`) : "—",
+          badgeType: "neutral",
+          badgeText: "auto",
+          metrics: best ? [
+            { key:"txwin", label:"Tx ganho", value:`<span style="color:var(--ok)">${pct(best.winRate)}</span>` },
+            { key:"volume", label:"Volume", value:int(best.total) },
+            { key:"won", label:"Ganhas", value:`<span style="color:var(--ok)">${int(best.won)}</span>` },
+            { key:"lost", label:"Perdidas", value:`<span style="color:var(--bad)">${int(best.lost)}</span>` },
+          ] : [
+            { key:"volume", label:"—", value:"—" }, { key:"won", label:"—", value:"—" }, { key:"lost", label:"—", value:"—" }, { key:"active", label:"—", value:"—" },
+          ]
+        },
+        {
+          title: "Destaque negativo",
+          subtitle: worst ? ((regionFilter.value === "__all") ? worst.regiao : `${worst.cidade} · ${worst.uf}`) : "—",
+          badgeType: "neutral",
+          badgeText: "auto",
+          metrics: worst ? [
+            { key:"txlost", label:"Tx perda", value:`<span style="color:var(--bad)">${pct(worst.lossRate)}</span>` },
+            { key:"volume", label:"Volume", value:int(worst.total) },
+            { key:"lost", label:"Perdidas", value:`<span style="color:var(--bad)">${int(worst.lost)}</span>` },
+            { key:"won", label:"Ganhas", value:`<span style="color:var(--ok)">${int(worst.won)}</span>` },
+          ] : [
+            { key:"volume", label:"—", value:"—" }, { key:"won", label:"—", value:"—" }, { key:"lost", label:"—", value:"—" }, { key:"active", label:"—", value:"—" },
+          ]
+        },
+        {
+          title: "Saúde do funil",
+          subtitle: "Fechamento, ativos e tendência",
+          badgeType: (closeRate!=null && closeRate>=0.55 && activeRate!=null && activeRate<=0.35) ? "good" : "neutral",
+          badgeText: "auto",
+          metrics: [
+            { key:"txwin", label:"Tx fechadas", value: closeRate==null ? "—" : `<span style="color:var(--ok)">${pct(closeRate)}</span>` },
+            { key:"active", label:"Tx ativas", value: activeRate==null ? "—" : (activeRate>0.40 ? `<span style="color:var(--bad)">${pct(activeRate)}</span>` : pct(activeRate)) },
+            { key:"period", label:"Período", value: periodTxt },
+            { key:"saldo", label:"Saldo (Ganhos − Perdidos)", value: deltaTxt.startsWith("↓") ? `<span style="color:var(--bad)">${deltaTxt}</span>` : `<span style="color:var(--ok)">${deltaTxt}</span>` },
+          ]
+        }
+      ];
+
+      // Ensure 3 each (pad if needed)
+      while(oppCards.length < 3){
+        oppCards.push({
+          title:"Sem oportunidades",
+          subtitle:"Ajuste filtros para ver destaques",
+          badgeType:"neutral",
+          badgeText:"auto",
+          metrics:[ {key:"volume",label:"—",value:"—"},{key:"won",label:"—",value:"—"},{key:"active",label:"—",value:"—"},{key:"lost",label:"—",value:"—"} ]
+        });
+      }
+      while(riskCards.length < 3){
+        riskCards.push({
+          title:"Sem riscos",
+          subtitle:"Ajuste filtros para ver destaques",
+          badgeType:"neutral",
+          badgeText:"auto",
+          metrics:[ {key:"volume",label:"—",value:"—"},{key:"lost",label:"—",value:"—"},{key:"active",label:"—",value:"—"},{key:"won",label:"—",value:"—"} ]
+        });
+      }
+
+      // Build 3 rows x 3 cols: (opp[i], risk[i], insight[i])
+      signalsGrid.innerHTML = "";
+      for(let i=0;i<3;i++){
+        signalsGrid.appendChild(makeSignalCard("opp", oppCards[i]));
+        signalsGrid.appendChild(makeSignalCard("risk", riskCards[i]));
+        signalsGrid.appendChild(makeSignalCard("insight", insightCards[i]));
+      }
+    }
+
+    /* =========================================================
+       CHARTS: unified tooltip + drag effect + hover highlight
+    ========================================================= */
+    let tooltipHideTimer = null;
+
+    function showChartTooltip({title, lines, x, y}){
+      clearTimeout(tooltipHideTimer);
+      tooltipHideTimer = null;
+
+      const htmlLines = lines.map(l => `
+        <div class="line">
+          <span class="sq" style="background:${l.color}"></span>
+          <span>${l.text}</span>
+        </div>
+      `).join("");
+
+      chartTooltip.innerHTML = `
+        <div class="ttl">${title}</div>
+        ${htmlLines}
+      `;
+
+      chartTooltip.style.opacity = 1;
+      chartTooltip.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -110%)`;
+    }
+
+    function hideChartTooltipSoft(){
+      if(tooltipHideTimer) return;
+      tooltipHideTimer = setTimeout(() => {
+        chartTooltip.style.opacity = 0;
+      }, 90);
+    }
+
+    function externalTooltipHandler(context, mode){
+      const {chart, tooltip} = context;
+      if(!tooltip || tooltip.opacity === 0){
+        hideChartTooltipSoft();
+        return;
+      }
+
+      // coords
+      const rect = chart.canvas.getBoundingClientRect();
+      const x = rect.left + window.scrollX + tooltip.caretX;
+      const y = rect.top + window.scrollY + tooltip.caretY;
+
+      // title
+      const title = (tooltip.title && tooltip.title.length) ? tooltip.title[0] : "";
+
+      // Build lines
+      let lines = [];
+
+      if(mode === "winrate"){
+        const i = tooltip.dataPoints?.[0]?.dataIndex ?? 0;
+        const wins = chart._wins?.[i] ?? 0;
+        const losses = chart._losses?.[i] ?? 0;
+        const denom = chart._denom?.[i] ?? 0;
+        const winPct = denom ? pct(wins/denom) : "—";
+        const lossPct = denom ? pct(losses/denom) : "—";
+        lines = [
+          { color: getCss("--ok"),  text: `Ganhas: ${int(wins)} | ${winPct}` },
+          { color: getCss("--bad"), text: `Perdidas: ${int(losses)} | ${lossPct}` },
+        ];
+      } else if(mode === "monthly"){
+        const i = tooltip.dataPoints?.[0]?.dataIndex ?? 0;
+        const wins = Number(chart.data.datasets?.[0]?.data?.[i] ?? 0);
+        const losses = Number(chart.data.datasets?.[1]?.data?.[i] ?? 0);
+        const denom = wins + losses;
+        lines = [
+          { color: "#66B3FF", text: `Ganhos: ${int(wins)} | ${denom ? pct(wins/denom) : "—"}` },
+          { color: "#FF6B8A", text: `Perdidos: ${int(losses)} | ${denom ? pct(losses/denom) : "—"}` },
+        ];
+      } else {
+        // default: use tooltip.dataPoints order
+        lines = tooltip.dataPoints.map(dp => ({
+          color: dp.dataset.borderColor || dp.dataset.backgroundColor || "#999",
+          text: `${dp.dataset.label}: ${int(dp.raw)}`
+        }));
+      }
+
+      showChartTooltip({ title, lines, x, y });
+    }
+
+    function getCss(varName){
+      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    }
+
+    function chartHoverCursor(chart, evt, isClickable=false){
+      const pts = chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false);
+      chart.canvas.style.cursor = (pts && pts.length && isClickable) ? 'pointer' : 'default';
+    }
+
+    function buildCharts(agg){
+      const gridColor = getCss("--line") || "rgba(0,0,0,.1)";
+      const tickColor = getCss("--muted") || "#666";
+      const borderHover = state.theme === "dark" ? "rgba(255,255,255,.20)" : "rgba(0,0,0,.14)";
+
+      // Volume por Região (stacked)
+      if(!state.charts.volReg){
+        state.charts.volReg = new Chart($("#chartVolReg"), {
+          type:"bar",
+          data:{ labels:[], datasets:[] },
+          options:{
+            responsive:true,
+            maintainAspectRatio:false,
+            animation:{duration:220},
+            scales:{
+              x:{ stacked:true, ticks:{ color: tickColor }, grid:{ color: gridColor } },
+              y:{ stacked:true, beginAtZero:true, ticks:{ color: tickColor }, grid:{ color: gridColor } }
+            },
+            plugins:{
+              legend:{ labels:{ color: tickColor, font:{ family: Chart.defaults.font.family } } },
+              tooltip:{ enabled:false, external:(ctx)=>externalTooltipHandler(ctx, "stacked") }
+            },
+            onHover:(evt)=> chartHoverCursor(state.charts.volReg, evt, true),
+            onClick:(evt, els)=>{
+              if(!els?.length) return;
+              const label = state.charts.volReg.data.labels[els[0].index];
+              if(label){
+                regionFilter.value = label;
+                rebuildUFOptionsByRegion(label);
+                ufFilter.value = "__all";
+                refresh();
+              }
+            }
+          }
+        });
+      }
+
+      // Win rate por Região (bars)
+      if(!state.charts.winReg){
+        state.charts.winReg = new Chart($("#chartWinReg"), {
+          type:"bar",
+          data:{ labels:[], datasets:[] },
+          options:{
+            responsive:true,
+            maintainAspectRatio:false,
+            animation:{duration:220},
+            scales:{
+              x:{ ticks:{ color: tickColor }, grid:{ color: gridColor } },
+              y:{ beginAtZero:true, max:1, ticks:{ color: tickColor, callback:v => (v*100).toFixed(0)+"%" }, grid:{ color: gridColor } }
+            },
+            plugins:{
+              legend:{ display:false },
+              tooltip:{ enabled:false, external:(ctx)=>externalTooltipHandler(ctx, "winrate") }
+            },
+            onHover:(evt)=> chartHoverCursor(state.charts.winReg, evt, false)
+          }
+        });
+      }
+
+      // Volume por Estado (stacked)
+      if(!state.charts.volUf){
+        state.charts.volUf = new Chart($("#chartVolUf"), {
+          type:"bar",
+          data:{ labels:[], datasets:[] },
+          options:{
+            responsive:true,
+            maintainAspectRatio:false,
+            animation:{duration:220},
+            scales:{
+              x:{ stacked:true, ticks:{ color: tickColor }, grid:{ color: gridColor } },
+              y:{ stacked:true, beginAtZero:true, ticks:{ color: tickColor }, grid:{ color: gridColor } }
+            },
+            plugins:{
+              legend:{ labels:{ color: tickColor, font:{ family: Chart.defaults.font.family } } },
+              tooltip:{ enabled:false, external:(ctx)=>externalTooltipHandler(ctx, "stacked") }
+            },
+            onHover:(evt)=> chartHoverCursor(state.charts.volUf, evt, false)
+          }
+        });
+      }
+
+      // Monthly line
+      if(!state.charts.monthly){
+        state.charts.monthly = new Chart($("#chartMonthly"), {
+          type:"line",
+          data:{ labels:[], datasets:[] },
+          options:{
+            responsive:true,
+            maintainAspectRatio:false,
+            animation:{duration:220},
+            interaction:{ mode:"index", intersect:false },
+            plugins:{
+              legend:{ labels:{ color: tickColor, font:{ family: Chart.defaults.font.family } } },
+              tooltip:{ enabled:false, external:(ctx)=>externalTooltipHandler(ctx, "monthly") }
+            },
+            scales:{
+              x:{ ticks:{ color: tickColor }, grid:{ color: gridColor } },
+              y:{ beginAtZero:true, ticks:{ color: tickColor }, grid:{ color: gridColor } }
+            },
+            elements:{
+              point:{ radius:3, hoverRadius:5, hoverBorderWidth:2 },
+              line:{ borderWidth:3 }
+            }
+          }
+        });
+      }
+
+      // Apply datasets (with subtle hover border)
+      const volReg = state.charts.volReg;
+      volReg.data.labels = agg.regions.map(r => r.regiao);
+      volReg.data.datasets = [
+        { label:"Ganhas", data: agg.regions.map(r=>r.won), backgroundColor:"rgba(102,179,255,.55)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
+        { label:"Perdidas", data: agg.regions.map(r=>r.lost), backgroundColor:"rgba(255,107,138,.45)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
+        { label:"Em negociação", data: agg.regions.map(r=>(r.open+r.paused)), backgroundColor:"rgba(255,186,120,.45)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
+      ];
+      volReg.update();
+
+      const winReg = state.charts.winReg;
+      const denoms = agg.regions.map(r => (rateBase.value === "closed") ? (r.won + r.lost) : r.total);
+      winReg._wins = agg.regions.map(r=>r.won);
+      winReg._losses = agg.regions.map(r=>r.lost);
+      winReg._denom = denoms;
+      winReg.data.labels = agg.regions.map(r=>r.regiao);
+      winReg.data.datasets = [
+        { label:"Tx ganho", data: agg.regions.map((r,i)=> denoms[i] ? (r.won/denoms[i]) : null), backgroundColor:"rgba(102,179,255,.55)", hoverBorderColor:borderHover, hoverBorderWidth:2 }
+      ];
+      winReg.update();
+
+      const volUf = state.charts.volUf;
+      volUf.data.labels = agg.ufs.map(u=>u.uf);
+      volUf.data.datasets = [
+        { label:"Ganhas", data: agg.ufs.map(u=>u.won), backgroundColor:"rgba(102,179,255,.55)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
+        { label:"Perdidas", data: agg.ufs.map(u=>u.lost), backgroundColor:"rgba(255,107,138,.45)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
+        { label:"Em negociação", data: agg.ufs.map(u=>(u.open+u.paused)), backgroundColor:"rgba(255,186,120,.45)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
+      ];
+      volUf.update();
+
+      const monthly = state.charts.monthly;
+      monthly.data.labels = agg.months.map(m=>formatMonthLabel(m.month));
+      monthly.data.datasets = [
+        { label:"Ganhos", data: agg.months.map(m=>m.won), borderColor:"rgba(102,179,255,1)", backgroundColor:"rgba(102,179,255,.20)", pointBackgroundColor:"rgba(102,179,255,1)" },
+        { label:"Perdidos", data: agg.months.map(m=>m.lost), borderColor:"rgba(255,107,138,1)", backgroundColor:"rgba(255,107,138,.20)", pointBackgroundColor:"rgba(255,107,138,1)" },
+      ];
+      monthly.update();
+    }
+
+    /* =========================================================
+       TABLE + pagination (Portuguese)
+    ========================================================= */
+    function buildTable(cities){
+      if(!state.table){
+        state.table = new Tabulator("#cityTable", {
+          data: cities,
+          layout: "fitColumns",
+          height: 580,
+          pagination: "local",
+          paginationSize: Number(pageSizeSel.value || 25),
+          placeholder: "Sem cidades para este recorte.",
+          initialSort: [{column:"total", dir:"desc"}],
+          columns: [
+            { title:"Região", field:"regiao", headerFilter:"input" },
+            { title:"Estado", field:"uf", headerFilter:"input", width:90 },
+            { title:"Microrregião", field:"microrregiao", headerFilter:"input" },
+            { title:"Cidade", field:"cidade", headerFilter:"input" },
+            { title:"Total", field:"total", sorter:"number", hozAlign:"right" },
+            { title:"Ganhas", field:"won", sorter:"number", hozAlign:"right" },
+            { title:"Perdidas", field:"lost", sorter:"number", hozAlign:"right" },
+            {
+              title:"Em negociação",
+              field:"open",
+              sorter:"number",
+              hozAlign:"right",
+              formatter: (cell) => {
+                const d = cell.getData();
+                return int((d.open ?? 0) + (d.paused ?? 0));
+              }
+            },
+            { title:"Tx ganho", field:"winRate", sorter:"number", hozAlign:"right", formatter:(c)=>pct(c.getValue()) },
+            { title:"Tx perda", field:"lossRate", sorter:"number", hozAlign:"right", formatter:(c)=>pct(c.getValue()) },
+          ],
+        });
+
+        state.table.on("pageLoaded", () => updateTableMeta());
+        state.table.on("dataProcessed", () => updateTableMeta());
+      }else{
+        state.table.replaceData(cities);
+      }
+
+      applyTableSearch();
+      updateTableMeta();
+    }
+
+    function updateTableMeta(){
+      if(!state.table || !state.agg) { tableMeta.textContent = "—"; return; }
+      const total = state.agg.cities.length;
+      const page = state.table.getPage ? state.table.getPage() : 1;
+      const size = state.table.getPageSize ? state.table.getPageSize() : Number(pageSizeSel.value || 25);
+      const start = total === 0 ? 0 : (page - 1) * size + 1;
+      const end = Math.min(total, page * size);
+      tableMeta.innerHTML = total ? `Mostrando <b>${start}–${end}</b> de <b>${total}</b>` : "Nenhum resultado";
+    }
+
+    function applyTableSearch(){
+      if(!state.table) return;
+      const q = (tableSearch.value || "").trim();
+      if(!q){
+        state.table.clearFilter(true);
+        return;
+      }
+      state.table.setFilter([
+        {field:"cidade", type:"like", value:q},
+        {field:"microrregiao", type:"like", value:q},
+        {field:"uf", type:"like", value:q},
+        {field:"regiao", type:"like", value:q},
+      ], "or");
+    }
+
+    /* =========================================================
+       ANALYZE
+    ========================================================= */
+    function validateBase(){
+      const fields = state.baseFields || [];
+      const required = TEMPLATE.base.required;
+
+      // Must detect required columns by fuzzy matching
+      const hasCity = !!findField(fields, ["Cidade","cidade","Município","Municipio","municipio"]);
+      const hasUF = !!findField(fields, ["Estado","estado","UF","uf"]);
+      const hasDate = !!findField(fields, ["Data de criação","data de criação","data de criacao","criado em","created","data"]);
+      const hasV = !!findField(fields, ["Vendas","vendas"]);
+      const hasP = !!findField(fields, ["Perdidos","perdidos"]);
+      const hasEA = !!findField(fields, ["Em andamento","em andamento","emandamento","em_andamento"]);
+      const hasPA = !!findField(fields, ["Pausados","pausados"]);
+
+      return hasCity && hasUF && hasDate && hasV && hasP && hasEA && hasPA;
+    }
+
+    function runAnalysis(){
+      if(state.baseSource === "none" || !state.baseRows.length) return;
+
+      if(!validateBase()){
+        setStatus(`<b>Base inválida</b> · verifique as colunas obrigatórias`, "atenção");
+        return;
+      }
+
+      state.enriched = enrichBase(state.baseRows);
+      setupFilters(state.enriched);
+
+      // Ensure UF list restricted if region already selected (rare)
+      state.agg = aggregate(state.enriched);
+
+      resultsSection.hidden = false;
+      renderKPIs(state.agg.rows);
+      renderSignals(state.agg);
+      buildCharts(state.agg);
+      buildTable(state.agg.cities);
+
+      // Compact uploads after analysis
+      updateUploadsUI();
+
+      // scroll to results when demo is loaded
+      document.getElementById("resultados").scrollIntoView({behavior:"smooth", block:"start"});
+    }
+
+    /* =========================================================
+       ACTIONS
+    ========================================================= */
+    async function handlePrimary(){
+      try{
+        if(state.baseSource === "none"){
+          // demo
+          const rows = await loadDemo();
+          state.baseSource = "demo";
+          state.baseRows = rows;
+          state.baseFields = rows.length ? Object.keys(rows[0] || {}).filter(Boolean) : [];
+          state.baseFileName = "Demo (rd_demo.csv)";
+          setStatus(`<b>Demo carregada</b> · ${int(rows.length)} registros`, "ok");
+          updateUploadsUI();
+          runAnalysis();
+          return;
+        }
+
+        // analyze
+        setStatus(`<b>Processando…</b>`, "aguarde");
+        runAnalysis();
+      }catch(e){
+        setStatus(`<b>Erro</b> · ${e.message}`, "atenção");
+      }
+    }
+
+    function handleClearAll(){
+      // reset everything
+      state.baseSource = "none";
+      state.baseFileName = "";
+      state.mapFileName = "";
+      state.baseRows = [];
+      state.baseFields = [];
+      state.mapIndex = null;
+      state.mapHasRegion = false;
+      state.enriched = [];
+      state.agg = null;
+
+      setFileName(baseName, "");
+      setFileName(mapName, "");
+      baseFile.value = "";
+      mapFile.value = "";
+
+      resultsSection.hidden = true;
+      uploadsChips.hidden = true;
+      uploadsChips.innerHTML = "";
+
+      setStatus(`<b>Pronto</b> · carregue uma base ou veja a demo`, "ok");
+
+      // Back to expanded uploads
+      setUploadsCompact(false);
+      updateUploadsUI();
+    }
+
+    function handleTemplateBase(){
+      const header = TEMPLATE.base.required.concat(TEMPLATE.base.optional);
+      const sample = [
+        "Juiz de Fora,MG,2025-10-15,1,0,0,0,1234,Exemplo",
+        "Campinas,SP,2025-11-03,0,1,0,0,1235,Exemplo 2"
+      ];
+      downloadCSV("template_base_crm.csv", header, sample);
+    }
+
+    function handleTemplateMap(){
+      const header = TEMPLATE.map.required.concat(TEMPLATE.map.optional);
+      const sample = [
+        "Juiz de Fora,MG,Zona da Mata,Sudeste",
+        "Campinas,SP,Campinas,Sudeste"
+      ];
+      downloadCSV("template_mapa_interno.csv", header, sample);
+    }
+
+    function handleClearFilters(){
+      monthFilter.value = "__all";
+      regionFilter.value = "__all";
+      rebuildUFOptionsByRegion("__all");
+      ufFilter.value = "__all";
+      rateBase.value = "closed";
+      runAnalysis();
+    }
+
+    function handleExportSummary(){
+      if(!state.agg) return;
+      const rows = state.agg.cities.map(c => {
+        const emNeg = (c.open ?? 0) + (c.paused ?? 0);
+        return [c.regiao,c.uf,c.microrregiao,c.cidade,c.total,c.won,c.lost,emNeg,
+          c.winRate==null?"":String(c.winRate).replace(".",","), c.lossRate==null?"":String(c.lossRate).replace(".",",")
+        ].map(v => `"${String(v??"").replaceAll('"','""')}"`).join(";");
+      });
+      const header = ["regiao","estado","microrregiao","cidade","total","ganhas","perdidas","em_negociacao","tx_ganho","tx_perda"].join(";");
+      const blob = new Blob([header + "\n" + rows.join("\n")], {type:"text/csv;charset=utf-8;"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "resumo_cidades.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(a.href), 800);
+    }
+
+    function handleExportTable(){
+      if(!state.table) return;
+      const data = state.table.getData();
+      const header = ["regiao","estado","microrregiao","cidade","total","ganhas","perdidas","em_negociacao","tx_ganho","tx_perda"].join(";");
+      const rows = data.map(r => {
+        const emNeg = (r.open ?? 0) + (r.paused ?? 0);
+        return [r.regiao,r.uf,r.microrregiao,r.cidade,r.total,r.won,r.lost,emNeg,
+          r.winRate==null?"":String(r.winRate).replace(".",","), r.lossRate==null?"":String(r.lossRate).replace(".",",")
+        ].map(v => `"${String(v??"").replaceAll('"','""')}"`).join(";");
+      });
+      const blob = new Blob([header + "\n" + rows.join("\n")], {type:"text/csv;charset=utf-8;"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "tabela_filtrada.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(a.href), 800);
+    }
+
+    /* =========================================================
+       EVENTS
+    ========================================================= */
+    basePick.addEventListener("click", () => baseFile.click());
+    mapPick.addEventListener("click", () => mapFile.click());
+
+    baseFile.addEventListener("change", async () => {
+      try{
+        const file = baseFile.files?.[0];
+        if(!file) return;
+
+        setStatus(`<b>Lendo base…</b>`, "aguarde");
+        const rows = await parseAny(file);
+
+        state.baseSource = "file";
+        state.baseFileName = file.name;
+        state.baseRows = rows;
+        state.baseFields = rows.length ? Object.keys(rows[0] || {}).filter(Boolean) : [];
+
+        updateUploadsUI();
+        setStatus(`<b>Base carregada</b> · ${int(rows.length)} registros`, "ok");
+
+        // hide demo automatically (primary becomes Analisar)
+      }catch(e){
+        setStatus(`<b>Erro</b> · ${e.message}`, "atenção");
+      }
+    });
+
+    mapFile.addEventListener("change", async () => {
+      try{
+        const file = mapFile.files?.[0];
+        if(!file){ state.mapIndex = null; state.mapHasRegion = false; state.mapFileName=""; updateUploadsUI(); return; }
+
+        setStatus(`<b>Lendo mapa interno…</b>`, "aguarde");
+        const {idx, hasRegion} = await parseInternalMap(file);
+        state.mapIndex = idx;
+        state.mapHasRegion = hasRegion;
+        state.mapFileName = file.name;
+
+        updateUploadsUI();
+        setStatus(`<b>Mapa interno carregado</b> · ${int(idx.size)} chaves`, "ok");
+
+        // if already analyzed, refresh
+        if(state.baseSource !== "none" && state.baseRows.length) runAnalysis();
+      }catch(e){
+        setStatus(`<b>Erro</b> · ${e.message}`, "atenção");
+      }
+    });
+
+    primaryAction.addEventListener("click", handlePrimary);
+    clearAllBtn.addEventListener("click", handleClearAll);
+    tplBaseBtn.addEventListener("click", handleTemplateBase);
+    tplMapBtn.addEventListener("click", handleTemplateMap);
+
+    uploadsToggle.addEventListener("click", () => {
+      setUploadsCompact(false);
+      uploadsToggle.style.display = "none";
+    });
+
+    // Filters
+    regionFilter.addEventListener("change", () => {
+      if(!state.enriched.length) return;
+      rebuildUFOptionsByRegion(regionFilter.value);
+      ufFilter.value = "__all";
+      runAnalysis();
+    });
+    [monthFilter, ufFilter, rateBase].forEach(el => el.addEventListener("change", () => {
+      if(!state.enriched.length) return;
+      runAnalysis();
+    }));
+
+    clearFiltersBtn.addEventListener("click", handleClearFilters);
+    exportSummaryBtn.addEventListener("click", handleExportSummary);
+    exportTableBtn.addEventListener("click", handleExportTable);
+
+    pageSizeSel.addEventListener("change", () => {
+      if(!state.table) return;
+      state.table.setPageSize(Number(pageSizeSel.value));
+      updateTableMeta();
+    });
+
+    tableSearch.addEventListener("input", () => {
+      applyTableSearch();
+      updateTableMeta();
+    });
+
+    clearRegionLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      regionFilter.value = "__all";
+      rebuildUFOptionsByRegion("__all");
+      ufFilter.value = "__all";
+      runAnalysis();
+    });
+
+    /* =========================================================
+       BOOT
+    ========================================================= */
+    window.addEventListener("resize", updateScrollPadding);
+
+    function boot(){
+      initTheme();
+      updateScrollPadding();
+      setStatus(`<b>Carregando IBGE…</b>`, "aguarde");
+      loadIBGEIndex().then(() => {
+        // after IBGE, show initial status
+        if(state.baseSource === "none"){
+          setStatus(`<b>Pronto</b> · carregue uma base ou veja a demo`, "ok");
+        }
+      });
+      updateUploadsUI();
+    }
+
+    boot();
+  </script>
+</body>
+</html>
