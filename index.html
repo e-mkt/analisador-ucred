@@ -575,6 +575,17 @@
       color: var(--muted);
       border: none;
     }
+    /* Badge neutro (auto) — mais leve */
+.badge{
+  font-weight: 650;              /* reduz peso do "auto" */
+  background: color-mix(in srgb, var(--text) 7%, transparent); /* mais claro */
+  color: color-mix(in srgb, var(--text) 55%, transparent);     /* mais neutro */
+}
+
+/* Garante que não tenha borda */
+.badge{
+  border: none;
+}
     .badge.good{
       background: color-mix(in srgb, var(--ok) 12%, transparent);
       color: var(--ok);
