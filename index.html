@@ -1,1115 +1,1133 @@
 <!doctype html>
-<html lang="pt-BR" data-theme="light">
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Analisador CRM | eMKT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ucred · Analisador</title>
 
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://cdn.jsdelivr.net/npm/tabulator-tables@6.2.1/dist/css/tabulator.min.css" rel="stylesheet">
 
   <style>
     :root{
-      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, system-ui, sans-serif;
 
-      --bg: #f6f7fb;
-      --card: #ffffff;
+      --bg: #f3f6fb;
       --text: #0b1220;
-      --muted: #5a6475;
-      --line: rgba(17, 24, 39, .10);
-      --shadow: 0 18px 45px rgba(15, 23, 42, .10);
-      --shadow2: 0 10px 24px rgba(15, 23, 42, .08);
+      --muted: rgba(11,18,32,.62);
+      --muted2: rgba(11,18,32,.48);
 
-      --radius-xl: 22px;
-      --radius-lg: 18px;
-      --radius-md: 14px;
+      --card: rgba(255,255,255,.92);
+      --cardSolid: #ffffff;
 
-      --ok: #16a34a;
-      --bad: #ef4444;
-      --warn: #f59e0b;
-      --okSoft: rgba(22,163,74,.85);
-      --badSoft: rgba(239,68,68,.86);
+      --border: rgba(11,18,32,.10);
+      --border2: rgba(11,18,32,.08);
 
-      --accent: #0ea5a4;
-      --accent2: #06b6d4;
+      --shadow: 0 18px 60px rgba(17,24,39,.10);
+      --shadow2: 0 10px 30px rgba(17,24,39,.08);
 
-      --focus: 0 0 0 4px rgba(14,165,164,.16);
+      --headerBg: rgba(255,255,255,.78);
+      --headerBorder: rgba(11,18,32,.10);
 
-      --container: 1200px;
+      --pillBg: rgba(11,18,32,.06);
+      --pillText: rgba(11,18,32,.58);
 
-      /* Header pill */
-      --navBorder: rgba(17,24,39,.10);
-      --navText: rgba(11,18,32,.86);
-      --navMuted: rgba(11,18,32,.56);
-      --navBg: rgba(255,255,255,.86);
-      --navGradA: rgba(255,255,255,.92);
-      --navGradB: rgba(240,243,250,.88);
+      --okBg: rgba(19, 160, 92, .12);
+      --okText: rgba(19, 160, 92, .95);
 
-      /* Table (light) */
-      --tblBg: #ffffff;
-      --tblBgAlt: #f7f8fb;
-      --tblBorder: rgba(17,24,39,.14);
-      --tblHead: #f0f3f8;
-      --tblText: rgba(11,18,32,.92);
-      --tblMuted: rgba(11,18,32,.62);
+      --warnBg: rgba(245, 158, 11, .18);
+      --warnText: rgba(245, 158, 11, .98);
+
+      --badBg: rgba(239, 68, 68, .14);
+      --badText: rgba(239, 68, 68, .98);
+
+      --kpiWin: rgba(17, 160, 90, .95);
+      --kpiLoss: rgba(239, 68, 68, .95);
+
+      --rateWinTint: rgba(17, 160, 90, .62);
+      --rateLossTint: rgba(239, 68, 68, .62);
+
+      --blue: rgba(59, 130, 246, .42);
+      --blueLine: rgba(59, 130, 246, .95);
+
+      --pink: rgba(244, 114, 182, .42);
+      --pinkLine: rgba(244, 114, 182, .95);
+
+      --amber: rgba(245, 158, 11, .28);
+      --amberLine: rgba(245, 158, 11, .90);
+
+      --grid: rgba(11,18,32,.12);
+      --axis: rgba(11,18,32,.55);
+
+      --anchorOffset: 92px; /* recalculado via JS */
+      --radiusXL: 28px;
+      --radiusL: 22px;
+      --radiusM: 16px;
+
+      --tap: 44px;
     }
 
-    html[data-theme="dark"]{
-      /* less black, elegant */
-      --bg: #141823;
-      --card: #171d2a;
+    html.dark{
+      --bg: #0f141b;              /* menos “preto puro” */
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.62);
-      --line: rgba(255,255,255,.10);
-      --shadow: 0 18px 45px rgba(0,0,0,.48);
-      --shadow2: 0 10px 24px rgba(0,0,0,.34);
+      --muted2: rgba(255,255,255,.48);
 
-      --ok: #34d399;
-      --bad: #fb7185;
-      --warn: #fbbf24;
-      --okSoft: rgba(52,211,153,.82);
-      --badSoft: rgba(251,113,133,.84);
+      --card: rgba(19, 26, 36, .72);
+      --cardSolid: #131a24;
 
-      --focus: 0 0 0 4px rgba(52,211,153,.18);
+      --border: rgba(255,255,255,.10);
+      --border2: rgba(255,255,255,.07);
 
-      --navBorder: rgba(255,255,255,.10);
-      --navText: rgba(255,255,255,.92);
-      --navMuted: rgba(255,255,255,.62);
-      --navBg: rgba(10,12,18,.75);
-      --navGradA: rgba(12,14,20,.86);
-      --navGradB: rgba(18,24,34,.78);
+      --shadow: 0 20px 80px rgba(0,0,0,.45);
+      --shadow2: 0 12px 40px rgba(0,0,0,.35);
 
-      /* Table (dark) */
-      --tblBg: #0f131d;
-      --tblBgAlt: #131a26;
-      --tblBorder: rgba(255,255,255,.18);
-      --tblHead: #171e2b;
-      --tblText: rgba(255,255,255,.92);
-      --tblMuted: rgba(255,255,255,.66);
+      --headerBg: rgba(12, 16, 23, .72);
+      --headerBorder: rgba(255,255,255,.10);
+
+      --pillBg: rgba(255,255,255,.08);
+      --pillText: rgba(255,255,255,.62);
+
+      --okBg: rgba(19, 160, 92, .16);
+      --okText: rgba(43, 230, 140, .90);
+
+      --warnBg: rgba(245, 158, 11, .22);
+      --warnText: rgba(255, 196, 92, .95);
+
+      --badBg: rgba(239, 68, 68, .20);
+      --badText: rgba(255, 120, 120, .95);
+
+      --kpiWin: rgba(43, 230, 140, .95);
+      --kpiLoss: rgba(255, 120, 120, .95);
+
+      --rateWinTint: rgba(43, 230, 140, .62);
+      --rateLossTint: rgba(255, 120, 120, .62);
+
+      --blue: rgba(59, 130, 246, .38);
+      --blueLine: rgba(96, 165, 250, .98);
+
+      --pink: rgba(244, 114, 182, .36);
+      --pinkLine: rgba(251, 113, 133, .95);
+
+      --amber: rgba(245, 158, 11, .24);
+      --amberLine: rgba(245, 158, 11, .90);
+
+      --grid: rgba(255,255,255,.10);
+      --axis: rgba(255,255,255,.58);
     }
 
-    *{ box-sizing:border-box; }
-    html{
-      scroll-behavior:smooth;
-      scroll-padding-top: 84px; /* will be overwritten by JS for precision */
-    }
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
     body{
-      margin:0;
-      font-family: var(--font-sans);
-      background:
-        radial-gradient(900px 500px at 15% -10%, rgba(14,165,164,.14), transparent 55%),
-        radial-gradient(800px 520px at 100% 0%, rgba(6,182,212,.10), transparent 55%),
-        var(--bg);
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
       color: var(--text);
-      transition: background-color .18s ease, color .18s ease;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .shell{
-      max-width: var(--container);
+    /* Evita “camadas repetidas” abaixo do rodapé */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 520px;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        radial-gradient(900px 320px at 50% 0%, rgba(16,185,129,.12), transparent 60%),
+        radial-gradient(800px 280px at 20% 0%, rgba(59,130,246,.10), transparent 62%),
+        radial-gradient(900px 300px at 80% 0%, rgba(244,114,182,.08), transparent 62%);
+      opacity: .85;
+    }
+    html.dark body::before{
+      opacity: .55;
+      background:
+        radial-gradient(900px 320px at 50% 0%, rgba(16,185,129,.16), transparent 60%),
+        radial-gradient(800px 280px at 20% 0%, rgba(59,130,246,.14), transparent 62%),
+        radial-gradient(900px 300px at 80% 0%, rgba(244,114,182,.10), transparent 62%);
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    button, input, select{ font-family: var(--font); }
+
+    .wrap{
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 22px 18px 56px;
+      padding: 18px 18px 28px;
     }
 
-    /* Floating sticky header pill */
-    .topbar{
+    /* Header */
+    .topbarWrap{
       position: sticky;
-      top: 0;
-      z-index: 30;
-      padding: 12px 0;
-      background: transparent;
-      backdrop-filter: blur(10px);
+      top: 16px;
+      z-index: 50;
+      padding: 16px 18px 0;
     }
-    .topbar-inner{
-      max-width: var(--container);
+    .topbar{
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid var(--navBorder);
-      background: linear-gradient(180deg, var(--navGradA), var(--navGradB));
-      box-shadow: 0 12px 30px rgba(0,0,0,.08);
+      border: 1px solid var(--headerBorder);
+      background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.68));
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 12px 14px;
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: 220px 1fr 220px;
       align-items: center;
       gap: 10px;
     }
-    html[data-theme="dark"] .topbar-inner{
-      box-shadow: 0 18px 40px rgba(0,0,0,.38);
+    html.dark .topbar{
+      background: linear-gradient(180deg, rgba(10,14,20,.82), rgba(10,14,20,.62));
     }
 
     .brand{
-      display:flex;
-      align-items:center;
+      display: flex;
+      align-items: center;
       gap: 10px;
-      min-width: 160px;
+      padding-left: 8px;
+      min-width: 0;
     }
     .brand img{
-      height: 30px;
+      height: 28px;
       width: auto;
-      display:block;
+      display: block;
     }
 
-    .navlinks{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap: 16px;
-      flex-wrap: wrap;
+    .nav{
+      display: flex;
+      justify-content: center;
+      gap: 26px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
     }
-    .navlinks a{
-      color: var(--navMuted);
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 12px;
-      letter-spacing: .2px;
-      padding: 6px 10px;
+    .nav a{
+      padding: 8px 10px;
       border-radius: 999px;
-      transition: background-color .15s ease, color .15s ease;
+      transition: background .18s ease, color .18s ease, transform .18s ease;
     }
-    .navlinks a:hover{
-      color: var(--navText);
-      background: color-mix(in srgb, var(--navText) 10%, transparent);
-    }
-
-    .right{
-      display:flex;
-      justify-content:flex-end;
-      align-items:center;
-      gap: 10px;
+    .nav a:hover{
+      background: rgba(127,127,127,.10);
+      color: var(--text);
+      transform: translateY(-1px);
     }
 
-    /* iOS/macOS-like theme toggle */
-    .theme-btn{
-      width: 40px;
-      height: 40px;
+    .topbarRight{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 6px;
+    }
+
+    .themeBtn{
+      width: 44px; height: 44px;
       border-radius: 999px;
-      border: 1px solid var(--navBorder);
-      background: color-mix(in srgb, var(--navText) 6%, transparent);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      transition: transform .10s ease, filter .18s ease;
-      color: var(--navText);
+      border: 1px solid var(--border);
+      background: rgba(127,127,127,.10);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease;
     }
-    .theme-btn:hover{ filter: brightness(1.06); transform: translateY(-1px); }
-    .theme-btn:active{ transform: translateY(0) scale(.98); }
-    .theme-btn svg{ width: 18px; height: 18px; display:block; }
+    .themeBtn:hover{ transform: translateY(-1px) scale(1.03); background: rgba(127,127,127,.14); }
+    .themeBtn svg{ width: 18px; height: 18px; opacity: .85; }
 
-    /* Sections */
-    .hero{
-      margin-top: 8px;
-    }
-
+    /* Cards */
     .card{
       background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
+      border: 1px solid var(--border2);
+      border-radius: var(--radiusXL);
       box-shadow: var(--shadow);
-      padding: 22px;
-      margin-top: 22px;
-      transition: background-color .18s ease, border-color .18s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-    .card h2{
-      margin:0 0 14px;
-      font-size: 13px;
-      letter-spacing: .18px;
-      text-transform: uppercase;
-      color: color-mix(in srgb, var(--text) 70%, transparent);
+    .section{
+      scroll-margin-top: var(--anchorOffset);
+      margin-top: 18px;
     }
+    .sectionPad{ padding: 22px 22px; }
 
-    .hero h1{
-      margin:0;
-      font-size: 28px;
-      letter-spacing: -0.7px;
+    .heroTitle{
+      font-size: 42px;
+      line-height: 1.08;
+      margin: 0 0 10px;
+      letter-spacing: -.02em;
     }
-    .hero p{
-      margin: 10px 0 0;
+    .heroSub{
+      margin: 0;
       color: var(--muted);
-      line-height: 1.55;
-      max-width: 980px;
+      font-size: 18px;
+      line-height: 1.45;
+      max-width: 900px;
     }
 
-    /* Uploads */
-    .upload-head{
-      display:flex;
-      align-items:center;
+    /* Section header row */
+    .sectionHeader{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .sectionLabel{
+      font-size: 14px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      font-weight: 800;
+    }
+
+    /* Pills */
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      user-select: none;
+      white-space: nowrap;
+    }
+    /* Auto pill mais leve (pedido do print 1) */
+    .pillAuto{
+      background: rgba(127,127,127,.10);
+      color: rgba(127,127,127,.72);
+      font-weight: 600;
+      border: none;
+      padding: 7px 12px;
+    }
+    html.dark .pillAuto{
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.58);
+    }
+
+    .pillOk{ background: var(--okBg); color: var(--okText); }
+    .pillWarn{ background: var(--warnBg); color: var(--warnText); }
+    .pillBad{ background: var(--badBg); color: var(--badText); }
+
+    /* Buttons */
+    .btn{
+      height: var(--tap);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(127,127,127,.08);
+      color: var(--text);
+      font-weight: 800;
+      padding: 0 16px;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn:hover{
+      transform: translateY(-1px) scale(1.02);
+      background: rgba(127,127,127,.12);
+      box-shadow: 0 10px 24px rgba(0,0,0,.10);
+    }
+    .btnPrimary{
+      background: rgba(16,185,129,.14);
+      border-color: rgba(16,185,129,.30);
+    }
+    .btnPrimary:hover{ background: rgba(16,185,129,.18); }
+    .btnGhost{
+      background: transparent;
+    }
+    .btnIcon svg{ width: 16px; height: 16px; opacity: .75; }
+
+    .btnRow{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* Uploads - layout mais equilibrado */
+    .uploadsShell{
+      display: grid;
+      gap: 14px;
+    }
+    .uploadsTopRow{
+      display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 10px;
     }
-    .upload-toggle{
-      display:none;
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--card) 92%, transparent);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-weight: 900;
-      font-size: 12px;
-      cursor:pointer;
-      color: var(--text);
-      transition: transform .10s ease;
+    .uploadsMsg{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--border2);
+      border-radius: 18px;
+      background: rgba(127,127,127,.06);
     }
-    .upload-toggle:hover{ transform: translateY(-1px); }
-    .upload-toggle:active{ transform: translateY(0) scale(.99); }
+    .uploadsMsg strong{ font-size: 16px; }
+    .uploadsMsg span{ color: var(--muted); font-weight: 650; }
 
-    .grid{
-      display:grid;
+    .uploadsGrid{
+      display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      gap: 14px;
     }
-    @media (max-width: 920px){
-      .topbar-inner{ grid-template-columns: 1fr auto; }
-      .navlinks{ display:none; }
-      .grid{ grid-template-columns: 1fr; }
-    }
-
-    .panel{
-      border: 1px dashed color-mix(in srgb, var(--text) 18%, transparent);
-      background: color-mix(in srgb, var(--card) 88%, transparent);
-      border-radius: var(--radius-lg);
-      padding: 14px;
+    @media (max-width: 900px){
+      .topbar{ grid-template-columns: 1fr; row-gap: 10px; padding: 14px; border-radius: 26px; }
+      .brand{ justify-content: center; padding-left: 0; }
+      .nav{ justify-content: center; flex-wrap: wrap; gap: 10px; }
+      .topbarRight{ justify-content: center; padding-right: 0; }
+      .uploadsGrid{ grid-template-columns: 1fr; }
+      .filtersGrid{ grid-template-columns: 1fr !important; }
+      .kpiGrid{ grid-template-columns: 1fr 1fr !important; }
+      .chartsGrid{ grid-template-columns: 1fr !important; }
     }
 
-    .help{
+    .uploadBox{
+      border: 1px dashed var(--border);
+      border-radius: 22px;
+      padding: 16px 16px;
+      background: rgba(127,127,127,.04);
+      display: grid;
+      gap: 10px;
+      min-height: 140px;
+    }
+
+    /* títulos menores e mais “apple style” (pedido do print 6) */
+    .uploadBox h3{
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -.01em;
+      font-weight: 850;
+    }
+    .uploadHelp{
+      margin: 0;
+      font-size: 13px;
       color: var(--muted);
-      font-size: 12px;
-      margin-top: 10px;
       line-height: 1.35;
     }
 
-    /* File picker (Apple style) */
-    .file-row{
-      display:flex;
-      align-items:center;
+    /* File input “Apple style” */
+    .fileRow{
+      display: grid;
+      grid-template-columns: auto 1fr;
       gap: 10px;
-      flex-wrap: wrap;
+      align-items: center;
     }
-    .file-input{
-      position:absolute;
-      opacity:0;
-      pointer-events:none;
-      width:1px;
-      height:1px;
-    }
-    .file-btn{
-      flex:0 0 auto;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 10px 12px;
+    .fileBtn{
+      height: 38px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--card) 92%, transparent);
-      cursor:pointer;
-      font-weight: 900;
-      font-size: 12px;
-      color: var(--text);
-      transition: transform .10s ease, filter .15s ease;
+      border: 1px solid var(--border);
+      background: rgba(127,127,127,.10);
+      font-weight: 800;
+      padding: 0 14px;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease;
+      white-space: nowrap;
     }
-    .file-btn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
-    .file-btn:active{ transform: translateY(0) scale(.99); }
-
-    .file-name{
-      flex:1 1 auto;
-      min-width: 180px;
-      padding: 10px 12px;
+    .fileBtn:hover{ transform: translateY(-1px) scale(1.02); background: rgba(127,127,127,.14); }
+    .fileName{
+      height: 38px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--card) 92%, transparent);
+      border: 1px solid var(--border2);
+      background: rgba(127,127,127,.06);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
       color: var(--muted);
-      font-size: 12px;
-      overflow:hidden;
+      font-weight: 650;
+      min-width: 0;
+      overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .file-name.has-file{
-      color: var(--text);
-    }
+    input[type="file"]{ display: none; }
 
-    /* Status row */
-    .status-row{
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--card) 88%, transparent);
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.4;
-    }
-    .status-row b{ color: var(--text); }
-    .pill{
-      font-size: 12px;
-      font-weight: 800;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: color-mix(in srgb, var(--ok) 12%, transparent);
-      color: var(--ok);
-      white-space: nowrap;
-    }
-    .pill.neutral{
-      background: color-mix(in srgb, var(--text) 10%, transparent);
-      color: var(--muted);
-    }
-    .pill.warn{
-      background: color-mix(in srgb, var(--warn) 14%, transparent);
-      color: var(--warn);
-    }
-
-    .chips{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-    .chip{
-      background: color-mix(in srgb, var(--card) 88%, transparent);
-      border: 1px solid var(--line);
-      padding: 8px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .chip b{ color: var(--text); }
-
-    /* Upload actions */
-    .actions{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-      align-items:center;
-    }
-    .btn{
-      width:auto;
-      padding: 11px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--card) 92%, transparent);
-      cursor:pointer;
-      font-weight: 900;
-      font-size: 13px;
-      color: var(--text);
-      box-shadow: var(--shadow2);
-      transition: transform .10s ease, filter .15s ease;
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-    }
-    .btn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
-    .btn:active{ transform: translateY(0) scale(.99); }
-    .btn.primary{
-      border-color: color-mix(in srgb, var(--ok) 30%, var(--line));
-      background: linear-gradient(180deg, color-mix(in srgb, var(--ok) 18%, transparent), color-mix(in srgb, var(--ok) 10%, transparent));
-    }
-    .btn.ghost{
-      box-shadow:none;
-      background: transparent;
-    }
-    .btn:disabled{
-      opacity:.50;
-      cursor:not-allowed;
-      transform:none;
-      filter:none;
-      box-shadow:none;
-    }
-    .btn .ico{
-      width: 14px; height: 14px;
-      display:inline-block;
-      opacity:.70;
-    }
-
-    /* Compact uploads */
-    .uploads.compact .grid,
-    .uploads.compact .panel,
-    .uploads.compact .help,
-    .uploads.compact .chips{
-      display:none;
-    }
-    .uploads.compact .upload-toggle{
-      display:inline-flex;
-    }
-    .uploads.compact .status-row{
-      margin-top: 10px;
-    }
-
-    /* Results */
-    .row{
-      display:flex;
-      gap: 18px;
-      align-items: center;
-      flex-wrap: wrap;
+    /* Results / Filters */
+    .filtersGrid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      align-items: end;
       margin-top: 8px;
     }
-    .row .field{ flex:1; min-width: 220px; }
-    .row .field.sm{ flex:0; min-width: 240px; }
 
-    select, input[type="text"], button{
-      font-family: var(--font-sans);
-    }
-    select, .input{
-      width:100%;
-      padding: 12px 12px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--card) 92%, transparent);
-      color: var(--text);
-      outline:none;
-    }
-    select:focus, .input:focus{
-      box-shadow: var(--focus);
-      border-color: color-mix(in srgb, var(--ok) 30%, var(--line));
-    }
-
-    /* hover pop */
-    .hover-pop{
-      transition: transform .14s ease, box-shadow .18s ease, border-color .18s ease;
-      will-change: transform;
-      transform-origin: center;
-    }
-    .hover-pop:hover{
-      transform: scale(1.018);
-      border-color: color-mix(in srgb, var(--ok) 18%, var(--line));
-      box-shadow: 0 16px 42px rgba(0,0,0,.10);
-    }
-    html[data-theme="dark"] .hover-pop:hover{
-      box-shadow: 0 18px 46px rgba(0,0,0,.42);
-    }
-
-    /* KPI */
-    .kpis{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 18px;
-    }
-    @media (max-width: 900px){ .kpis{ grid-template-columns: repeat(2, 1fr); } }
-    .kpi{
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: 16px;
-      background: linear-gradient(180deg, color-mix(in srgb, var(--card) 88%, transparent), var(--card));
-      box-shadow: var(--shadow2);
-      min-height: 118px;
-    }
-    .kpi .label{ font-size: 12px; color: var(--muted); }
-    .kpi .value{ font-size: 22px; font-weight: 950; margin-top: 8px; letter-spacing: -0.4px; }
-    .kpi .hint{ font-size: 12px; color: var(--muted); margin-top: 6px; }
-    .kpi .subpct{ font-weight: 800; font-size: 14px; opacity: .95; margin-left: 8px; }
-    .kpi .subpct.ok{ color: var(--okSoft); }
-    .kpi .subpct.bad{ color: var(--badSoft); }
-
-    /* Signals grid (3 columns x 4 rows including headers) */
-    .signals{
-      margin-top: 18px;
-    }
-    .signals-head{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-bottom: 10px;
-    }
-    .signals-head .h{
+    /* labels menores, com respiro e alinhados com o select (pedido do print 3) */
+    .field label{
+      display: block;
       font-size: 13px;
-      letter-spacing: .18px;
-      text-transform: uppercase;
-      color: color-mix(in srgb, var(--text) 70%, transparent);
-      font-weight: 900;
+      font-weight: 800;
+      color: var(--muted);
+      margin: 0 0 8px 10px;
     }
-    .signals-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .select{
+      width: 100%;
+      height: 52px;
+      border-radius: 18px;
+      border: 1px solid var(--border2);
+      background: rgba(127,127,127,.06);
+      padding: 0 14px;
+      font-size: 16px;
+      font-weight: 750;
+      color: var(--text);
+      outline: none;
     }
-    @media (max-width: 1020px){
-      .signals-head{ grid-template-columns: 1fr; }
-      .signals-grid{ grid-template-columns: 1fr; }
+    .select:focus{
+      border-color: rgba(59,130,246,.38);
+      box-shadow: 0 0 0 4px rgba(59,130,246,.12);
     }
 
-    .signal-card{
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      background: var(--card);
-      box-shadow: var(--shadow2);
-      padding: 16px;
-      display:flex;
-      flex-direction:column;
-      gap: 12px;
-      height: 230px; /* enforce equal height */
-      overflow:hidden;
+    .kpiGrid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 14px;
     }
-    .signal-top{
+    .kpi{
+      border: 1px solid var(--border2);
+      border-radius: 24px;
+      padding: 18px 18px;
+      background: rgba(127,127,127,.05);
+      transition: transform .18s ease, box-shadow .18s ease;
+      min-height: 120px;
+    }
+    .kpi:hover{
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 18px 36px rgba(0,0,0,.12);
+    }
+    .kpi .t{ color: var(--muted); font-weight: 900; font-size: 18px; }
+    .kpi .v{
+      margin-top: 8px;
+      font-size: 44px;
+      font-weight: 950;
+      letter-spacing: -.03em;
+    }
+    .kpi .s{ margin-top: 8px; color: var(--muted); font-weight: 700; }
+
+    .kpi .vRow{
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .kpi .vMain{ font-size: 44px; font-weight: 950; letter-spacing: -.03em; }
+    .kpi .vRate{
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -.01em;
+    }
+    .kpi .vRate.win{ color: var(--rateWinTint); }
+    .kpi .vRate.loss{ color: var(--rateLossTint); }
+
+    /* Insights grid alignment: 3 colunas, 3 linhas, alturas “casadas” */
+    .triHeader{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+      align-items: center;
+    }
+    .triHeader .h{
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 900;
+      color: var(--muted2);
+      padding-left: 6px;
+    }
+
+    .triGrid{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-flow: row;
+      grid-auto-rows: 1fr; /* força mesma altura por linha */
+      gap: 14px;
+      margin-top: 10px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 980px){
+      .triHeader{ display:none; }
+      .triGrid{ grid-template-columns: 1fr; }
+    }
+
+    .miniCard{
+      border-radius: 26px;
+      border: 1px solid var(--border2);
+      background: rgba(127,127,127,.05);
+      padding: 16px 16px;
+      box-shadow: 0 12px 24px rgba(0,0,0,.06);
+      transition: transform .18s ease, box-shadow .18s ease;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      min-height: 208px;
+    }
+    .miniCard:hover{
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 18px 36px rgba(0,0,0,.12);
+    }
+    .miniTop{
       display:flex;
       align-items:flex-start;
-      justify-content: space-between;
+      justify-content:space-between;
       gap: 10px;
-      min-height: 46px;
+      margin-bottom: 6px;
     }
-    .signal-title{
+    .miniTitle{
+      font-size: 18px;
       font-weight: 950;
-      font-size: 14px;
-      margin:0;
-      letter-spacing: -0.2px;
+      letter-spacing: -.02em;
+      margin: 0;
+      line-height: 1.15;
     }
-    .signal-sub{
+    .miniSub{
+      margin: 4px 0 0;
       color: var(--muted);
-      font-size: 12px;
-      line-height: 1.35;
-      margin-top: 3px;
-      display:-webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow:hidden;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 1.25;
     }
-    .badge{
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 650; /* era 900 */
-  white-space: nowrap;
-  background: color-mix(in srgb, var(--text) 7%, transparent); /* era 10% */
-  color: color-mix(in srgb, var(--text) 55%, transparent); /* era var(--muted) */
-  border: none;
-}
-    .badge.good{
-      background: color-mix(in srgb, var(--ok) 12%, transparent);
-      color: var(--ok);
+    .badgeRate{
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 13px;
+      border: 1px solid transparent;
+      white-space: nowrap;
     }
-    .badge.bad{
-      background: color-mix(in srgb, var(--bad) 12%, transparent);
-      color: var(--bad);
-    }
+    .badgeWin{ background: rgba(16,185,129,.12); border-color: rgba(16,185,129,.22); color: var(--kpiWin); }
+    .badgeLoss{ background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.22); color: var(--kpiLoss); }
 
-    .metric-grid{
+    .statsGrid{
+      margin-top: 12px;
       display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 10px;
-      flex: 1;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-content: stretch;
       position: relative;
     }
-    .metric-box{
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--card) 86%, transparent);
-      border-radius: 16px;
-      padding: 10px 12px;
-      min-height: 58px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      cursor:pointer;
-      text-align:left;
-      position: relative;
-      overflow:hidden;
-    }
-    .metric-box:focus{
-      outline:none;
-      box-shadow: var(--focus);
-      border-color: color-mix(in srgb, var(--ok) 30%, var(--line));
-    }
-    .metric-k{ font-size: 11px; color: var(--muted); }
-    .metric-v{ margin-top: 4px; font-size: 15px; font-weight: 950; letter-spacing: -0.2px; color: var(--text); }
 
-    /* info icon appears only on hover */
-    .metric-info{
-      position:absolute;
-      top: 8px;
-      right: 10px;
-      font-size: 12px;
-      color: color-mix(in srgb, var(--text) 55%, transparent);
-      opacity:0;
-      transform: translateY(-2px);
-      transition: opacity .12s ease, transform .12s ease;
-      pointer-events:none;
+    .statBox{
+      border-radius: 18px;
+      border: 1px solid var(--border2);
+      background: rgba(127,127,127,.04);
+      padding: 12px 12px;
+      min-height: 76px;
+      cursor: pointer;
+      position: relative;
+      perspective: 800px;
+      transition: transform .18s ease, box-shadow .18s ease;
+      overflow: hidden;
     }
-    .metric-box:hover .metric-info{
-      opacity:1;
+    .statBox:hover{
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 14px 26px rgba(0,0,0,.10);
+    }
+    .statBox .infoDot{
+      position: absolute;
+      top: 10px; right: 10px;
+      width: 18px; height: 18px;
+      border-radius: 999px;
+      display:grid; place-items:center;
+      font-size: 12px;
+      font-weight: 900;
+      background: rgba(127,127,127,.12);
+      color: rgba(127,127,127,.85);
+      opacity: 0;
+      transform: translateY(-2px);
+      transition: opacity .18s ease, transform .18s ease;
+      pointer-events: none;
+    }
+    .statBox:hover .infoDot{
+      opacity: 1;
       transform: translateY(0);
     }
 
-    /* expanded tooltip occupies 2x2 */
-    .metric-expanded{
-      display:none;
+    .statInner{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform .34s cubic-bezier(.2,.9,.2,1);
+    }
+    .statFront, .statBack{
+      position:absolute;
+      inset:0;
+      backface-visibility: hidden;
+    }
+    .statBack{
+      transform: rotateY(180deg);
+      padding: 12px 12px;
+      display:grid;
+      align-content:start;
+      gap: 8px;
+    }
+    .statLabel{
+      color: var(--muted);
+      font-weight: 850;
+      font-size: 13px;
+    }
+    .statValue{
+      font-weight: 950;
+      font-size: 24px;
+      letter-spacing: -.02em;
+      margin-top: 2px;
+    }
+    .statBack p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 650;
+    }
+
+    /* Expansão para ocupar os 4 boxes (pedido anterior: “não estourar”) */
+    .miniCard.expanded .statBox{ opacity: 0; pointer-events: none; transform:none; box-shadow:none; }
+    .miniCard.expanded .statBox.active{
+      opacity: 1;
+      pointer-events: auto;
       grid-column: 1 / -1;
       grid-row: 1 / -1;
-      border: 1px solid color-mix(in srgb, var(--line) 95%, transparent);
-      background: color-mix(in srgb, var(--card) 92%, transparent);
+      min-height: 168px;
+    }
+    .miniCard.expanded .statBox.active .statInner{ transform: rotateY(180deg); }
+    .miniCard.expanded .statBox.active .infoDot{ opacity: 0; }
+
+    /* Charts */
+    .chartsGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .chartCard{
+      border-radius: 26px;
+      border: 1px solid var(--border2);
+      background: rgba(127,127,127,.05);
+      padding: 16px 16px;
+      overflow: hidden;
+    }
+    .chartTitleRow{
+      display:flex;
+      align-items:baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .chartTitle{
+      margin: 0;
+      font-weight: 950;
+      letter-spacing: -.02em;
+      font-size: 18px;
+    }
+    .chartHint{
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .chartCanvasWrap{
+      border-radius: 22px;
+      border: 1px solid var(--border2);
+      background: rgba(127,127,127,.03);
+      padding: 10px;
+    }
+    canvas{ width: 100% !important; height: 320px !important; }
+
+    /* Custom tooltip */
+    .chart-tooltip{
+      position: fixed;
+      z-index: 9999;
+      pointer-events: none;
+      background: rgba(17, 24, 39, .92);
+      color: rgba(255,255,255,.95);
+      border: 1px solid rgba(255,255,255,.12);
       border-radius: 16px;
-      padding: 14px 14px 12px;
-      position: relative;
-      transform: rotateY(-6deg) scale(.99);
-      transition: transform .18s ease, opacity .18s ease;
+      padding: 10px 12px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      transform: translate(-50%, calc(-100% - 14px));
+      transition: left .12s ease, top .12s ease, opacity .12s ease;
       opacity: 0;
+      max-width: 320px;
+      width: fit-content;
     }
-    .metric-grid.is-open .metric-box{
-      opacity:0;
-      pointer-events:none;
+    .ct-title{
+      font-weight: 950;
+      font-size: 18px;
+      letter-spacing: -.02em;
+      margin-bottom: 6px;
+      white-space: nowrap;
     }
-    .metric-grid.is-open .metric-expanded{
-      display:block;
-      opacity: 1;
-      transform: rotateY(0deg) scale(1);
+    .ct-row{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 750;
+      margin: 4px 0;
+      white-space: nowrap;
     }
-    @media (prefers-reduced-motion: reduce){
-      .metric-expanded{ transition:none; transform:none; }
-      .hover-pop, .btn, .file-btn{ transition:none; }
+    .ct-swatch{
+      width: 14px; height: 14px;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,.22);
+      flex: 0 0 auto;
     }
-    .metric-expanded .close{
-      position:absolute;
-      top: 10px;
-      right: 10px;
-      width: 28px;
-      height: 28px;
+    .ct-row b{ font-weight: 950; }
+
+    /* Table */
+    .tableTop{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .search{
+      flex: 1 1 320px;
+      height: 48px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--card) 90%, transparent);
-      cursor:pointer;
+      border: 1px solid var(--border2);
+      background: rgba(127,127,127,.06);
+      padding: 0 14px;
+      font-size: 15px;
+      font-weight: 700;
       color: var(--text);
+      outline:none;
+    }
+    .search::placeholder{ color: var(--muted2); font-weight: 650; }
+    .rowsSelWrap{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .rowsSel{
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--border2);
+      background: rgba(127,127,127,.06);
+      padding: 0 12px;
+      font-weight: 850;
+      color: var(--text);
+      outline:none;
+    }
+    .tableHint{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+      padding-left: 6px;
+    }
+
+    /* Tabulator theming */
+    .tabulator{
+      border: 1px solid var(--border2) !important;
+      border-radius: 22px;
+      overflow: hidden;
+      background: transparent !important;
+      font-family: var(--font) !important;
+    }
+    .tabulator .tabulator-header{
+      background: rgba(127,127,127,.14) !important; /* melhora no dark */
+      border-bottom: 1px solid var(--border2) !important;
+      color: var(--text) !important;
+    }
+    html.dark .tabulator .tabulator-header{
+      background: rgba(255,255,255,.08) !important;
+    }
+    .tabulator .tabulator-header .tabulator-col{
+      background: transparent !important;
+      border-right: 1px solid var(--border2) !important;
+    }
+    .tabulator .tabulator-row{
+      background: rgba(127,127,127,.02) !important;
+      border-bottom: 1px solid var(--border2) !important;
+    }
+    html.dark .tabulator .tabulator-row{
+      background: rgba(255,255,255,.03) !important;
+    }
+    .tabulator .tabulator-row:nth-child(even){
+      background: rgba(127,127,127,.04) !important;
+    }
+    html.dark .tabulator .tabulator-row:nth-child(even){
+      background: rgba(255,255,255,.05) !important;
+    }
+    .tabulator .tabulator-cell{
+      border-right: 1px solid var(--border2) !important;
+      color: var(--text) !important;
+      font-weight: 650;
+    }
+    .tabulator .tabulator-footer{ display:none !important; } /* remove paginação (pedido do print 5) */
+
+    /* Footer */
+    footer{
+      padding: 18px 0 28px;
+      color: var(--muted);
+      text-align: center;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .footerBrand{
+      margin-top: 8px;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-weight: 900;
-    }
-    .metric-expanded .t{
-      font-weight: 950;
-      font-size: 13px;
-      margin-bottom: 6px;
-      color: var(--text);
-      padding-right: 34px;
-    }
-    .metric-expanded .p{
-      font-size: 12px;
-      line-height: 1.45;
-      color: var(--muted);
-      margin: 0;
-    }
-    .metric-expanded .a{
-      margin-top: 10px;
-      font-size: 12px;
-      color: color-mix(in srgb, var(--text) 78%, transparent);
-      font-weight: 900;
-    }
-
-    /* Charts */
-    .charts{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 18px;
-    }
-    @media (max-width: 980px){ .charts{ grid-template-columns: 1fr; } }
-    .chart-card{
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      background: var(--card);
-      box-shadow: var(--shadow2);
-      padding: 16px;
-      display:flex;
-      flex-direction:column;
       gap: 10px;
-      min-height: 340px;
-      position: relative;
     }
-    .chart-card h3{
-      margin:0;
-      font-size: 13px;
-      color: color-mix(in srgb, var(--text) 80%, transparent);
-      letter-spacing: .1px;
-      font-weight: 950;
-    }
-    .chart-hint{
-      font-size: 12px;
-      color: color-mix(in srgb, var(--text) 50%, transparent);
-      font-weight: 500;
-    }
-    .chart-clearwrap{
-      font-size: 12px;
-      color: color-mix(in srgb, var(--text) 50%, transparent);
-      font-weight: 500;
-    }
-    .chart-clear{
-      font-size: 12px;
-      color: color-mix(in srgb, var(--text) 55%, transparent);
-      font-weight: 500;
-      text-decoration: underline;
-    }
-    .chart-clear:hover{ color: color-mix(in srgb, var(--text) 72%, transparent); }
-    .chart-wrap{
-      position: relative;
-      width: 100%;
-      height: 260px;
-      border-radius: 16px;
-      background: color-mix(in srgb, var(--card) 86%, transparent);
-      border: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
-      overflow:hidden;
-    }
-    .chart-wrap canvas{
-      position:absolute;
-      inset: 0;
-      width:100% !important;
-      height:100% !important;
+    .footerBrand img{
+      height: 18px;
+      width: auto;
       display:block;
     }
 
-    /* Unified tooltip for charts */
-    .chart-tooltip{
-      position: fixed;
-      left: 0;
-      top: 0;
-      transform: translate3d(-9999px,-9999px,0) translate(-50%,-110%);
-      pointer-events:none;
-      opacity:0;
-      transition: opacity .10s ease, transform .14s ease;
-      background: rgba(18,22,30,.92);
-      color: rgba(255,255,255,.94);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 12px;
-      padding: 10px 12px;
-      width: max-content;
-      max-width: 320px;
-      box-shadow: 0 16px 40px rgba(0,0,0,.35);
-      z-index: 80;
-      font-family: var(--font-sans);
-    }
-    html[data-theme="dark"] .chart-tooltip{
-      background: rgba(10,12,18,.92);
-    }
-    .chart-tooltip .ttl{
-      font-weight: 950;
-      font-size: 13px;
-      margin-bottom: 6px;
-      white-space: nowrap;
-    }
-    .chart-tooltip .line{
-      display:flex;
-      align-items:center;
-      gap: 8px;
-      margin: 4px 0;
-      font-size: 13px;
-      white-space: nowrap;
-    }
-    .chart-tooltip .sq{
-      width: 10px;
-      height: 10px;
-      border-radius: 2px;
-      display:inline-block;
-      flex:0 0 auto;
-    }
-
-    /* Table */
-    .table-card{
-      margin-top: 18px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      background: var(--card);
-      box-shadow: var(--shadow2);
-      padding: 16px;
-    }
-    .table-toolbar{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-    .table-toolbar .spacer{ flex:1; }
-    .table-meta{
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .table-meta b{ color: var(--text); }
-
-    .tabulator{
-      font-family: var(--font-sans);
-      border: 1px solid var(--tblBorder) !important;
-      border-radius: 16px;
-      overflow: hidden;
-      background: var(--tblBg) !important;
-    }
-    .tabulator .tabulator-header{
-      background: var(--tblHead) !important;
-      border-bottom: 1px solid var(--tblBorder) !important;
-    }
-    .tabulator .tabulator-col-title{
-      font-size: 12px;
-      font-weight: 900;
-      color: var(--tblText) !important;
-    }
-    .tabulator .tabulator-header-filter input{
-      border-radius: 12px;
-      border: 1px solid var(--tblBorder) !important;
-      padding: 6px 8px;
-      font-size: 12px;
-      background: var(--tblBgAlt) !important;
-      color: var(--tblText) !important;
-      outline: none;
-    }
-    .tabulator .tabulator-tableholder,
-    .tabulator .tabulator-table{
-      background: var(--tblBg) !important;
-    }
-    .tabulator .tabulator-row{
-      background: var(--tblBg) !important;
-      border-bottom: 1px solid var(--tblBorder) !important;
-    }
-    .tabulator .tabulator-row:nth-child(even){
-      background: var(--tblBgAlt) !important;
-    }
-    .tabulator .tabulator-cell{
-      color: var(--tblText) !important;
-      background: transparent !important;
-      padding: 10px 10px;
-      font-size: 12px;
-      border-right: 1px solid var(--tblBorder) !important;
-    }
-    .tabulator .tabulator-footer{
-      background: var(--tblHead) !important;
-      border-top: 1px solid var(--tblBorder) !important;
-      color: var(--tblMuted) !important;
-      padding: 8px 10px;
-    }
-    .tabulator .tabulator-paginator{
-      font-size: 12px;
-      color: var(--tblMuted) !important;
-    }
-
-    /* Hide Tabulator built-in page size label */
-    .tabulator-page-size{ display:none !important; }
-
-    footer{
-      margin-top: 28px;
-      text-align:center;
-      color: var(--muted);
-      font-size: 12px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap: 8px;
-    }
-    footer .emkt{
-      height: 22px;
-      width: auto;
-      opacity: .95;
-    }
+    /* Small helper */
+    .hidden{ display:none !important; }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="topbar-inner" id="topbarInner">
+  <div class="topbarWrap">
+    <header class="topbar" id="topbar">
       <div class="brand">
-        <img id="ucredLogo" alt="Ucred" />
+        <img id="logoUcred" alt="Ucred" src="./assets/img/logo-ucred-light.png">
       </div>
 
-      <nav class="navlinks" aria-label="Navegação">
+      <nav class="nav" aria-label="Seções">
         <a href="#uploads">Uploads</a>
-        <a href="#resultados">Resultados</a>
+        <a href="#results">Resultados</a>
         <a href="#insights">Insights</a>
-        <a href="#graficos">Gráficos</a>
-        <a href="#tabela">Tabela</a>
+        <a href="#charts">Gráficos</a>
+        <a href="#table">Tabela</a>
       </nav>
 
-      <div class="right">
-        <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
+      <div class="topbarRight">
+        <button class="themeBtn" id="themeToggle" aria-label="Alternar tema">
+          <!-- ícone será trocado via JS -->
           <svg id="themeIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M21 12.8A8.5 8.5 0 0 1 11.2 3 7 7 0 1 0 21 12.8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M21 13.5a8.5 8.5 0 1 1-10.5-10A7 7 0 0 0 21 13.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
       </div>
-    </div>
+    </header>
   </div>
 
-  <main class="shell">
-    <section class="card hero" aria-label="Introdução">
-      <h1>Performance por região</h1>
-      <p>
+  <main class="wrap">
+    <section class="card section sectionPad" aria-label="Introdução">
+      <h1 class="heroTitle">Performance por região</h1>
+      <p class="heroSub">
         Analise onde você <b>ganha</b> e <b>perde</b> por Região, Estado, Microrregião e Cidade.
-        O IBGE é aplicado automaticamente. Se quiser, use um mapa interno para clusters próprios.
+        O IBGE pode ser aplicado automaticamente. Se quiser, use um mapa interno para clusters próprios.
       </p>
     </section>
 
-    <section id="uploads" class="card uploads" aria-label="Uploads">
-      <div class="upload-head">
-        <h2 style="margin:0;">Uploads</h2>
-        <button id="uploadsToggle" class="upload-toggle" type="button">Editar uploads</button>
+    <!-- Uploads -->
+    <section class="card section sectionPad" id="uploads">
+      <div class="sectionHeader">
+        <div class="sectionLabel">Uploads</div>
+        <button class="btn btnGhost" id="toggleUploads">Editar uploads</button>
       </div>
 
-      <div id="uploadsBody">
-        <div class="grid">
-          <div class="panel">
-            <label>Base CRM (CSV/XLSX)</label>
+      <div class="uploadsShell">
+        <div class="uploadsMsg" id="uploadsMsg">
+          <div>
+            <strong id="uploadsMsgTitle">Pronto</strong>
+            <span id="uploadsMsgText">carregue uma base ou veja a demo</span>
+          </div>
+          <span class="pill pillOk" id="uploadsPill">ok</span>
+        </div>
 
-            <div class="file-row">
-              <input id="baseFile" class="file-input" type="file" accept=".csv,.xlsx,.xls" />
-              <button id="basePick" class="file-btn" type="button">
-                Selecionar arquivo
-              </button>
-              <div id="baseName" class="file-name">Nenhum arquivo selecionado</div>
+        <div class="uploadsGrid" id="uploadsDetails">
+          <div class="uploadBox">
+            <h3>Base CRM (CSV/XLSX)</h3>
+            <div class="fileRow">
+              <button class="fileBtn" id="basePickBtn">Selecionar arquivo</button>
+              <div class="fileName" id="baseFileName">Nenhum arquivo selecionado</div>
+              <input id="baseFile" type="file" accept=".csv,.xlsx,.xls">
             </div>
-
-            <div class="help">
-              Colunas aceitas (obrigatórias): <b>Cidade</b>, <b>Estado</b>, <b>Data de criação</b>, <b>Vendas</b>, <b>Perdidos</b>, <b>Em andamento</b>, <b>Pausados</b>.
-              <br>
+            <p class="uploadHelp">
+              Colunas aceitas (obrigatórias): <b>Cidade</b>, <b>Estado</b>, <b>Data de criação</b>, <b>Vendas</b>, <b>Perdidos</b>, <b>Em andamento</b>, <b>Pausados</b>.<br>
               Colunas opcionais: <b>ID (opcional)</b>, <b>Nome (opcional)</b>. Outras colunas serão ignoradas.
-            </div>
+            </p>
           </div>
 
-          <div class="panel">
-            <label>Mapa interno (opcional)</label>
-
-            <div class="file-row">
-              <input id="mapFile" class="file-input" type="file" accept=".csv" />
-              <button id="mapPick" class="file-btn" type="button">
-                Selecionar arquivo
-              </button>
-              <div id="mapName" class="file-name">Nenhum arquivo selecionado</div>
+          <div class="uploadBox">
+            <h3>Mapa interno (opcional)</h3>
+            <div class="fileRow">
+              <button class="fileBtn" id="mapPickBtn">Selecionar arquivo</button>
+              <div class="fileName" id="mapFileName">Nenhum arquivo selecionado</div>
+              <input id="mapFile" type="file" accept=".csv,.xlsx,.xls">
             </div>
-
-            <div class="help">
-              Colunas aceitas (obrigatórias): <b>cidade</b>, <b>uf</b>, <b>microrregiao</b>.
-              <br>
+            <p class="uploadHelp">
+              Colunas aceitas (obrigatórias): <b>cidade</b>, <b>uf</b>, <b>microrregiao</b>.<br>
               Coluna opcional: <b>regiao (opcional)</b>. Outras colunas serão ignoradas.
-            </div>
+            </p>
           </div>
         </div>
 
-        <div id="uploadsStatus" class="status-row" style="margin-top:16px;">
-          <span>Carregando mapa IBGE…</span>
-          <span class="pill warn">aguarde</span>
-        </div>
+        <div class="btnRow">
+          <button class="btn btnPrimary" id="analyzeBtn">Ver demo</button>
 
-        <div id="uploadsChips" class="chips" hidden></div>
-
-        <div class="actions" id="uploadActions">
-          <button id="primaryAction" class="btn primary" type="button">Ver demo</button>
-
-          <button id="tplBaseBtn" class="btn" type="button" title="Baixar template de base">
-            <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 3v10m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M4 17v3h16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+          <button class="btn btnIcon" id="tplBaseBtn" title="Baixar template de base">
+            <span class="btnIcon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
             Template de base
           </button>
 
-          <button id="tplMapBtn" class="btn" type="button" title="Baixar template de mapa">
-            <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 3v10m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M4 17v3h16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+          <button class="btn btnIcon" id="tplMapBtn" title="Baixar template de mapa">
+            <span class="btnIcon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
             Template de mapa
           </button>
 
-          <button id="clearAllBtn" class="btn" type="button" style="display:none;">Limpar</button>
+          <button class="btn" id="clearAllBtn">Limpar</button>
         </div>
       </div>
     </section>
 
-    <section id="resultados" class="card" hidden aria-label="Resultados">
-      <h2>Resultados</h2>
+    <!-- Resultados -->
+    <section class="card section sectionPad" id="results">
+      <div class="sectionHeader">
+        <div class="sectionLabel">Resultados</div>
+        <div class="btnRow">
+          <button class="btn" id="clearFiltersBtn">Limpar filtros</button>
+          <button class="btn" id="downloadSummaryBtn">Baixar resumo</button>
+          <button class="btn" id="downloadCitiesBtn">Baixar cidades</button>
+        </div>
+      </div>
 
-      <div class="row">
+      <div class="filtersGrid">
         <div class="field">
-          <label>Mês</label>
-          <select id="monthFilter"></select>
+          <label for="monthFilter">Mês</label>
+          <select class="select" id="monthFilter"></select>
         </div>
         <div class="field">
-          <label>Região</label>
-          <select id="regionFilter"></select>
+          <label for="regionFilter">Região</label>
+          <select class="select" id="regionFilter"></select>
         </div>
         <div class="field">
-          <label>Estado</label>
-          <select id="ufFilter"></select>
+          <label for="ufFilter">Estado</label>
+          <select class="select" id="ufFilter"></select>
         </div>
-        <div class="field sm">
-          <label>Base da taxa</label>
-          <select id="rateBase">
-            <option value="closed" selected>Fechadas (Vendas + Perdidos)</option>
-            <option value="total">Total (inclui abertas)</option>
+        <div class="field">
+          <label for="rateBaseFilter">Base da taxa</label>
+          <select class="select" id="rateBaseFilter">
+            <option value="closed">Fechadas (Vendas + Perdidos)</option>
+            <option value="total">Total (inclui Em negociação)</option>
           </select>
         </div>
       </div>
 
-      <div class="actions">
-        <button id="clearFiltersBtn" class="btn" type="button">Limpar filtros</button>
-        <button id="exportSummaryBtn" class="btn" type="button">Baixar resumo</button>
-        <button id="exportTableBtn" class="btn" type="button">Baixar tabela</button>
+      <div class="kpiGrid" id="kpiGrid"></div>
+    </section>
+
+    <!-- Insights -->
+    <section class="card section sectionPad" id="insights">
+      <div class="sectionHeader">
+        <div class="sectionLabel">Insights</div>
       </div>
 
-      <div class="kpis" id="kpis"></div>
-
-      <div id="insights" class="signals">
-        <div class="signals-head">
-          <div class="h">Oportunidades</div>
-          <div class="h">Riscos</div>
-          <div class="h">Insights</div>
-        </div>
-        <div class="signals-grid" id="signalsGrid"></div>
+      <div class="triHeader" aria-hidden="true">
+        <div class="h">Oportunidades</div>
+        <div class="h">Riscos</div>
+        <div class="h">Insights automáticos</div>
       </div>
 
-      <div id="graficos" style="height:1px; margin-top:18px;"></div>
+      <div class="triGrid" id="triGrid"></div>
+    </section>
 
-      <div class="charts">
-        <div class="chart-card">
-          <h3>
-            Volume por Região <span class="chart-hint">(clique para filtrar)</span>
-            <span id="clearRegionWrap" class="chart-clearwrap" hidden> • <a id="clearRegionLink" class="chart-clear" href="#">Remover filtro</a></span>
-          </h3>
-          <div class="chart-wrap"><canvas id="chartVolReg"></canvas></div>
-        </div>
-
-        <div class="chart-card">
-          <h3>Taxa de ganho por Região</h3>
-          <div class="chart-wrap"><canvas id="chartWinReg"></canvas></div>
-        </div>
-
-        <div class="chart-card">
-          <h3>Volume por Estado</h3>
-          <div class="chart-wrap"><canvas id="chartVolUf"></canvas></div>
-        </div>
-
-        <div class="chart-card">
-          <h3>Evolução mensal (Ganhos x Perdidos)</h3>
-          <div class="chart-wrap"><canvas id="chartMonthly"></canvas></div>
-        </div>
+    <!-- Charts -->
+    <section class="card section sectionPad" id="charts">
+      <div class="sectionHeader">
+        <div class="sectionLabel">Gráficos</div>
       </div>
 
-      <div id="tabela" style="height:1px; margin-top:18px;"></div>
+      <div class="chartsGrid">
+        <div class="chartCard">
+          <div class="chartTitleRow">
+            <div>
+              <h3 class="chartTitle" id="chartRegionTitle">Volume por Região <span class="chartHint">(clique para filtrar)</span></h3>
+              <div class="chartHint" id="chartRegionClearWrap" style="margin-top:4px; display:none;">
+                <a href="#" id="chartRegionClear" style="text-decoration: underline; font-weight:650; opacity:.8;">Remover filtro</a>
+              </div>
+            </div>
+          </div>
+          <div class="chartCanvasWrap"><canvas id="chartRegion"></canvas></div>
+        </div>
 
-      <div class="table-card">
-        <h3>Tabela</h3>
+        <div class="chartCard">
+          <div class="chartTitleRow">
+            <h3 class="chartTitle">Taxa de ganho por Região</h3>
+          </div>
+          <div class="chartCanvasWrap"><canvas id="chartWinRateRegion"></canvas></div>
+        </div>
 
-        <div class="table-toolbar">
-          <input id="tableSearch" class="input" type="text" placeholder="Buscar cidade, microrregião, estado ou região…" style="flex:1; min-width:260px;" />
-          <div class="spacer"></div>
+        <div class="chartCard">
+          <div class="chartTitleRow">
+            <h3 class="chartTitle">Volume por Estado</h3>
+          </div>
+          <div class="chartCanvasWrap"><canvas id="chartUF"></canvas></div>
+        </div>
 
-          <label style="margin:0; font-size:12px; color:var(--muted);">Linhas por página</label>
-          <select id="pageSize" style="width:auto; min-width: 92px;">
-            <option value="10">10</option>
-            <option value="25" selected>25</option>
+        <div class="chartCard">
+          <div class="chartTitleRow">
+            <h3 class="chartTitle">Evolução mensal (Ganhas x Perdidos)</h3>
+          </div>
+          <div class="chartCanvasWrap"><canvas id="chartMonthly"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="card section sectionPad" id="table">
+      <div class="sectionHeader">
+        <div class="sectionLabel">Tabela</div>
+      </div>
+
+      <div class="tableTop">
+        <input class="search" id="tableSearch" placeholder="Buscar cidade, microrregião, estado ou região...">
+        <div class="rowsSelWrap">
+          Exibir
+          <select class="rowsSel" id="rowsSelect">
+            <option value="25">25</option>
             <option value="50">50</option>
             <option value="100">100</option>
+            <option value="200">200</option>
           </select>
-
-          <div id="tableMeta" class="table-meta">—</div>
+          linhas
         </div>
-
-        <div id="cityTable"></div>
-
-        <div class="hint">Dica: use a busca acima e/ou os filtros no cabeçalho das colunas.</div>
       </div>
+
+      <div id="citiesTable"></div>
+      <div class="tableHint" id="tableHint">Dica: use a busca acima e/ou os filtros no cabeçalho das colunas.</div>
     </section>
 
     <footer>
-      <div>Desenvolvido por</div>
-      <img id="emktLogo" class="emkt" alt="eMKT" />
+      Desenvolvido por
+      <div class="footerBrand">
+        <img id="logoEmkt" alt="eMKT" src="./assets/img/logo-emkt-light.png">
+      </div>
     </footer>
   </main>
 
-  <div id="chartTooltip" class="chart-tooltip" aria-hidden="true"></div>
+  <div id="chartTooltip" class="chart-tooltip"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
@@ -1117,1464 +1135,1494 @@
   <script src="https://cdn.jsdelivr.net/npm/tabulator-tables@6.2.1/dist/js/tabulator.min.js"></script>
 
   <script>
-    /* =========================================================
-       CONFIG (Assets hosted on GitHub Pages)
-       Update paths here if you rename files.
-    ========================================================= */
+    /********************
+     * Theme + assets
+     ********************/
     const ASSETS = {
-  ucredLight: "./assets/img/logo-ucred-light.png",
-  ucredDark:  "./assets/img/logo-ucred-dark.png",
-  emktLight:  "./assets/img/logo-emkt-light.png",
-  emktDark:   "./assets/img/logo-emkt-dark.png",
-  demoCsv:    "./assets/demo/rd_demo.csv",
-};
-    const TEMPLATE = {
-      base: {
-        required: ["Cidade","Estado","Data de criação","Vendas","Perdidos","Em andamento","Pausados"],
-        optional: ["ID (opcional)","Nome (opcional)"],
-      },
-      map: {
-        required: ["cidade","uf","microrregiao"],
-        optional: ["regiao (opcional)"],
-      }
+      ucredLight: "./assets/img/logo-ucred-light.png",
+      ucredDark:  "./assets/img/logo-ucred-dark.png",
+      emktLight:  "./assets/img/logo-emkt-light.png",
+      emktDark:   "./assets/img/logo-emkt-dark.png",
+      demoCsv:    "./assets/demo/rd_demo.csv"
     };
 
-    const REGION_UFS = {
-      "Norte": ["AC","AM","AP","PA","RO","RR","TO"],
-      "Nordeste": ["AL","BA","CE","MA","PB","PE","PI","RN","SE"],
-      "Centro-Oeste": ["DF","GO","MS","MT"],
-      "Sudeste": ["ES","MG","RJ","SP"],
-      "Sul": ["PR","RS","SC"]
-    };
-
-    const UF_TO_REGIAO = {
-      AC:"Norte", AL:"Nordeste", AM:"Norte", AP:"Norte", BA:"Nordeste", CE:"Nordeste", DF:"Centro-Oeste",
-      ES:"Sudeste", GO:"Centro-Oeste", MA:"Nordeste", MG:"Sudeste", MS:"Centro-Oeste", MT:"Centro-Oeste",
-      PA:"Norte", PB:"Nordeste", PE:"Nordeste", PI:"Nordeste", PR:"Sul", RJ:"Sudeste", RN:"Nordeste",
-      RO:"Norte", RR:"Norte", RS:"Sul", SC:"Sul", SE:"Nordeste", SP:"Sudeste", TO:"Norte"
-    };
-
-    /* =========================================================
-       DOM
-    ========================================================= */
-    const $ = (s) => document.querySelector(s);
-
-    const topbar = $("#topbarInner");
-    const ucredLogo = $("#ucredLogo");
-    const emktLogo = $("#emktLogo");
+    const $ = (sel, root=document) => root.querySelector(sel);
 
     const themeToggle = $("#themeToggle");
     const themeIcon = $("#themeIcon");
+    const logoUcred = $("#logoUcred");
+    const logoEmkt = $("#logoEmkt");
 
-    const uploadsSection = $("#uploads");
-    const uploadsBody = $("#uploadsBody");
-    const uploadsToggle = $("#uploadsToggle");
-    const uploadsStatus = $("#uploadsStatus");
-    const uploadsChips = $("#uploadsChips");
+    function setTheme(mode){
+      const isDark = mode === "dark";
+      document.documentElement.classList.toggle("dark", isDark);
+      localStorage.setItem("ucred_theme", mode);
 
-    const baseFile = $("#baseFile");
-    const mapFile = $("#mapFile");
-    const basePick = $("#basePick");
-    const mapPick = $("#mapPick");
-    const baseName = $("#baseName");
-    const mapName = $("#mapName");
+      logoUcred.src = isDark ? ASSETS.ucredDark : ASSETS.ucredLight;
+      logoEmkt.src  = isDark ? ASSETS.emktDark  : ASSETS.emktLight;
 
-    const primaryAction = $("#primaryAction");
-    const tplBaseBtn = $("#tplBaseBtn");
-    const tplMapBtn = $("#tplMapBtn");
-    const clearAllBtn = $("#clearAllBtn");
+      // ícone
+      themeIcon.innerHTML = isDark
+        ? '<path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>'
+        : '<path d="M21 13.5a8.5 8.5 0 1 1-10.5-10A7 7 0 0 0 21 13.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
 
-    const resultsSection = $("#resultados");
-    const monthFilter = $("#monthFilter");
-    const regionFilter = $("#regionFilter");
-    const ufFilter = $("#ufFilter");
-    const rateBase = $("#rateBase");
-
-    const clearFiltersBtn = $("#clearFiltersBtn");
-    const exportSummaryBtn = $("#exportSummaryBtn");
-    const exportTableBtn = $("#exportTableBtn");
-
-    const kpisEl = $("#kpis");
-    const signalsGrid = $("#signalsGrid");
-
-    const clearRegionWrap = $("#clearRegionWrap");
-    const clearRegionLink = $("#clearRegionLink");
-
-    const tableSearch = $("#tableSearch");
-    const pageSizeSel = $("#pageSize");
-    const tableMeta = $("#tableMeta");
-
-    const chartTooltip = $("#chartTooltip");
-
-    /* =========================================================
-       STATE
-    ========================================================= */
-    const state = {
-      theme: "light",
-      baseSource: "none", // none | demo | file
-      baseFileName: "",
-      mapFileName: "",
-      baseRows: [],
-      baseFields: [],
-      mapIndex: null,
-      mapHasRegion: false,
-      enriched: [],
-      agg: null,
-      compactUploads: false,
-      ibgeIndex: new Map(),
-      openMetric: null, // {gridEl}
-      table: null,
-      charts: {
-        volReg: null,
-        winReg: null,
-        volUf: null,
-        monthly: null
-      }
-    };
-
-    /* =========================================================
-       UTILS
-    ========================================================= */
-    const MONTHS_PT = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
-
-    function norm(v){
-      return (v ?? "").toString().trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    }
-    function int(n){ return (n ?? 0).toLocaleString("pt-BR"); }
-    function pct(x){ return (x == null || Number.isNaN(x)) ? "—" : (x*100).toFixed(1).replace(".", ",") + "%"; }
-
-    function monthKey(raw){
-      if(!raw) return "";
-      const s = raw.toString().trim();
-      const m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
-      if(m) return `${m[1]}-${m[2]}`;
-      const m2 = s.match(/^(\d{2})\/(\d{2})\/(\d{4})/);
-      if(m2) return `${m2[3]}-${m2[2]}`;
-      return "";
-    }
-    function formatMonthLabel(key){
-      if(!key || key === "(sem data)") return "sem data";
-      const mm = key.match(/^(\d{4})-(\d{2})$/);
-      if(!mm) return key;
-      const yy = mm[1].slice(2);
-      const m = parseInt(mm[2], 10);
-      const mon = MONTHS_PT[m-1] || mm[2];
-      return `${mon}/${yy}`;
+      applyThemeToCharts();
+      applyThemeToTable();
     }
 
-    function setStatus(msg, pillText=""){
-      uploadsStatus.innerHTML = `<span>${msg}</span><span class="pill ${pillText==="aguarde"?"warn":""}">${pillText}</span>`;
+    themeToggle.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      setTheme(isDark ? "light" : "dark");
+    });
+
+    setTheme(localStorage.getItem("ucred_theme") || "light");
+
+    /********************
+     * Anchor offset calibration (menos “espaço sobrando”)
+     ********************/
+    function calibrateAnchorOffset(){
+      const header = $("#topbar");
+      const wrap = $(".topbarWrap");
+      const headerH = header.getBoundingClientRect().height;
+      const topOffset = parseFloat(getComputedStyle(wrap).top || "16") || 16;
+      // antes estava grande: agora “justo” (header + offset + ~14)
+      const offset = Math.round(headerH + topOffset + 14);
+      document.documentElement.style.setProperty("--anchorOffset", offset + "px");
+    }
+    window.addEventListener("resize", calibrateAnchorOffset);
+    calibrateAnchorOffset();
+
+    /********************
+     * Uploads state
+     ********************/
+    const uploadsMsgTitle = $("#uploadsMsgTitle");
+    const uploadsMsgText  = $("#uploadsMsgText");
+    const uploadsPill     = $("#uploadsPill");
+
+    function setUploadsStatus(kind, title, text){
+      uploadsMsgTitle.textContent = title || "";
+      uploadsMsgText.textContent  = text || "";
+      uploadsPill.classList.remove("pillOk","pillWarn","pillBad");
+      if(kind === "ok"){ uploadsPill.classList.add("pillOk"); uploadsPill.textContent = "ok"; }
+      if(kind === "warn"){ uploadsPill.classList.add("pillWarn"); uploadsPill.textContent = "aguarde"; }
+      if(kind === "bad"){ uploadsPill.classList.add("pillBad"); uploadsPill.textContent = "atenção"; }
     }
 
-    function showChips(items){
-      uploadsChips.innerHTML = "";
-      items.forEach(html => {
-        const el = document.createElement("div");
-        el.className = "chip";
-        el.innerHTML = html;
-        uploadsChips.appendChild(el);
-      });
-      uploadsChips.hidden = items.length === 0;
-    }
+    /********************
+     * Upload UI
+     ********************/
+    const uploadsDetails = $("#uploadsDetails");
+    const toggleUploads  = $("#toggleUploads");
 
-    function setFileName(el, name){
-      if(!name){
-        el.textContent = "Nenhum arquivo selecionado";
-        el.classList.remove("has-file");
+    let uploadsOpen = true;
+    function setUploadsOpen(open){
+      uploadsOpen = open;
+      uploadsDetails.style.display = open ? "grid" : "none";
+      toggleUploads.textContent = open ? "Fechar uploads" : "Editar uploads";
+      calibrateAnchorOffset();
+    }
+    toggleUploads.addEventListener("click", () => setUploadsOpen(!uploadsOpen));
+
+    // Default: aberto para facilitar primeiro uso
+    setUploadsOpen(true);
+
+    const baseFileInput = $("#baseFile");
+    const mapFileInput  = $("#mapFile");
+    const basePickBtn   = $("#basePickBtn");
+    const mapPickBtn    = $("#mapPickBtn");
+    const baseFileName  = $("#baseFileName");
+    const mapFileName   = $("#mapFileName");
+
+    basePickBtn.addEventListener("click", () => baseFileInput.click());
+    mapPickBtn.addEventListener("click", () => mapFileInput.click());
+
+    baseFileInput.addEventListener("change", () => {
+      const f = baseFileInput.files?.[0];
+      baseFileName.textContent = f ? f.name : "Nenhum arquivo selecionado";
+      state.hasUserBase = !!f;
+      syncActionButtons();
+      // ao selecionar base, não roda automaticamente; só atualiza status
+      if(f){
+        setUploadsStatus("ok", "Pronto", "arquivo selecionado — clique em Analisar dados");
       }else{
-        el.textContent = name;
-        el.classList.add("has-file");
+        setUploadsStatus("ok", "Pronto", "carregue uma base ou veja a demo");
       }
-    }
+    });
 
-    function downloadCSV(filename, header, sampleRows){
-      const rows = [header.join(",")].concat(sampleRows || []);
-      const blob = new Blob([rows.join("\n")], {type:"text/csv;charset=utf-8;"});
+    mapFileInput.addEventListener("change", () => {
+      const f = mapFileInput.files?.[0];
+      mapFileName.textContent = f ? f.name : "Nenhum arquivo selecionado";
+      if(f){
+        setUploadsStatus("ok", "Pronto", "mapa interno selecionado");
+      }else{
+        setUploadsStatus("ok", "Pronto", state.hasUserBase ? "arquivo selecionado — clique em Analisar dados" : "carregue uma base ou veja a demo");
+      }
+      syncActionButtons();
+    });
+
+    /********************
+     * Templates
+     ********************/
+    function downloadText(filename, text){
+      const blob = new Blob([text], {type:"text/csv;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
+      a.href = url;
       a.download = filename;
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
-      setTimeout(()=>URL.revokeObjectURL(a.href), 800);
+      a.remove();
+      URL.revokeObjectURL(url);
     }
 
-    function updateScrollPadding(){
-      const h = document.querySelector(".topbar")?.getBoundingClientRect().height || 72;
-      const offset = Math.round(h + 10); // precise, small
-      document.documentElement.style.scrollPaddingTop = offset + "px";
-    }
+    $("#tplBaseBtn").addEventListener("click", () => {
+      const header = [
+        "Cidade",
+        "Estado",
+        "Data de criação",
+        "Vendas",
+        "Perdidos",
+        "Em andamento",
+        "Pausados",
+        "ID (opcional)",
+        "Nome (opcional)"
+      ];
+      const sample = [
+        "Juiz de Fora",
+        "MG",
+        "2025-10-15",
+        "1",
+        "0",
+        "0",
+        "0",
+        "123",
+        "Exemplo"
+      ];
+      downloadText("template_base_crm.csv", header.join(",") + "\n" + sample.join(",") + "\n");
+    });
 
-    /* =========================================================
-       THEME
-    ========================================================= */
-    function setThemeIcon(theme){
-      if(theme === "dark"){
-        themeIcon.innerHTML = `
-          <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="2"/>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        `;
-      }else{
-        themeIcon.innerHTML = `
-          <path d="M21 12.8A8.5 8.5 0 0 1 11.2 3 7 7 0 1 0 21 12.8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-        `;
+    $("#tplMapBtn").addEventListener("click", () => {
+      const header = [
+        "cidade",
+        "uf",
+        "microrregiao",
+        "regiao (opcional)"
+      ];
+      const sample = [
+        "Juiz de Fora",
+        "MG",
+        "Zona da Mata",
+        "Sudeste"
+      ];
+      downloadText("template_mapa_interno.csv", header.join(",") + "\n" + sample.join(",") + "\n");
+    });
+
+    /********************
+     * State + parsing
+     ********************/
+    const state = {
+      hasUserBase: false,
+      raw: [],
+      enriched: [],
+      mapInternal: null,
+      analyzed: false,
+
+      filters: {
+        month: "__all",
+        region: "__all",
+        uf: "__all",
+        rateBase: "closed",
+      },
+
+      charts: {
+        region: null,
+        winRateRegion: null,
+        uf: null,
+        monthly: null,
+      },
+
+      table: null,
+      tableAllRows: [],
+      rowsLimit: 25,
+    };
+
+    const analyzeBtn = $("#analyzeBtn");
+    const clearAllBtn = $("#clearAllBtn");
+
+    function syncActionButtons(){
+      analyzeBtn.textContent = state.hasUserBase ? "Analisar dados" : "Ver demo";
+
+      // Limpar aparece só se houver algo a limpar (pedido)
+      const hasMap = !!mapFileInput.files?.[0];
+      const hasBase = !!baseFileInput.files?.[0];
+      const hasAnalysis = state.analyzed;
+      const hasFilters = (
+        state.filters.month !== "__all" ||
+        state.filters.region !== "__all" ||
+        state.filters.uf !== "__all" ||
+        state.filters.rateBase !== "closed"
+      );
+      clearAllBtn.classList.toggle("hidden", !(hasMap || hasBase || hasAnalysis || hasFilters));
+    }
+    syncActionButtons();
+
+    clearAllBtn.addEventListener("click", () => {
+      // reset inputs
+      baseFileInput.value = "";
+      mapFileInput.value = "";
+      baseFileName.textContent = "Nenhum arquivo selecionado";
+      mapFileName.textContent  = "Nenhum arquivo selecionado";
+
+      state.hasUserBase = false;
+      state.raw = [];
+      state.enriched = [];
+      state.mapInternal = null;
+      state.analyzed = false;
+
+      // reset filters
+      state.filters = { month:"__all", region:"__all", uf:"__all", rateBase:"closed" };
+      $("#rateBaseFilter").value = "closed";
+
+      setUploadsStatus("ok", "Pronto", "carregue uma base ou veja a demo");
+      syncActionButtons();
+
+      // clear UI
+      fillSelect($("#monthFilter"), [{value:"__all", label:"Todos os meses"}], "Todos os meses");
+      fillSelect($("#regionFilter"), [{value:"__all", label:"Todas as regiões"}], "Todas as regiões");
+      fillSelect($("#ufFilter"), [{value:"__all", label:"Todos os estados"}], "Todos os estados");
+
+      renderKPIs(null);
+      renderTriGrid([], [], []);
+      destroyCharts();
+      updateChartRegionClearUI(false);
+
+      if(state.table){
+        state.table.clearData();
       }
+      state.tableAllRows = [];
+    });
+
+    /********************
+     * Helpers: normalize + date
+     ********************/
+    function stripAccents(s){
+      return (s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"");
     }
-
-    function applyTheme(theme){
-      state.theme = theme;
-      document.documentElement.setAttribute("data-theme", theme);
-      localStorage.setItem("crmAnalyzerTheme", theme);
-      setThemeIcon(theme);
-
-      ucredLogo.src = (theme === "dark") ? ASSETS.ucredDark : ASSETS.ucredLight;
-      emktLogo.src  = (theme === "dark") ? ASSETS.emktDark : ASSETS.emktLight;
-
-      // SF font in charts
-      Chart.defaults.font.family = getComputedStyle(document.documentElement).getPropertyValue('--font-sans').trim();
-
-      // refresh visuals
-      Object.values(state.charts).forEach(ch => ch && ch.update());
-      state.table && state.table.redraw(true);
-
-      updateScrollPadding();
+    function normKey(s){
+      return stripAccents(String(s||""))
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g," ")
+        .replace(/[^\w ]/g,"")
+        .replace(/\s/g,"");
     }
-
-    function initTheme(){
-      const saved = localStorage.getItem("crmAnalyzerTheme");
-      const theme = (saved === "dark" || saved === "light") ? saved : "light";
-      applyTheme(theme);
-
-      themeToggle.addEventListener("click", () => {
-        applyTheme(state.theme === "dark" ? "light" : "dark");
-      });
-    }
-
-    /* =========================================================
-       DATA LOADERS
-    ========================================================= */
-    async function loadIBGEIndex(){
-      const url = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios?view=nivelado";
-      try{
-        const res = await fetch(url, { cache: "force-cache" });
-        if(!res.ok) throw new Error("IBGE");
-        const data = await res.json();
-
-        const idx = new Map();
-        for(const r of data){
-          const city = r["municipio-nome"];
-          const uf = r["UF-sigla"];
-          const reg = r["regiao-nome"];
-          const meso = r["mesorregiao-nome"]; // we use as microrregião (Zona da Mata)
-          if(!city || !uf) continue;
-          const key = norm(city) + "|" + norm(uf).toUpperCase();
-          idx.set(key, { regiao: reg || "", uf, microrregiao: meso || "", cidade: city || "" });
-        }
-        state.ibgeIndex = idx;
-        setStatus(`<b>IBGE pronto</b> · ${int(idx.size)} municípios`, "ok");
-      }catch(e){
-        setStatus(`<b>IBGE indisponível</b> · usando fallback por UF`, "atenção");
-      }
-    }
-
-    function parseAny(file){
-      const name = (file?.name || "").toLowerCase();
-      if(name.endsWith(".csv")) return parseCSVFile(file);
-      if(name.endsWith(".xlsx") || name.endsWith(".xls")) return parseXLSXFile(file);
-      return Promise.reject(new Error("Formato não suportado"));
-    }
-
-    function parseCSVFile(file){
-      return new Promise((resolve, reject) => {
-        Papa.parse(file, {
-          header:true,
-          skipEmptyLines:true,
-          transformHeader: h => (h ?? "").toString().trim(),
-          complete: (res) => resolve(res.data || []),
-          error: reject
-        });
-      });
-    }
-
-    function parseXLSXFile(file){
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          try{
-            const data = new Uint8Array(e.target.result);
-            const wb = XLSX.read(data, { type:"array" });
-            const sheet = wb.Sheets[wb.SheetNames[0]];
-            const json = XLSX.utils.sheet_to_json(sheet, { defval:"" });
-            resolve(json || []);
-          }catch(err){ reject(err); }
-        };
-        reader.onerror = () => reject(reader.error);
-        reader.readAsArrayBuffer(file);
-      });
-    }
-
-    async function loadDemo(){
-      setStatus(`<b>Carregando demo…</b>`, "aguarde");
-      const res = await fetch(ASSETS.demoCsv, { cache:"no-store" });
-      if(!res.ok) throw new Error("Não consegui carregar a demo. Verifique assets/demo/rd_demo.csv");
-      const text = await res.text();
-      const parsed = Papa.parse(text, { header:true, skipEmptyLines:true });
-      return parsed.data || [];
-    }
-
-    async function parseInternalMap(file){
-      const rows = await parseCSVFile(file);
-      if(!rows?.length) throw new Error("Mapa interno vazio");
-
-      const fields = Object.keys(rows[0] || {}).filter(Boolean);
-      const colCity = findField(fields, ["cidade","municipio","município"]);
-      const colUF = findField(fields, ["uf","estado"]);
-      const colMicro = findField(fields, ["microrregiao","microrregião","mesorregiao","mesorregião","cluster"]);
-      const colRegion = findField(fields, ["regiao","região"]);
-
-      if(!colCity || !colUF || !colMicro) throw new Error("Mapa interno inválido: precisa de cidade, uf e microrregiao.");
-
-      const idx = new Map();
-      for(const r of rows){
-        const city = r[colCity];
-        const uf = (r[colUF] ?? "").toString().trim().toUpperCase();
-        if(!city || !uf) continue;
-        const key = norm(city) + "|" + norm(uf).toUpperCase();
-        idx.set(key, {
-          regiao: colRegion ? (r[colRegion] ?? "") : "",
-          microrregiao: (r[colMicro] ?? "")
-        });
-      }
-
-      return { idx, hasRegion: !!colRegion };
-    }
-
-    function findField(fields, candidates){
-      const fNorm = fields.map(f => ({ raw:f, n:norm(f) }));
-      for(const c of candidates){
-        const cn = norm(c);
-        const exact = fNorm.find(x => x.n === cn);
-        if(exact) return exact.raw;
-      }
-      for(const c of candidates){
-        const cn = norm(c);
-        const incl = fNorm.find(x => x.n.includes(cn));
-        if(incl) return incl.raw;
+    function getVal(row, keys){
+      for(const k of keys){
+        const kk = normKey(k);
+        if(kk in row && row[kk] !== undefined && row[kk] !== null && String(row[kk]).trim() !== "") return row[kk];
       }
       return "";
     }
+    function toNum(v){
+      if(v === null || v === undefined) return 0;
+      const s = String(v).trim().replace(",",".");
+      const n = Number(s);
+      return Number.isFinite(n) ? n : 0;
+    }
+    function parseDate(raw){
+      const s = String(raw||"").trim();
+      if(!s) return null;
 
-    /* =========================================================
-       TRANSFORM / AGGREGATE
-    ========================================================= */
-    function inferStatus(row){
-      // expected columns
-      const v = Number(row[findField(state.baseFields, ["Vendas","vendas"])] ?? 0);
-      const p = Number(row[findField(state.baseFields, ["Perdidos","perdidos"])] ?? 0);
-      const ea = Number(row[findField(state.baseFields, ["Em andamento","em andamento","emandamento","em_andamento"])] ?? 0);
-      const pa = Number(row[findField(state.baseFields, ["Pausados","pausados"])] ?? 0);
+      // ISO-like
+      const d1 = new Date(s);
+      if(!isNaN(d1.getTime())) return d1;
 
-      if(v > 0) return "won";
-      if(p > 0) return "lost";
-      if(ea > 0) return "open";
-      if(pa > 0) return "paused";
-      return "open";
+      // dd/mm/yyyy
+      const m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+      if(m){
+        const dd = Number(m[1]), mm = Number(m[2]), yy = Number(m[3]);
+        const d = new Date(yy, mm-1, dd);
+        if(!isNaN(d.getTime())) return d;
+      }
+      return null;
+    }
+    function monthKey(d){
+      const y = d.getFullYear();
+      const m = String(d.getMonth()+1).padStart(2,"0");
+      return `${y}-${m}`;
+    }
+    function formatMonthLabel(key){
+      // key YYYY-MM -> mmm/AA
+      const [yy, mm] = key.split("-").map(Number);
+      const months = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+      return `${months[(mm||1)-1]}/${String(yy).slice(2)}`;
+    }
+    const REGION_BY_UF = {
+      "AC":"Norte","AL":"Nordeste","AP":"Norte","AM":"Norte","BA":"Nordeste","CE":"Nordeste","DF":"Centro-Oeste","ES":"Sudeste","GO":"Centro-Oeste","MA":"Nordeste","MT":"Centro-Oeste","MS":"Centro-Oeste","MG":"Sudeste","PA":"Norte","PB":"Nordeste","PR":"Sul","PE":"Nordeste","PI":"Nordeste","RJ":"Sudeste","RN":"Nordeste","RS":"Sul","RO":"Norte","RR":"Norte","SC":"Sul","SP":"Sudeste","SE":"Nordeste","TO":"Norte"
+    };
+    const REGION_UFS = Object.entries(REGION_BY_UF).reduce((acc,[uf,reg])=>{
+      acc[reg] = acc[reg] || [];
+      acc[reg].push(uf);
+      return acc;
+    }, {});
+
+    /********************
+     * File parsing (CSV/XLSX)
+     ********************/
+    async function readFileAsRows(file){
+      const ext = (file.name.split(".").pop() || "").toLowerCase();
+      if(ext === "xlsx" || ext === "xls"){
+        const buf = await file.arrayBuffer();
+        const wb = XLSX.read(buf, {type:"array"});
+        const wsName = wb.SheetNames[0];
+        const ws = wb.Sheets[wsName];
+        const json = XLSX.utils.sheet_to_json(ws, {defval:""});
+        return normalizeRows(json);
+      }else{
+        const text = await file.text();
+        return new Promise((resolve, reject) => {
+          Papa.parse(text, {
+            header: true,
+            skipEmptyLines: true,
+            complete: (res) => resolve(normalizeRows(res.data)),
+            error: (err) => reject(err)
+          });
+        });
+      }
     }
 
-    function enrichBase(rows){
-      const colCity = findField(state.baseFields, ["Cidade","cidade","Município","Municipio","municipio"]);
-      const colUF = findField(state.baseFields, ["Estado","estado","UF","uf"]);
-      const colDate = findField(state.baseFields, ["Data de criação","data de criação","data de criacao","criado em","created","data"]);
+    function normalizeRows(rows){
+      // transforma chaves do objeto em normKey
+      return rows.map(r=>{
+        const out = {};
+        Object.keys(r || {}).forEach(k=>{
+          out[normKey(k)] = r[k];
+        });
+        return out;
+      });
+    }
 
-      const out = [];
-      for(const row of rows){
-        const cityRaw = (row[colCity] ?? "").toString().trim();
-        const ufRaw = (row[colUF] ?? "").toString().trim().toUpperCase();
-        const created = colDate ? (row[colDate] ?? "") : "";
-        const mk = monthKey(created);
-        const month = mk ? mk : "(sem data)";
-        const key = norm(cityRaw) + "|" + norm(ufRaw).toUpperCase();
+    /********************
+     * Internal map parsing
+     ********************/
+    async function parseInternalMapIfAny(){
+      const f = mapFileInput.files?.[0];
+      if(!f) return null;
+      const rows = await readFileAsRows(f);
+      const map = new Map();
+      for(const r of rows){
+        const cidade = String(getVal(r, ["cidade","municipio","município"])).trim();
+        const uf = String(getVal(r, ["uf","estado"])).trim().toUpperCase();
+        const micro = String(getVal(r, ["microrregiao","microrregião","microregiao"])).trim();
+        const regiao = String(getVal(r, ["regiao","região"])).trim();
+        if(!cidade || !uf || !micro) continue;
+        const key = `${stripAccents(cidade).toLowerCase()}|${uf}`;
+        map.set(key, {micro, regiao});
+      }
+      return map;
+    }
 
-        let regiao = UF_TO_REGIAO[ufRaw] || "(não identificado)";
-        let microrregiao = "(não identificado)";
-        let cidade = cityRaw || "(não identificado)";
-        let uf = ufRaw || "(não identificado)";
+    /********************
+     * Enrichment
+     ********************/
+    function enrichBaseRows(rows, mapInternal){
+      const enriched = [];
+      for(const r of rows){
+        const cidade = String(getVal(r, ["cidade","municipio","município"])).trim();
+        const uf = String(getVal(r, ["estado","uf"])).trim().toUpperCase();
+        const micro = String(getVal(r, ["microrregiao","microrregião","microregiao","microregiaoibge"])).trim();
+        const regiao = String(getVal(r, ["regiao","região"])).trim();
 
-        const ib = state.ibgeIndex.get(key);
-        if(ib){
-          if(ib.regiao) regiao = ib.regiao;
-          if(ib.microrregiao) microrregiao = ib.microrregiao;
-          if(ib.cidade) cidade = ib.cidade;
-          if(ib.uf) uf = ib.uf;
+        const dRaw = getVal(r, ["datadecriacao","data de criacao","criacao","data"]);
+        const d = parseDate(dRaw);
+        const mk = d ? monthKey(d) : "";
+
+        // status columns
+        const vendas = toNum(getVal(r, ["vendas","ganhas","wins"]));
+        const perdidos = toNum(getVal(r, ["perdidos","perdas","lost"]));
+        const andamento = toNum(getVal(r, ["emandamento","em andamento","emnegociacao","em negociacao","ativas","abertas"]));
+        const pausados = toNum(getVal(r, ["pausados","pausado"]));
+
+        // fallback: se vier “status” textual
+        let v = vendas, p = perdidos, a = andamento, z = pausados;
+        const statusTxt = String(getVal(r, ["status","etapa"])).toLowerCase().trim();
+        if(statusTxt && (v+p+a+z) === 0){
+          if(statusTxt.includes("vend") || statusTxt.includes("ganh")) v = 1;
+          else if(statusTxt.includes("perd")) p = 1;
+          else if(statusTxt.includes("paus")) z = 1;
+          else a = 1;
         }
 
-        if(state.mapIndex){
-          const it = state.mapIndex.get(key);
-          if(it){
-            if(state.mapHasRegion && it.regiao) regiao = it.regiao;
-            if(it.microrregiao) microrregiao = it.microrregiao;
+        const base = {
+          cidade,
+          uf,
+          month: mk,
+          vendas: v,
+          perdidos: p,
+          andamento: a,
+          pausados: z,
+        };
+
+        if(!cidade || !uf) continue;
+
+        // Region fallback by UF
+        let reg = regiao || REGION_BY_UF[uf] || "";
+        let mic = micro;
+
+        // If micro missing, try map internal
+        if(!mic && mapInternal){
+          const key = `${stripAccents(cidade).toLowerCase()}|${uf}`;
+          const hit = mapInternal.get(key);
+          if(hit){
+            mic = hit.micro || mic;
+            reg = hit.regiao || reg;
           }
         }
 
-        const status = inferStatus(row);
-        out.push({ status, regiao, uf, microrregiao, cidade, created, month });
+        enriched.push({
+          ...base,
+          regiao: reg || "—",
+          microrregiao: mic || "—",
+        });
       }
-      return out;
+      return enriched;
     }
 
-    function aggregate(enriched){
-      const monthSel = monthFilter.value || "__all";
-      const regSel = regionFilter.value || "__all";
-      const ufSel = ufFilter.value || "__all";
-      const rb = rateBase.value || "closed";
+    /********************
+     * Aggregation
+     ********************/
+    function aggKey(parts){ return parts.join("||"); }
 
-      const rows = enriched.filter(r => {
-        if(monthSel !== "__all" && r.month !== monthSel) return false;
-        if(regSel !== "__all" && r.regiao !== regSel) return false;
-        if(ufSel !== "__all" && r.uf !== ufSel) return false;
+    function aggregate(enriched){
+      const f = state.filters;
+
+      const filtered = enriched.filter(r=>{
+        if(f.month !== "__all" && r.month !== f.month) return false;
+        if(f.region !== "__all" && r.regiao !== f.region) return false;
+        if(f.uf !== "__all" && r.uf !== f.uf) return false;
         return true;
       });
 
+      // totals
+      let totalV=0,totalP=0,totalA=0,totalZ=0;
+      for(const r of filtered){
+        totalV += r.vendas;
+        totalP += r.perdidos;
+        totalA += r.andamento;
+        totalZ += r.pausados;
+      }
+      const total = totalV + totalP + totalA + totalZ;
+
+      // months list
+      const months = Array.from(new Set(enriched.map(r=>r.month).filter(Boolean))).sort();
+
+      // groups
       const byRegion = new Map();
       const byUF = new Map();
       const byCity = new Map();
-      const byMonth = new Map();
 
-      for(const r of rows){
-        if(!byRegion.has(r.regiao)) byRegion.set(r.regiao, { regiao:r.regiao, total:0, won:0, lost:0, open:0, paused:0 });
-        const R = byRegion.get(r.regiao); R.total++; R[r.status]++;
-
-        const ufKey = r.regiao+"||"+r.uf;
-        if(!byUF.has(ufKey)) byUF.set(ufKey, { regiao:r.regiao, uf:r.uf, total:0, won:0, lost:0, open:0, paused:0 });
-        const U = byUF.get(ufKey); U.total++; U[r.status]++;
-
-        const cityKey = r.regiao+"||"+r.uf+"||"+r.microrregiao+"||"+r.cidade;
-        if(!byCity.has(cityKey)) byCity.set(cityKey, { regiao:r.regiao, uf:r.uf, microrregiao:r.microrregiao, cidade:r.cidade, total:0, won:0, lost:0, open:0, paused:0 });
-        const C = byCity.get(cityKey); C.total++; C[r.status]++;
-
-        if(!byMonth.has(r.month)) byMonth.set(r.month, { month:r.month, total:0, won:0, lost:0, open:0, paused:0 });
-        const M = byMonth.get(r.month); M.total++; M[r.status]++;
+      function add(map, key, obj){
+        if(!map.has(key)){
+          map.set(key, { ...obj, vendas:0, perdidos:0, andamento:0, pausados:0, total:0 });
+        }
+        const it = map.get(key);
+        it.vendas += obj.vendas;
+        it.perdidos += obj.perdidos;
+        it.andamento += obj.andamento;
+        it.pausados += obj.pausados;
+        it.total += (obj.vendas + obj.perdidos + obj.andamento + obj.pausados);
       }
 
-      function withRates(o){
-        const closed = o.won + o.lost;
-        const denom = (rb === "closed") ? closed : o.total;
-        return { ...o, closed, winRate: denom ? (o.won/denom) : null, lossRate: denom ? (o.lost/denom) : null };
+      for(const r of filtered){
+        add(byRegion, r.regiao, r);
+        add(byUF, r.uf, r);
+
+        const k = aggKey([r.regiao, r.uf, r.microrregiao, r.cidade]);
+        if(!byCity.has(k)){
+          byCity.set(k, { regiao:r.regiao, uf:r.uf, microrregiao:r.microrregiao, cidade:r.cidade, vendas:0, perdidos:0, andamento:0, pausados:0, total:0 });
+        }
+        const c = byCity.get(k);
+        c.vendas += r.vendas;
+        c.perdidos += r.perdidos;
+        c.andamento += r.andamento;
+        c.pausados += r.pausados;
+        c.total += (r.vendas+r.perdidos+r.andamento+r.pausados);
       }
 
-      const regions = Array.from(byRegion.values()).map(withRates).sort((a,b)=>b.total-a.total);
-      const ufs = Array.from(byUF.values()).map(withRates).sort((a,b)=>b.total-a.total);
-      const cities = Array.from(byCity.values()).map(withRates).sort((a,b)=>b.total-a.total);
-      const months = Array.from(byMonth.values()).map(withRates).sort((a,b)=>a.month.localeCompare(b.month));
+      const regions = Array.from(new Set(enriched.map(r=>r.regiao).filter(Boolean))).sort();
+      const ufs = Array.from(new Set(enriched.map(r=>r.uf).filter(Boolean))).sort();
 
-      return { rows, regions, ufs, cities, months };
+      return {
+        filtered,
+        totals: { total, vendas: totalV, perdidos: totalP, andamento: totalA, pausados: totalZ },
+        months,
+        regions,
+        ufs,
+        byRegion,
+        byUF,
+        byCity
+      };
     }
 
-    /* =========================================================
-       UI: Uploads mode + buttons
-    ========================================================= */
-    function setUploadsCompact(isCompact){
-      state.compactUploads = isCompact;
-      uploadsSection.classList.toggle("compact", isCompact);
-      uploadsToggle.style.display = isCompact ? "inline-flex" : "none";
-      uploadsToggle.textContent = isCompact ? "Editar uploads" : "Ocultar";
+    function rateBaseDenominator(obj){
+      const base = state.filters.rateBase;
+      if(base === "total") return (obj.vendas + obj.perdidos + obj.andamento); // pausados fora
+      return (obj.vendas + obj.perdidos);
     }
 
-    function updatePrimaryAction(){
-      if(state.baseSource === "none"){
-        primaryAction.textContent = "Ver demo";
-        primaryAction.disabled = false;
-      }else{
-        primaryAction.textContent = "Analisar dados";
-        primaryAction.disabled = false;
+    function pct(x){
+      if(!isFinite(x)) return "0,0%";
+      return (x*100).toFixed(1).replace(".",",") + "%";
+    }
+
+    /********************
+     * Filters UI
+     ********************/
+    const monthFilter = $("#monthFilter");
+    const regionFilter = $("#regionFilter");
+    const ufFilter = $("#ufFilter");
+    const rateBaseFilter = $("#rateBaseFilter");
+
+    function fillSelect(selectEl, options, placeholderLabel){
+      const v = selectEl.value;
+      selectEl.innerHTML = "";
+      const ph = document.createElement("option");
+      ph.value = "__all";
+      ph.textContent = placeholderLabel;
+      selectEl.appendChild(ph);
+      for(const opt of options){
+        const o = document.createElement("option");
+        o.value = opt.value;
+        o.textContent = opt.label;
+        selectEl.appendChild(o);
       }
+      // restore if possible
+      if(Array.from(selectEl.options).some(o=>o.value===v)) selectEl.value = v;
+      else selectEl.value = "__all";
     }
 
-    function updateClearButton(){
-      const shouldShow = (state.baseSource !== "none") || !!state.mapIndex;
-      clearAllBtn.style.display = shouldShow ? "inline-flex" : "none";
-    }
-
-    function updateUploadsUI(){
-      // file names
-      setFileName(baseName, state.baseFileName);
-      setFileName(mapName, state.mapFileName);
-
-      updatePrimaryAction();
-      updateClearButton();
-
-      // chips
-      const chips = [];
-      if(state.baseSource === "demo") chips.push(`<b>Fonte</b>: Demo`);
-      if(state.baseSource === "file") chips.push(`<b>Fonte</b>: Upload`);
-
-      // show detected column names (if any)
-      if(state.baseFields?.length){
-        const cityField = findField(state.baseFields, ["Cidade","cidade","Município","Municipio","municipio"]);
-        const ufField = findField(state.baseFields, ["Estado","estado","UF","uf"]);
-        const dateField = findField(state.baseFields, ["Data de criação","data de criação","data de criacao","criado em","created","data"]);
-        chips.push(`<b>Cidade</b>: ${cityField || "—"}`);
-        chips.push(`<b>Estado</b>: ${ufField || "—"}`);
-        chips.push(`<b>Data</b>: ${dateField || "—"}`);
-      }
-      showChips(chips);
-
-      // compact mode when base loaded or demo loaded
-      setUploadsCompact(state.baseSource !== "none");
-    }
-function fillSelect(sel, items, allLabel) {
-  sel.innerHTML = "";
-
-  const optAll = document.createElement("option");
-  optAll.value = "__all";
-  optAll.textContent = allLabel;
-  sel.appendChild(optAll);
-
-  for (const it of items) {
-    const opt = document.createElement("option");
-    opt.value = it.value ?? it;
-    opt.textContent = it.label ?? it;
-    sel.appendChild(opt);
-  }
-
-  sel.value = "__all";
-}
-    /* =========================================================
-       UI: Filters
-    ========================================================= */
-    function setupFilters(enriched){
-      const monthKeys = Array.from(new Set(enriched.map(r=>r.month))).filter(Boolean).sort();
-      const months = monthKeys.map(k => ({ value:k, label: formatMonthLabel(k) }));
-
-      const regions = Array.from(new Set(enriched.map(r=>r.regiao))).filter(Boolean).sort();
-      const ufs = Array.from(new Set(enriched.map(r=>r.uf))).filter(Boolean).sort();
-
-      fillSelect(monthFilter, months, "Todos os meses");
-      fillSelect(regionFilter, regions.map(r=>({value:r,label:r})), "Todas as regiões");
-      fillSelect(ufFilter, ufs.map(u=>({value:u,label:u})), "Todos os estados");
-      updateClearRegionLink();
-    }
-
-    function rebuildUFOptionsByRegion(regionValue){
-      const allUFs = Array.from(new Set(state.enriched.map(r=>r.uf))).filter(Boolean).sort();
+    function rebuildUFOptionsByRegion(regionValue, allUFs){
       if(regionValue === "__all"){
         fillSelect(ufFilter, allUFs.map(u=>({value:u,label:u})), "Todos os estados");
         return;
       }
       const allowed = (REGION_UFS[regionValue] || []).slice().sort();
-      const allowedExisting = allowed.filter(u => allUFs.includes(u));
-      fillSelect(ufFilter, allowedExisting.map(u=>({value:u,label:u})), "Todos os estados");
+      const existing = allowed.filter(u=>allUFs.includes(u));
+      fillSelect(ufFilter, existing.map(u=>({value:u,label:u})), "Todos os estados");
     }
 
-    function updateClearRegionLink(){
-      clearRegionWrap.hidden = (regionFilter.value === "__all");
-    }
-
-    /* =========================================================
-       UI: KPI
-    ========================================================= */
-    function renderKPIs(rows){
-      const t = rows.reduce((acc, r) => {
-        acc.total++;
-        acc[r.status] = (acc[r.status] ?? 0) + 1;
-        return acc;
-      }, {total:0, won:0, lost:0, open:0, paused:0});
-
-      const active = t.open + t.paused;
-      const denom = (rateBase.value === "closed") ? (t.won + t.lost) : t.total;
-      const wr = denom ? (t.won/denom) : null;
-      const lr = denom ? (t.lost/denom) : null;
-
-      kpisEl.innerHTML = `
-        <div class="kpi hover-pop"><div class="label">Registros</div><div class="value">${int(t.total)}</div><div class="hint">após filtros</div></div>
-        <div class="kpi hover-pop"><div class="label">Ganhas</div><div class="value"><span style="color:var(--ok)">${int(t.won)}</span><span class="subpct ok">| ${pct(wr)}</span></div><div class="hint">quantidade | taxa</div></div>
-        <div class="kpi hover-pop"><div class="label">Perdidas</div><div class="value"><span style="color:var(--bad)">${int(t.lost)}</span><span class="subpct bad">| ${pct(lr)}</span></div><div class="hint">quantidade | taxa</div></div>
-        <div class="kpi hover-pop"><div class="label">Em negociação</div><div class="value">${int(active)}</div><div class="hint">ativas</div></div>
-      `;
-    }
-
-    /* =========================================================
-       UI: Metric expanded (2x2)
-    ========================================================= */
-    function closeOpenMetric(){
-      if(!state.openMetric) return;
-      const grid = state.openMetric;
-      grid.classList.remove("is-open");
-      grid._activeKey = null;
-      state.openMetric = null;
-    }
-
-    function openMetric(gridEl, info){
-      if(state.openMetric && state.openMetric !== gridEl){
-        closeOpenMetric();
-      }
-      state.openMetric = gridEl;
-
-      const expanded = gridEl.querySelector(".metric-expanded");
-      expanded.querySelector(".t").textContent = info.title;
-      expanded.querySelector(".p").textContent = info.text;
-      expanded.querySelector(".a").textContent = info.action ? ("Ação: " + info.action) : "";
-      expanded.querySelector(".a").style.display = info.action ? "block" : "none";
-
-      gridEl.classList.add("is-open");
-      gridEl._activeKey = info.key;
-    }
-
-    function metricExplain(key, context){
-      // context: "opp" | "risk" | "insight"
-      const base = {
-        volume: {
-          title: "Volume",
-          text: "Total de registros neste recorte.",
-          action: "Se o volume é alto e a taxa de ganho é baixa, revise segmentação e abordagem."
-        },
-        won: {
-          title: "Ganhas",
-          text: "Fechamentos ganhos neste recorte.",
-          action: "Escale onde há ganho consistente (mídia, SDR, foco comercial)."
-        },
-        lost: {
-          title: "Perdidas",
-          text: "Fechamentos perdidos neste recorte.",
-          action: "Concentre diagnóstico: qualificação, oferta, preço, SLA e follow-up."
-        },
-        active: {
-          title: "Em negociação",
-          text: "Negócios ainda abertos (inclui pausados).",
-          action: "Se ficar alto por muito tempo, é gargalo de follow-up ou SLA."
-        },
-        txwin: {
-          title: "Taxa de ganho",
-          text: "Percentual de ganhos sobre fechadas (ganhas + perdidas).",
-          action: "Use para comparar qualidade entre regiões/estados/cidades."
-        },
-        txlost: {
-          title: "Taxa de perda",
-          text: "Percentual de perdas sobre fechadas (ganhas + perdidas).",
-          action: "Se disparar, ajuste qualificação e critérios de entrada."
-        },
-        saldo: {
-          title: "Saldo (Ganhos − Perdidos)",
-          text: "Diferença líquida de fechamentos no período.",
-          action: "Saldo positivo indica melhora; negativo indica piora."
-        },
-        period: {
-          title: "Período",
-          text: "Intervalo usado para calcular a tendência.",
-          action: "Compare meses para entender evolução do funil."
-        }
-      };
-      return base[key] || { title:"Info", text:"", action:"" };
-    }
-
-    function wireMetricGrid(cardEl, context){
-      const grid = cardEl.querySelector(".metric-grid");
-      if(!grid) return;
-
-      // create expanded if missing
-      let expanded = grid.querySelector(".metric-expanded");
-      if(!expanded){
-        expanded = document.createElement("div");
-        expanded.className = "metric-expanded";
-        expanded.innerHTML = `
-          <button class="close" type="button" aria-label="Fechar">×</button>
-          <div class="t">Info</div>
-          <p class="p"></p>
-          <div class="a"></div>
-        `;
-        grid.appendChild(expanded);
-      }
-
-      expanded.querySelector(".close").addEventListener("click", (e) => {
-        e.stopPropagation();
-        closeOpenMetric();
-      });
-
-      grid.querySelectorAll(".metric-box").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-          e.preventDefault();
-          const key = btn.dataset.key;
-          const info = metricExplain(key, context);
-          info.key = key;
-          openMetric(grid, info);
-        });
-      });
-    }
-
-    // close on outside click / ESC
-    document.addEventListener("click", (e) => {
-      if(!state.openMetric) return;
-      if(state.openMetric.contains(e.target)) return;
-      closeOpenMetric();
-    });
-    document.addEventListener("keydown", (e) => {
-      if(e.key === "Escape") closeOpenMetric();
+    monthFilter.addEventListener("change", () => {
+      state.filters.month = monthFilter.value;
+      rerender();
+      syncActionButtons();
     });
 
-    /* =========================================================
-       UI: Signals (3x3 grid)
-    ========================================================= */
-    function makeSignalCard(kind, data){
-      // kind: "opp" | "risk" | "insight"
-      const badgeClass = data.badgeType === "good" ? "badge good" : (data.badgeType === "bad" ? "badge bad" : "badge");
-      const badgeText = (data.badgeText && data.badgeText !== "auto") ? data.badgeText : "";
+    regionFilter.addEventListener("change", () => {
+      state.filters.region = regionFilter.value;
 
-      const metricBoxes = data.metrics.map(m => {
-        return `
-          <button class="metric-box" type="button" data-key="${m.key}">
-            <span class="metric-info">ⓘ</span>
-            <div class="metric-k">${m.label}</div>
-            <div class="metric-v">${m.value}</div>
-          </button>
+      // item 4 anterior: ao mudar região, limpar estado e limitar estados
+      state.filters.uf = "__all";
+      const allUFs = Array.from(new Set(state.enriched.map(r=>r.uf).filter(Boolean))).sort();
+      rebuildUFOptionsByRegion(regionFilter.value, allUFs);
+      ufFilter.value = "__all";
+
+      rerender();
+      syncActionButtons();
+    });
+
+    ufFilter.addEventListener("change", () => {
+      state.filters.uf = ufFilter.value;
+      rerender();
+      syncActionButtons();
+    });
+
+    rateBaseFilter.addEventListener("change", () => {
+      state.filters.rateBase = rateBaseFilter.value;
+      rerender();
+      syncActionButtons();
+    });
+
+    $("#clearFiltersBtn").addEventListener("click", () => {
+      state.filters.month = "__all";
+      state.filters.region = "__all";
+      state.filters.uf = "__all";
+      state.filters.rateBase = "closed";
+
+      monthFilter.value = "__all";
+      regionFilter.value = "__all";
+      rateBaseFilter.value = "closed";
+
+      const allUFs = Array.from(new Set(state.enriched.map(r=>r.uf).filter(Boolean))).sort();
+      rebuildUFOptionsByRegion("__all", allUFs);
+      ufFilter.value = "__all";
+
+      updateChartRegionClearUI(false);
+      rerender();
+      syncActionButtons();
+    });
+
+    /********************
+     * KPI render
+     ********************/
+    const kpiGrid = $("#kpiGrid");
+
+    function renderKPIs(agg){
+      kpiGrid.innerHTML = "";
+      if(!agg){
+        return;
+      }
+      const t = agg.totals;
+      const baseDen = rateBaseDenominator(t);
+      const winRate = baseDen ? (t.vendas / baseDen) : 0;
+      const lossRate = baseDen ? (t.perdidos / baseDen) : 0;
+
+      const kpis = [
+        { title:"Registros", value: t.total, sub:"após filtros" },
+        { title:"Ganhas", value: t.vendas, rate: pct(winRate), rateClass:"win", sub:"quantidade | taxa" },
+        { title:"Perdidas", value: t.perdidos, rate: pct(lossRate), rateClass:"loss", sub:"quantidade | taxa" },
+        { title:"Em negociação", value: t.andamento, sub:"ativas" },
+      ];
+
+      for(const k of kpis){
+        const el = document.createElement("div");
+        el.className = "kpi";
+        const valueHtml = (k.rate)
+          ? `<div class="vRow">
+               <div class="vMain" style="color:${k.title==='Ganhas' ? 'var(--kpiWin)' : 'var(--kpiLoss)'}">${fmtInt(k.value)}</div>
+               <div class="vRate ${k.rateClass}">| ${k.rate}</div>
+             </div>`
+          : `<div class="v">${fmtInt(k.value)}</div>`;
+        el.innerHTML = `
+          <div class="t">${k.title}</div>
+          ${valueHtml}
+          <div class="s">${k.sub}</div>
         `;
-      }).join("");
+        kpiGrid.appendChild(el);
+      }
+    }
 
+    function fmtInt(n){
+      const v = Math.round(n || 0);
+      return v.toLocaleString("pt-BR");
+    }
+
+    /********************
+     * TriGrid render (Opp / Risks / Auto)
+     ********************/
+    const triGrid = $("#triGrid");
+
+    function renderTriGrid(opps, risks, autos){
+      triGrid.innerHTML = "";
+      const max = Math.max(opps.length, risks.length, autos.length);
+      for(let i=0; i<max; i++){
+        const a = opps[i] || null;
+        const b = risks[i] || null;
+        const c = autos[i] || null;
+
+        triGrid.appendChild(a ? a : emptyCard("Oportunidades"));
+        triGrid.appendChild(b ? b : emptyCard("Riscos"));
+        triGrid.appendChild(c ? c : emptyCard("Insights"));
+      }
+      wireStatFlip();
+    }
+
+    function emptyCard(title){
       const el = document.createElement("div");
-      el.className = "signal-card hover-pop";
+      el.className = "miniCard";
       el.innerHTML = `
-        <div class="signal-top">
+        <div class="miniTop">
           <div>
-            <div class="signal-title">${data.title}</div>
-            <div class="signal-sub">${data.subtitle}</div>
+            <h3 class="miniTitle">${title}</h3>
+            <div class="miniSub">—</div>
           </div>
-          ${badgeText ? `<div class="${badgeClass}">${badgeText}</div>` : ""}
+          <span class="pill pillAuto">auto</span>
         </div>
-        <div class="metric-grid">
-          ${metricBoxes}
+        <div class="statsGrid">
+          ${[0,1,2,3].map(()=>statBox("—","—","Sem dados para este recorte.")).join("")}
         </div>
       `;
-      // wire expanded behavior
-      wireMetricGrid(el, kind);
       return el;
     }
 
-    function renderSignals(agg){
-      // pick top 3 opp and top 3 risk based on cities
-      const rb = rateBase.value;
-      const denom = (m) => rb === "closed" ? (m.won + m.lost) : m.total;
-
-      const cities = agg.cities.slice();
-
-      const opp = cities
-        .filter(m => denom(m) >= 8 && m.winRate != null)
-        .sort((a,b) => (b.winRate - a.winRate) || (b.total - a.total))
-        .slice(0, 3);
-
-      const risks = cities
-        .filter(m => denom(m) >= 8 && m.lossRate != null)
-        .sort((a,b) => (b.lossRate - a.lossRate) || (b.total - a.total))
-        .slice(0, 3);
-
-      // insights: 3 cards
-      const series = (regionFilter.value === "__all") ? agg.regions : agg.cities;
-      const best = series.slice().filter(x=>x.winRate!=null).sort((a,b)=> (b.winRate-a.winRate) || (b.total-a.total))[0];
-      const worst = series.slice().filter(x=>x.lossRate!=null).sort((a,b)=> (b.lossRate-a.lossRate) || (b.total-a.total))[0];
-
-      const totals = agg.rows.reduce((acc, r) => {
-        acc.total++;
-        acc[r.status] = (acc[r.status] ?? 0) + 1;
-        return acc;
-      }, {total:0, won:0, lost:0, open:0, paused:0});
-      const active = totals.open + totals.paused;
-      const closed = totals.won + totals.lost;
-      const closeRate = totals.total ? closed/totals.total : null;
-      const activeRate = totals.total ? active/totals.total : null;
-
-      const months = agg.months.slice().filter(m=>m.month && m.month !== "(sem data)");
-      let deltaTxt = "—";
-      let periodTxt = "—";
-      if(months.length >= 2){
-        const first = months[0], last = months[months.length-1];
-        const delta = (last.won - last.lost) - (first.won - first.lost);
-        const arrow = delta >= 0 ? "↑" : "↓";
-        deltaTxt = `${arrow} ${int(Math.abs(delta))}`;
-        periodTxt = `${formatMonthLabel(first.month)} → ${formatMonthLabel(last.month)}`;
-      }
-
-      const oppCards = opp.map(m => ({
-        title: m.cidade,
-        subtitle: `${m.regiao} · ${m.uf} · ${m.microrregiao}`,
-        badgeType: "good",
-        badgeText: `Ganho ${pct(m.winRate)}`,
-        metrics: [
-          { key:"volume", label:"Volume", value:int(m.total) },
-          { key:"won", label:"Ganhas", value:`<span style="color:var(--ok)">${int(m.won)}</span>` },
-          { key:"active", label:"Em negociação", value:int((m.open||0)+(m.paused||0)) },
-          { key:"lost", label:"Perdidas", value:int(m.lost) },
-        ]
-      }));
-
-      const riskCards = risks.map(m => ({
-        title: m.cidade,
-        subtitle: `${m.regiao} · ${m.uf} · ${m.microrregiao}`,
-        badgeType: "bad",
-        badgeText: `Perda ${pct(m.lossRate)}`,
-        metrics: [
-          { key:"volume", label:"Volume", value:int(m.total) },
-          { key:"lost", label:"Perdidas", value:`<span style="color:var(--bad)">${int(m.lost)}</span>` },
-          { key:"active", label:"Em negociação", value:int((m.open||0)+(m.paused||0)) },
-          { key:"won", label:"Ganhas", value:int(m.won) },
-        ]
-      }));
-
-      const insightCards = [
-        {
-          title: "Destaque positivo",
-          subtitle: best ? ((regionFilter.value === "__all") ? best.regiao : `${best.cidade} · ${best.uf}`) : "—",
-          badgeType: "neutral",
-          badgeText: "auto",
-          metrics: best ? [
-            { key:"txwin", label:"Tx ganho", value:`<span style="color:var(--ok)">${pct(best.winRate)}</span>` },
-            { key:"volume", label:"Volume", value:int(best.total) },
-            { key:"won", label:"Ganhas", value:`<span style="color:var(--ok)">${int(best.won)}</span>` },
-            { key:"lost", label:"Perdidas", value:`<span style="color:var(--bad)">${int(best.lost)}</span>` },
-          ] : [
-            { key:"volume", label:"—", value:"—" }, { key:"won", label:"—", value:"—" }, { key:"lost", label:"—", value:"—" }, { key:"active", label:"—", value:"—" },
-          ]
-        },
-        {
-          title: "Destaque negativo",
-          subtitle: worst ? ((regionFilter.value === "__all") ? worst.regiao : `${worst.cidade} · ${worst.uf}`) : "—",
-          badgeType: "neutral",
-          badgeText: "auto",
-          metrics: worst ? [
-            { key:"txlost", label:"Tx perda", value:`<span style="color:var(--bad)">${pct(worst.lossRate)}</span>` },
-            { key:"volume", label:"Volume", value:int(worst.total) },
-            { key:"lost", label:"Perdidas", value:`<span style="color:var(--bad)">${int(worst.lost)}</span>` },
-            { key:"won", label:"Ganhas", value:`<span style="color:var(--ok)">${int(worst.won)}</span>` },
-          ] : [
-            { key:"volume", label:"—", value:"—" }, { key:"won", label:"—", value:"—" }, { key:"lost", label:"—", value:"—" }, { key:"active", label:"—", value:"—" },
-          ]
-        },
-        {
-          title: "Saúde do funil",
-          subtitle: "Fechamento, ativos e tendência",
-          badgeType: (closeRate!=null && closeRate>=0.55 && activeRate!=null && activeRate<=0.35) ? "good" : "neutral",
-          badgeText: "auto",
-          metrics: [
-            { key:"txwin", label:"Tx fechadas", value: closeRate==null ? "—" : `<span style="color:var(--ok)">${pct(closeRate)}</span>` },
-            { key:"active", label:"Tx ativas", value: activeRate==null ? "—" : (activeRate>0.40 ? `<span style="color:var(--bad)">${pct(activeRate)}</span>` : pct(activeRate)) },
-            { key:"period", label:"Período", value: periodTxt },
-            { key:"saldo", label:"Saldo (Ganhos − Perdidos)", value: deltaTxt.startsWith("↓") ? `<span style="color:var(--bad)">${deltaTxt}</span>` : `<span style="color:var(--ok)">${deltaTxt}</span>` },
-          ]
-        }
-      ];
-
-      // Ensure 3 each (pad if needed)
-      while(oppCards.length < 3){
-        oppCards.push({
-          title:"Sem oportunidades",
-          subtitle:"Ajuste filtros para ver destaques",
-          badgeType:"neutral",
-          badgeText:"auto",
-          metrics:[ {key:"volume",label:"—",value:"—"},{key:"won",label:"—",value:"—"},{key:"active",label:"—",value:"—"},{key:"lost",label:"—",value:"—"} ]
-        });
-      }
-      while(riskCards.length < 3){
-        riskCards.push({
-          title:"Sem riscos",
-          subtitle:"Ajuste filtros para ver destaques",
-          badgeType:"neutral",
-          badgeText:"auto",
-          metrics:[ {key:"volume",label:"—",value:"—"},{key:"lost",label:"—",value:"—"},{key:"active",label:"—",value:"—"},{key:"won",label:"—",value:"—"} ]
-        });
-      }
-
-      // Build 3 rows x 3 cols: (opp[i], risk[i], insight[i])
-      signalsGrid.innerHTML = "";
-      for(let i=0;i<3;i++){
-        signalsGrid.appendChild(makeSignalCard("opp", oppCards[i]));
-        signalsGrid.appendChild(makeSignalCard("risk", riskCards[i]));
-        signalsGrid.appendChild(makeSignalCard("insight", insightCards[i]));
-      }
-    }
-
-    /* =========================================================
-       CHARTS: unified tooltip + drag effect + hover highlight
-    ========================================================= */
-    let tooltipHideTimer = null;
-
-    function showChartTooltip({title, lines, x, y}){
-      clearTimeout(tooltipHideTimer);
-      tooltipHideTimer = null;
-
-      const htmlLines = lines.map(l => `
-        <div class="line">
-          <span class="sq" style="background:${l.color}"></span>
-          <span>${l.text}</span>
+    function statBox(label, value, tip){
+      return `
+        <div class="statBox" data-tip="${escapeHtml(tip)}">
+          <span class="infoDot">i</span>
+          <div class="statInner">
+            <div class="statFront">
+              <div class="statLabel">${escapeHtml(label)}</div>
+              <div class="statValue">${escapeHtml(value)}</div>
+            </div>
+            <div class="statBack">
+              <div class="statLabel">${escapeHtml(label)}</div>
+              <p>${escapeHtml(tip)}</p>
+              <p style="opacity:.9"><b>Dica:</b> clique fora para voltar.</p>
+            </div>
+          </div>
         </div>
-      `).join("");
-
-      chartTooltip.innerHTML = `
-        <div class="ttl">${title}</div>
-        ${htmlLines}
       `;
-
-      chartTooltip.style.opacity = 1;
-      chartTooltip.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -110%)`;
     }
 
-    function hideChartTooltipSoft(){
-      if(tooltipHideTimer) return;
-      tooltipHideTimer = setTimeout(() => {
-        chartTooltip.style.opacity = 0;
-      }, 90);
+    function escapeHtml(s){
+      return String(s||"")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
     }
 
-    function externalTooltipHandler(context, mode){
-      const {chart, tooltip} = context;
-      if(!tooltip || tooltip.opacity === 0){
-        hideChartTooltipSoft();
+    function makeCityCard(kind, row){
+      const den = rateBaseDenominator(row);
+      const wr = den ? row.vendas/den : 0;
+      const lr = den ? row.perdidos/den : 0;
+      const badge = kind === "opp"
+        ? `<span class="badgeRate badgeWin">Ganho ${pct(wr)}</span>`
+        : `<span class="badgeRate badgeLoss">Perda ${pct(lr)}</span>`;
+
+      const title = escapeHtml(row.cidade);
+      const sub = `${escapeHtml(row.regiao)} · ${escapeHtml(row.uf)} · ${escapeHtml(row.microrregiao)}`;
+
+      const el = document.createElement("div");
+      el.className = "miniCard";
+      el.innerHTML = `
+        <div class="miniTop">
+          <div style="min-width:0">
+            <h3 class="miniTitle">${title}</h3>
+            <div class="miniSub">${sub}</div>
+          </div>
+          ${badge}
+        </div>
+        <div class="statsGrid">
+          ${statBox("Volume", fmtInt(row.total), "Total de registros neste recorte. Use volume para validar se a taxa é confiável.")}
+          ${statBox("Ganhas", fmtInt(row.vendas), "Vendas confirmadas. Compare taxa e volume com sua média para priorizar replicação.")}
+          ${statBox("Em negociação", fmtInt(row.andamento), "Oportunidades abertas. Se alto, pode indicar funil travado ou ciclo mais longo.")}
+          ${statBox("Perdidas", fmtInt(row.perdidos), "Perdas no recorte. Investigue causa raiz (qualificação, oferta, timing) e ajuste o funil.")}
+        </div>
+      `;
+      return el;
+    }
+
+    function makeAutoCard(title, subtitle, metrics){
+      const el = document.createElement("div");
+      el.className = "miniCard";
+      el.innerHTML = `
+        <div class="miniTop">
+          <div style="min-width:0">
+            <h3 class="miniTitle">${escapeHtml(title)}</h3>
+            <div class="miniSub">${escapeHtml(subtitle)}</div>
+          </div>
+          <span class="pill pillAuto">auto</span>
+        </div>
+        <div class="statsGrid">
+          ${metrics.map(m=>statBox(m.label, m.value, m.tip)).join("")}
+        </div>
+      `;
+      return el;
+    }
+
+    function wireStatFlip(){
+      // delegação: ao clicar num statBox, expande e “vira”
+      triGrid.querySelectorAll(".miniCard").forEach(card=>{
+        card.addEventListener("click", (ev) => {
+          const box = ev.target.closest(".statBox");
+          if(!box) return;
+
+          // se já está expandido e clicou no próprio, fecha
+          const isExpanded = card.classList.contains("expanded");
+          const isActive = box.classList.contains("active");
+
+          // reset
+          card.classList.remove("expanded");
+          card.querySelectorAll(".statBox").forEach(b=>b.classList.remove("active"));
+
+          if(!(isExpanded && isActive)){
+            card.classList.add("expanded");
+            box.classList.add("active");
+          }
+        });
+
+        // clicar fora do card fecha
+        document.addEventListener("click", (e) => {
+          if(!card.contains(e.target)){
+            card.classList.remove("expanded");
+            card.querySelectorAll(".statBox").forEach(b=>b.classList.remove("active"));
+          }
+        }, {capture:true});
+      });
+    }
+
+    /********************
+     * Charts: external tooltip + hover glow
+     ********************/
+    const tooltipEl = $("#chartTooltip");
+    const tooltipHideTimers = new WeakMap();
+
+    function cssVar(name){
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    function tooltipHTML(title, items){
+      const rows = items.map(it=>{
+        return `
+          <div class="ct-row">
+            <span class="ct-swatch" style="background:${it.color}"></span>
+            <span>${escapeHtml(it.label)}: <b>${escapeHtml(it.value)}</b></span>
+          </div>
+        `;
+      }).join("");
+      return `<div class="ct-title">${escapeHtml(title)}</div>${rows}`;
+    }
+
+    function showTooltipAt(x, y, html){
+      tooltipEl.innerHTML = html;
+      tooltipEl.style.left = x + "px";
+      tooltipEl.style.top = y + "px";
+      tooltipEl.style.opacity = "1";
+    }
+
+    function scheduleHideTooltip(){
+      const old = tooltipHideTimers.get(tooltipEl);
+      if(old) clearTimeout(old);
+      const t = setTimeout(()=>{ tooltipEl.style.opacity = "0"; }, 120);
+      tooltipHideTimers.set(tooltipEl, t);
+    }
+
+    function externalTooltipHandler(ctx){
+      const { chart, tooltip } = ctx;
+      const canvasRect = chart.canvas.getBoundingClientRect();
+
+      if(tooltip.opacity === 0){
+        // não some instantâneo -> dá sensação de “arraste”
+        scheduleHideTooltip();
         return;
       }
+      const old = tooltipHideTimers.get(tooltipEl);
+      if(old) clearTimeout(old);
 
-      // coords
-      const rect = chart.canvas.getBoundingClientRect();
-      const x = rect.left + window.scrollX + tooltip.caretX;
-      const y = rect.top + window.scrollY + tooltip.caretY;
+      const title = (tooltip.title && tooltip.title[0]) ? tooltip.title[0] : "";
+      const bodyLines = tooltip.dataPoints || [];
 
-      // title
-      const title = (tooltip.title && tooltip.title.length) ? tooltip.title[0] : "";
+      const items = bodyLines.map(dp=>{
+        const ds = chart.data.datasets[dp.datasetIndex];
+        const label = ds.label || "";
+        let value = dp.formattedValue;
 
-      // Build lines
-      let lines = [];
+        // Se for taxa (0-1), converter p/ %
+        if(typeof dp.raw === "number" && dp.raw <= 1 && dp.raw >= 0 && label.toLowerCase().includes("taxa")){
+          value = pct(dp.raw);
+        }
 
-      if(mode === "winrate"){
-        const i = tooltip.dataPoints?.[0]?.dataIndex ?? 0;
-        const wins = chart._wins?.[i] ?? 0;
-        const losses = chart._losses?.[i] ?? 0;
-        const denom = chart._denom?.[i] ?? 0;
-        const winPct = denom ? pct(wins/denom) : "—";
-        const lossPct = denom ? pct(losses/denom) : "—";
-        lines = [
-          { color: getCss("--ok"),  text: `Ganhas: ${int(wins)} | ${winPct}` },
-          { color: getCss("--bad"), text: `Perdidas: ${int(losses)} | ${lossPct}` },
-        ];
-      } else if(mode === "monthly"){
-        const i = tooltip.dataPoints?.[0]?.dataIndex ?? 0;
-        const wins = Number(chart.data.datasets?.[0]?.data?.[i] ?? 0);
-        const losses = Number(chart.data.datasets?.[1]?.data?.[i] ?? 0);
-        const denom = wins + losses;
-        lines = [
-          { color: "#66B3FF", text: `Ganhos: ${int(wins)} | ${denom ? pct(wins/denom) : "—"}` },
-          { color: "#FF6B8A", text: `Perdidos: ${int(losses)} | ${denom ? pct(losses/denom) : "—"}` },
-        ];
-      } else {
-        // default: use tooltip.dataPoints order
-        lines = tooltip.dataPoints.map(dp => ({
-          color: dp.dataset.borderColor || dp.dataset.backgroundColor || "#999",
-          text: `${dp.dataset.label}: ${int(dp.raw)}`
-        }));
+        return {
+          label,
+          value,
+          color: ds.borderColor || ds.backgroundColor || "rgba(255,255,255,.4)"
+        };
+      });
+
+      const x = canvasRect.left + tooltip.caretX;
+      const y = canvasRect.top  + tooltip.caretY;
+
+      showTooltipAt(x, y, tooltipHTML(title, items));
+    }
+
+    const hoverGlowPlugin = {
+      id: "hoverGlow",
+      beforeDatasetsDraw(chart){
+        const act = chart.getActiveElements?.() || [];
+        if(!act.length) return;
+        const ctx = chart.ctx;
+        ctx.save();
+        ctx.shadowBlur = 18;
+        ctx.shadowColor = "rgba(0,0,0,.20)";
+        ctx.shadowOffsetY = 6;
+
+        // desenha uma “borda” discreta no elemento ativo (sensação de hover)
+        act.forEach(a=>{
+          const meta = chart.getDatasetMeta(a.datasetIndex);
+          const el = meta.data[a.index];
+          if(!el) return;
+          const props = el.getProps(["x","y","base","width","height"], true);
+          if(props.width){
+            const w = props.width + 6;
+            const x = props.x - w/2;
+            const y = Math.min(props.y, props.base) - 3;
+            const h = Math.abs(props.base - props.y) + 6;
+            ctx.strokeStyle = "rgba(255,255,255,.10)";
+            ctx.lineWidth = 1;
+            ctx.strokeRect(x, y, w, h);
+          }
+        });
+        ctx.restore();
       }
+    };
 
-      showChartTooltip({ title, lines, x, y });
+    function chartCommonOptions(){
+      return {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          tooltip: { enabled: false, external: externalTooltipHandler },
+          legend: {
+            labels: {
+              color: cssVar("--axis"),
+              font: { family: cssVar("--font"), size: 14, weight: "700" }
+            }
+          }
+        },
+        hover: {
+          onHover: (evt, activeEls) => {
+            evt.native.target.style.cursor = activeEls?.length ? "pointer" : "default";
+          }
+        }
+      };
     }
 
-    function getCss(varName){
-      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    function applyThemeToCharts(){
+      // aplica fonte SF no Chart.js
+      if(window.Chart){
+        Chart.defaults.font.family = cssVar("--font");
+      }
+      // atualiza cores nos charts existentes (pedido do print 4)
+      const tickColor = cssVar("--axis");
+      const gridColor = cssVar("--grid");
+
+      Object.values(state.charts).forEach(ch=>{
+        if(!ch) return;
+        if(ch.options?.scales){
+          for(const axis of Object.values(ch.options.scales)){
+            if(axis.ticks) axis.ticks.color = tickColor;
+            if(axis.grid) axis.grid.color = gridColor;
+            if(axis.border) axis.border.color = gridColor;
+          }
+        }
+        if(ch.options?.plugins?.legend?.labels){
+          ch.options.plugins.legend.labels.color = tickColor;
+        }
+        ch.update();
+      });
     }
 
-    function chartHoverCursor(chart, evt, isClickable=false){
-      const pts = chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false);
-      chart.canvas.style.cursor = (pts && pts.length && isClickable) ? 'pointer' : 'default';
+    function destroyCharts(){
+      Object.keys(state.charts).forEach(k=>{
+        if(state.charts[k]){
+          state.charts[k].destroy();
+          state.charts[k] = null;
+        }
+      });
     }
 
-    function buildCharts(agg){
-      const gridColor = getCss("--line") || "rgba(0,0,0,.1)";
-      const tickColor = getCss("--muted") || "#666";
-      const borderHover = state.theme === "dark" ? "rgba(255,255,255,.20)" : "rgba(0,0,0,.14)";
+    function updateChartRegionClearUI(active){
+      $("#chartRegionClearWrap").style.display = active ? "block" : "none";
+    }
+    $("#chartRegionClear").addEventListener("click", (e)=>{
+      e.preventDefault();
+      state.filters.region = "__all";
+      regionFilter.value = "__all";
+
+      const allUFs = Array.from(new Set(state.enriched.map(r=>r.uf).filter(Boolean))).sort();
+      rebuildUFOptionsByRegion("__all", allUFs);
+      ufFilter.value = "__all";
+      state.filters.uf = "__all";
+
+      updateChartRegionClearUI(false);
+      rerender();
+    });
+
+    /********************
+     * Table (no pagination + expands)
+     ********************/
+    function ensureTable(){
+      if(state.table) return;
+
+      state.table = new Tabulator("#citiesTable", {
+        layout: "fitColumns",
+        reactiveData: false,
+        data: [],
+        height: false,           // sem altura fixa (expande)
+        selectable: false,
+        columnDefaults: {
+          headerFilter: "input",
+          headerFilterPlaceholder: "filtrar…",
+          headerSortTristate: true,
+          resizable: true,
+        },
+        columns: [
+          { title: "Região", field: "regiao", width: 120 },
+          { title: "Estado", field: "uf", width: 90 },
+          { title: "Microrregião", field: "microrregiao", minWidth: 160 },
+          { title: "Cidade", field: "cidade", minWidth: 170 },
+          { title: "Total", field: "total", hozAlign: "right", sorter:"number", width: 110 },
+          { title: "Ganhas", field: "vendas", hozAlign: "right", sorter:"number", width: 110 },
+          { title: "Perdidas", field: "perdidos", hozAlign: "right", sorter:"number", width: 110 },
+          { title: "Em negociação", field: "andamento", hozAlign: "right", sorter:"number", width: 140 },
+          { title: "Tx ganho", field: "txGanho", hozAlign: "right", width: 110 },
+          { title: "Tx perda", field: "txPerda", hozAlign: "right", width: 110 },
+        ],
+      });
+    }
+
+    function applyThemeToTable(){
+      // Tabulator já herda via CSS; aqui só garantimos fonte
+      const el = $("#citiesTable");
+      if(el) el.style.fontFamily = cssVar("--font");
+    }
+
+    $("#rowsSelect").addEventListener("change", ()=>{
+      state.rowsLimit = Number($("#rowsSelect").value) || 25;
+      renderTableFromState();
+      syncActionButtons();
+    });
+
+    $("#tableSearch").addEventListener("input", ()=>{
+      if(!state.table) return;
+      const q = $("#tableSearch").value.trim().toLowerCase();
+      if(!q){
+        renderTableFromState();
+        return;
+      }
+      const filtered = state.tableAllRows.filter(r=>{
+        const s = `${r.regiao} ${r.uf} ${r.microrregiao} ${r.cidade}`.toLowerCase();
+        return s.includes(q);
+      });
+      state.table.replaceData(filtered.slice(0, state.rowsLimit));
+    });
+
+    function renderTableFromState(){
+      ensureTable();
+      const rows = state.tableAllRows.slice(0, state.rowsLimit);
+      state.table.replaceData(rows);
+    }
+
+    /********************
+     * Downloads (resumo / cidades)
+     ********************/
+    $("#downloadSummaryBtn").addEventListener("click", ()=>{
+      if(!state.analyzed) return;
+      const agg = aggregate(state.enriched);
+      const t = agg.totals;
+      const den = rateBaseDenominator(t);
+      const wr = den ? t.vendas/den : 0;
+      const lr = den ? t.perdidos/den : 0;
+
+      const header = ["Registros","Ganhas","Perdidas","Em negociação","Tx ganho","Tx perda"];
+      const row = [t.total, t.vendas, t.perdidos, t.andamento, pct(wr), pct(lr)];
+      downloadText("resumo.csv", header.join(",")+"\n"+row.join(",")+"\n");
+    });
+
+    $("#downloadCitiesBtn").addEventListener("click", ()=>{
+      if(!state.analyzed) return;
+      const header = ["Região","Estado","Microrregião","Cidade","Total","Ganhas","Perdidas","Em negociação","Tx ganho","Tx perda"];
+      const lines = [header.join(",")].concat(
+        state.tableAllRows.map(r=>[
+          r.regiao, r.uf, r.microrregiao, r.cidade,
+          r.total, r.vendas, r.perdidos, r.andamento,
+          r.txGanho, r.txPerda
+        ].map(x=>String(x).includes(",") ? `"${String(x).replace(/"/g,'""')}"` : x).join(","))
+      );
+      downloadText("cidades.csv", lines.join("\n")+"\n");
+    });
+
+    /********************
+     * Charts render
+     ********************/
+    function createOrUpdateCharts(agg){
+      const tickColor = cssVar("--axis");
+      const gridColor = cssVar("--grid");
 
       // Volume por Região (stacked)
-      if(!state.charts.volReg){
-        state.charts.volReg = new Chart($("#chartVolReg"), {
-          type:"bar",
-          data:{ labels:[], datasets:[] },
-          options:{
-            responsive:true,
-            maintainAspectRatio:false,
-            animation:{duration:220},
-            scales:{
-              x:{ stacked:true, ticks:{ color: tickColor }, grid:{ color: gridColor } },
-              y:{ stacked:true, beginAtZero:true, ticks:{ color: tickColor }, grid:{ color: gridColor } }
-            },
-            plugins:{
-              legend:{ labels:{ color: tickColor, font:{ family: Chart.defaults.font.family } } },
-              tooltip:{ enabled:false, external:(ctx)=>externalTooltipHandler(ctx, "stacked") }
-            },
-            onHover:(evt)=> chartHoverCursor(state.charts.volReg, evt, true),
-            onClick:(evt, els)=>{
-              if(!els?.length) return;
-              const label = state.charts.volReg.data.labels[els[0].index];
-              if(label){
-                regionFilter.value = label;
-                rebuildUFOptionsByRegion(label);
-                ufFilter.value = "__all";
-                refresh();
-              }
+      const regLabels = Array.from(agg.byRegion.keys()).sort((a,b)=> (agg.byRegion.get(b).total - agg.byRegion.get(a).total));
+      const regV = regLabels.map(r=>agg.byRegion.get(r).vendas);
+      const regP = regLabels.map(r=>agg.byRegion.get(r).perdidos);
+      const regA = regLabels.map(r=>agg.byRegion.get(r).andamento);
+
+      const regionCtx = $("#chartRegion").getContext("2d");
+      if(state.charts.region) state.charts.region.destroy();
+      state.charts.region = new Chart(regionCtx, {
+        type: "bar",
+        data: {
+          labels: regLabels,
+          datasets: [
+            { label:"Ganhas", data: regV, backgroundColor: cssVar("--blue"), borderColor: cssVar("--blueLine"), borderWidth: 0 },
+            { label:"Perdidas", data: regP, backgroundColor: cssVar("--pink"), borderColor: cssVar("--pinkLine"), borderWidth: 0 },
+            { label:"Em negociação", data: regA, backgroundColor: cssVar("--amber"), borderColor: cssVar("--amberLine"), borderWidth: 0 },
+          ]
+        },
+        options: {
+          ...chartCommonOptions(),
+          scales: {
+            x: { stacked:true, ticks:{ color: tickColor, font:{family:cssVar("--font"), weight:"700"} }, grid:{ color: gridColor }, border:{ color: gridColor } },
+            y: { stacked:true, ticks:{ color: tickColor, font:{family:cssVar("--font"), weight:"700"} }, grid:{ color: gridColor }, border:{ color: gridColor } }
+          },
+          onClick: (evt) => {
+            const points = state.charts.region.getElementsAtEventForMode(evt, "nearest", {intersect:true}, true);
+            if(!points.length) return;
+            const idx = points[0].index;
+            const label = regLabels[idx];
+            state.filters.region = label;
+            regionFilter.value = label;
+
+            // limitar estados
+            const allUFs = Array.from(new Set(state.enriched.map(r=>r.uf).filter(Boolean))).sort();
+            rebuildUFOptionsByRegion(label, allUFs);
+            ufFilter.value = "__all";
+            state.filters.uf = "__all";
+
+            updateChartRegionClearUI(true);
+            rerender();
+          }
+        },
+        plugins:[hoverGlowPlugin]
+      });
+
+      // Taxa de ganho por Região
+      const wrLabels = regLabels.slice();
+      const wrData = wrLabels.map(r=>{
+        const o = agg.byRegion.get(r);
+        const den = rateBaseDenominator(o);
+        return den ? (o.vendas/den) : 0;
+      });
+
+      const wrCtx = $("#chartWinRateRegion").getContext("2d");
+      if(state.charts.winRateRegion) state.charts.winRateRegion.destroy();
+      state.charts.winRateRegion = new Chart(wrCtx, {
+        type: "bar",
+        data: {
+          labels: wrLabels,
+          datasets: [
+            { label:"Taxa de ganho", data: wrData, backgroundColor: cssVar("--blue"), borderColor: cssVar("--blueLine"), borderWidth: 0 }
+          ]
+        },
+        options: {
+          ...chartCommonOptions(),
+          plugins: {
+            ...chartCommonOptions().plugins,
+            tooltip: { enabled:false, external: externalTooltipHandler }
+          },
+          scales: {
+            x: { ticks:{ color: tickColor, font:{family:cssVar("--font"), weight:"700"} }, grid:{ color: gridColor }, border:{ color: gridColor } },
+            y: {
+              suggestedMin: 0,
+              suggestedMax: 1,
+              ticks:{
+                color: tickColor,
+                font:{family:cssVar("--font"), weight:"700"},
+                callback: (v)=> (Number(v)*100).toFixed(0)+"%"
+              },
+              grid:{ color: gridColor },
+              border:{ color: gridColor }
             }
           }
-        });
-      }
-
-      // Win rate por Região (bars)
-      if(!state.charts.winReg){
-        state.charts.winReg = new Chart($("#chartWinReg"), {
-          type:"bar",
-          data:{ labels:[], datasets:[] },
-          options:{
-            responsive:true,
-            maintainAspectRatio:false,
-            animation:{duration:220},
-            scales:{
-              x:{ ticks:{ color: tickColor }, grid:{ color: gridColor } },
-              y:{ beginAtZero:true, max:1, ticks:{ color: tickColor, callback:v => (v*100).toFixed(0)+"%" }, grid:{ color: gridColor } }
-            },
-            plugins:{
-              legend:{ display:false },
-              tooltip:{ enabled:false, external:(ctx)=>externalTooltipHandler(ctx, "winrate") }
-            },
-            onHover:(evt)=> chartHoverCursor(state.charts.winReg, evt, false)
-          }
-        });
-      }
+        },
+        plugins:[hoverGlowPlugin]
+      });
 
       // Volume por Estado (stacked)
-      if(!state.charts.volUf){
-        state.charts.volUf = new Chart($("#chartVolUf"), {
-          type:"bar",
-          data:{ labels:[], datasets:[] },
-          options:{
-            responsive:true,
-            maintainAspectRatio:false,
-            animation:{duration:220},
-            scales:{
-              x:{ stacked:true, ticks:{ color: tickColor }, grid:{ color: gridColor } },
-              y:{ stacked:true, beginAtZero:true, ticks:{ color: tickColor }, grid:{ color: gridColor } }
-            },
-            plugins:{
-              legend:{ labels:{ color: tickColor, font:{ family: Chart.defaults.font.family } } },
-              tooltip:{ enabled:false, external:(ctx)=>externalTooltipHandler(ctx, "stacked") }
-            },
-            onHover:(evt)=> chartHoverCursor(state.charts.volUf, evt, false)
+      const ufLabels = Array.from(agg.byUF.keys()).sort((a,b)=> (agg.byUF.get(b).total - agg.byUF.get(a).total));
+      const ufV = ufLabels.map(u=>agg.byUF.get(u).vendas);
+      const ufP = ufLabels.map(u=>agg.byUF.get(u).perdidos);
+      const ufA = ufLabels.map(u=>agg.byUF.get(u).andamento);
+
+      const ufCtx = $("#chartUF").getContext("2d");
+      if(state.charts.uf) state.charts.uf.destroy();
+      state.charts.uf = new Chart(ufCtx, {
+        type:"bar",
+        data:{
+          labels: ufLabels,
+          datasets:[
+            { label:"Ganhas", data: ufV, backgroundColor: cssVar("--blue"), borderColor: cssVar("--blueLine"), borderWidth: 0 },
+            { label:"Perdidas", data: ufP, backgroundColor: cssVar("--pink"), borderColor: cssVar("--pinkLine"), borderWidth: 0 },
+            { label:"Em negociação", data: ufA, backgroundColor: cssVar("--amber"), borderColor: cssVar("--amberLine"), borderWidth: 0 },
+          ]
+        },
+        options:{
+          ...chartCommonOptions(),
+          scales:{
+            x:{ stacked:true, ticks:{ color: tickColor, font:{family:cssVar("--font"), weight:"700"} }, grid:{ color: gridColor }, border:{ color: gridColor } },
+            y:{ stacked:true, ticks:{ color: tickColor, font:{family:cssVar("--font"), weight:"700"} }, grid:{ color: gridColor }, border:{ color: gridColor } }
           }
-        });
-      }
+        },
+        plugins:[hoverGlowPlugin]
+      });
 
-      // Monthly line
-      if(!state.charts.monthly){
-        state.charts.monthly = new Chart($("#chartMonthly"), {
-          type:"line",
-          data:{ labels:[], datasets:[] },
-          options:{
-            responsive:true,
-            maintainAspectRatio:false,
-            animation:{duration:220},
-            interaction:{ mode:"index", intersect:false },
-            plugins:{
-              legend:{ labels:{ color: tickColor, font:{ family: Chart.defaults.font.family } } },
-              tooltip:{ enabled:false, external:(ctx)=>externalTooltipHandler(ctx, "monthly") }
-            },
-            scales:{
-              x:{ ticks:{ color: tickColor }, grid:{ color: gridColor } },
-              y:{ beginAtZero:true, ticks:{ color: tickColor }, grid:{ color: gridColor } }
-            },
-            elements:{
-              point:{ radius:3, hoverRadius:5, hoverBorderWidth:2 },
-              line:{ borderWidth:3 }
-            }
+      // Evolução mensal (Ganhas x Perdidos)
+      const mKeys = agg.months;
+      const mAgg = new Map();
+      for(const k of mKeys){
+        mAgg.set(k, {v:0,p:0});
+      }
+      for(const r of agg.filtered){
+        if(!r.month) continue;
+        const it = mAgg.get(r.month) || {v:0,p:0};
+        it.v += r.vendas;
+        it.p += r.perdidos;
+        mAgg.set(r.month, it);
+      }
+      const mLabels = mKeys.map(formatMonthLabel);
+      const mV = mKeys.map(k=>mAgg.get(k)?.v || 0);
+      const mP = mKeys.map(k=>mAgg.get(k)?.p || 0);
+
+      const mCtx = $("#chartMonthly").getContext("2d");
+      if(state.charts.monthly) state.charts.monthly.destroy();
+      state.charts.monthly = new Chart(mCtx, {
+        type:"line",
+        data:{
+          labels: mLabels,
+          datasets:[
+            { label:"Ganhas", data: mV, borderColor: cssVar("--blueLine"), backgroundColor: "transparent", pointRadius: 4, pointHoverRadius: 6, borderWidth: 3, tension: .25 },
+            { label:"Perdidas", data: mP, borderColor: cssVar("--pinkLine"), backgroundColor: "transparent", pointRadius: 4, pointHoverRadius: 6, borderWidth: 3, tension: .25 },
+          ]
+        },
+        options:{
+          ...chartCommonOptions(),
+          scales:{
+            x:{ ticks:{ color: tickColor, font:{family:cssVar("--font"), weight:"700"} }, grid:{ color: gridColor }, border:{ color: gridColor } },
+            y:{ ticks:{ color: tickColor, font:{family:cssVar("--font"), weight:"700"} }, grid:{ color: gridColor }, border:{ color: gridColor } }
           }
-        });
-      }
+        }
+      });
 
-      // Apply datasets (with subtle hover border)
-      const volReg = state.charts.volReg;
-      volReg.data.labels = agg.regions.map(r => r.regiao);
-      volReg.data.datasets = [
-        { label:"Ganhas", data: agg.regions.map(r=>r.won), backgroundColor:"rgba(102,179,255,.55)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
-        { label:"Perdidas", data: agg.regions.map(r=>r.lost), backgroundColor:"rgba(255,107,138,.45)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
-        { label:"Em negociação", data: agg.regions.map(r=>(r.open+r.paused)), backgroundColor:"rgba(255,186,120,.45)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
-      ];
-      volReg.update();
-
-      const winReg = state.charts.winReg;
-      const denoms = agg.regions.map(r => (rateBase.value === "closed") ? (r.won + r.lost) : r.total);
-      winReg._wins = agg.regions.map(r=>r.won);
-      winReg._losses = agg.regions.map(r=>r.lost);
-      winReg._denom = denoms;
-      winReg.data.labels = agg.regions.map(r=>r.regiao);
-      winReg.data.datasets = [
-        { label:"Tx ganho", data: agg.regions.map((r,i)=> denoms[i] ? (r.won/denoms[i]) : null), backgroundColor:"rgba(102,179,255,.55)", hoverBorderColor:borderHover, hoverBorderWidth:2 }
-      ];
-      winReg.update();
-
-      const volUf = state.charts.volUf;
-      volUf.data.labels = agg.ufs.map(u=>u.uf);
-      volUf.data.datasets = [
-        { label:"Ganhas", data: agg.ufs.map(u=>u.won), backgroundColor:"rgba(102,179,255,.55)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
-        { label:"Perdidas", data: agg.ufs.map(u=>u.lost), backgroundColor:"rgba(255,107,138,.45)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
-        { label:"Em negociação", data: agg.ufs.map(u=>(u.open+u.paused)), backgroundColor:"rgba(255,186,120,.45)", hoverBorderColor:borderHover, hoverBorderWidth:2 },
-      ];
-      volUf.update();
-
-      const monthly = state.charts.monthly;
-      monthly.data.labels = agg.months.map(m=>formatMonthLabel(m.month));
-      monthly.data.datasets = [
-        { label:"Ganhos", data: agg.months.map(m=>m.won), borderColor:"rgba(102,179,255,1)", backgroundColor:"rgba(102,179,255,.20)", pointBackgroundColor:"rgba(102,179,255,1)" },
-        { label:"Perdidos", data: agg.months.map(m=>m.lost), borderColor:"rgba(255,107,138,1)", backgroundColor:"rgba(255,107,138,.20)", pointBackgroundColor:"rgba(255,107,138,1)" },
-      ];
-      monthly.update();
+      applyThemeToCharts();
     }
 
-    /* =========================================================
-       TABLE + pagination (Portuguese)
-    ========================================================= */
-    function buildTable(cities){
-      if(!state.table){
-        state.table = new Tabulator("#cityTable", {
-          data: cities,
-          layout: "fitColumns",
-          height: 580,
-          pagination: "local",
-          paginationSize: Number(pageSizeSel.value || 25),
-          placeholder: "Sem cidades para este recorte.",
-          initialSort: [{column:"total", dir:"desc"}],
-          columns: [
-            { title:"Região", field:"regiao", headerFilter:"input" },
-            { title:"Estado", field:"uf", headerFilter:"input", width:90 },
-            { title:"Microrregião", field:"microrregiao", headerFilter:"input" },
-            { title:"Cidade", field:"cidade", headerFilter:"input" },
-            { title:"Total", field:"total", sorter:"number", hozAlign:"right" },
-            { title:"Ganhas", field:"won", sorter:"number", hozAlign:"right" },
-            { title:"Perdidas", field:"lost", sorter:"number", hozAlign:"right" },
-            {
-              title:"Em negociação",
-              field:"open",
-              sorter:"number",
-              hozAlign:"right",
-              formatter: (cell) => {
-                const d = cell.getData();
-                return int((d.open ?? 0) + (d.paused ?? 0));
-              }
-            },
-            { title:"Tx ganho", field:"winRate", sorter:"number", hozAlign:"right", formatter:(c)=>pct(c.getValue()) },
-            { title:"Tx perda", field:"lossRate", sorter:"number", hozAlign:"right", formatter:(c)=>pct(c.getValue()) },
-          ],
-        });
+    /********************
+     * Rerender pipeline
+     ********************/
+    function rerender(){
+      if(!state.analyzed) return;
 
-        state.table.on("pageLoaded", () => updateTableMeta());
-        state.table.on("dataProcessed", () => updateTableMeta());
+      const agg = aggregate(state.enriched);
+
+      renderKPIs(agg);
+      renderInsights(agg);
+      createOrUpdateCharts(agg);
+      buildTableRows(agg);
+
+      syncActionButtons();
+    }
+
+    function renderInsights(agg){
+      // Opps/Risks: top cidades
+      const cities = Array.from(agg.byCity.values());
+      cities.forEach(c=>{
+        const den = rateBaseDenominator(c);
+        c._wr = den ? c.vendas/den : 0;
+        c._lr = den ? c.perdidos/den : 0;
+      });
+
+      const oppTop = cities
+        .filter(c=>c.total >= 5)
+        .sort((a,b)=> (b._wr - a._wr) || (b.total - a.total))
+        .slice(0,3)
+        .map(c=>makeCityCard("opp", c));
+
+      const riskTop = cities
+        .filter(c=>c.total >= 5)
+        .sort((a,b)=> (b._lr - a._lr) || (b.total - a.total))
+        .slice(0,3)
+        .map(c=>makeCityCard("risk", c));
+
+      // Auto insights: “pra onde eu olho” (dinâmico)
+      // - sem filtro região: olha Regiões
+      // - com Região e sem Estado: olha Estados
+      // - com Estado: olha Microrregiões
+      let level = "regiao";
+      if(state.filters.region !== "__all" && state.filters.uf === "__all") level = "uf";
+      if(state.filters.uf !== "__all") level = "microrregiao";
+
+      function buildGroup(){
+        const map = new Map();
+        function add(key, r){
+          if(!map.has(key)) map.set(key, {key, vendas:0, perdidos:0, andamento:0, total:0});
+          const it = map.get(key);
+          it.vendas += r.vendas;
+          it.perdidos += r.perdidos;
+          it.andamento += r.andamento;
+          it.total += (r.vendas+r.perdidos+r.andamento+r.pausados);
+        }
+        for(const r of agg.filtered){
+          let k = r.regiao;
+          if(level === "uf") k = r.uf;
+          if(level === "microrregiao") k = r.microrregiao;
+          add(k, r);
+        }
+        return Array.from(map.values()).map(g=>{
+          const den = rateBaseDenominator(g);
+          g.wr = den ? g.vendas/den : 0;
+          g.lr = den ? g.perdidos/den : 0;
+          return g;
+        });
+      }
+
+      const groups = buildGroup().filter(g=>g.total>0);
+      const best = groups.slice().sort((a,b)=> (b.wr-a.wr) || (b.total-a.total))[0];
+      const worst = groups.slice().sort((a,b)=> (b.lr-a.lr) || (b.total-a.total))[0];
+
+      const scopeLabel = (level === "regiao") ? "Região"
+                        : (level === "uf") ? "Estado"
+                        : "Microrregião";
+
+      const autoCards = [];
+
+      if(best){
+        autoCards.push(makeAutoCard(
+          "Destaque positivo",
+          `${scopeLabel}: ${best.key}`,
+          [
+            { label:"Tx ganho", value: pct(best.wr), tip:"Taxa de ganho neste recorte. Use como referência para identificar padrões de sucesso replicáveis." },
+            { label:"Volume", value: fmtInt(best.total), tip:"Volume de registros no recorte. Volume alto dá mais confiança na taxa." },
+            { label:"Ganhas", value: fmtInt(best.vendas), tip:"Quantidade de vendas. Se alto, vale mapear playbook e replicar." },
+            { label:"Perdidas", value: fmtInt(best.perdidos), tip:"Perdas no recorte. Mesmo em destaque, perdas podem indicar gargalos específicos." },
+          ]
+        ));
       }else{
-        state.table.replaceData(cities);
+        autoCards.push(emptyCard("Insights"));
       }
 
-      applyTableSearch();
-      updateTableMeta();
-    }
-
-    function updateTableMeta(){
-      if(!state.table || !state.agg) { tableMeta.textContent = "—"; return; }
-      const total = state.agg.cities.length;
-      const page = state.table.getPage ? state.table.getPage() : 1;
-      const size = state.table.getPageSize ? state.table.getPageSize() : Number(pageSizeSel.value || 25);
-      const start = total === 0 ? 0 : (page - 1) * size + 1;
-      const end = Math.min(total, page * size);
-      tableMeta.innerHTML = total ? `Mostrando <b>${start}–${end}</b> de <b>${total}</b>` : "Nenhum resultado";
-    }
-
-    function applyTableSearch(){
-      if(!state.table) return;
-      const q = (tableSearch.value || "").trim();
-      if(!q){
-        state.table.clearFilter(true);
-        return;
-      }
-      state.table.setFilter([
-        {field:"cidade", type:"like", value:q},
-        {field:"microrregiao", type:"like", value:q},
-        {field:"uf", type:"like", value:q},
-        {field:"regiao", type:"like", value:q},
-      ], "or");
-    }
-
-    /* =========================================================
-       ANALYZE
-    ========================================================= */
-    function validateBase(){
-      const fields = state.baseFields || [];
-      const required = TEMPLATE.base.required;
-
-      // Must detect required columns by fuzzy matching
-      const hasCity = !!findField(fields, ["Cidade","cidade","Município","Municipio","municipio"]);
-      const hasUF = !!findField(fields, ["Estado","estado","UF","uf"]);
-      const hasDate = !!findField(fields, ["Data de criação","data de criação","data de criacao","criado em","created","data"]);
-      const hasV = !!findField(fields, ["Vendas","vendas"]);
-      const hasP = !!findField(fields, ["Perdidos","perdidos"]);
-      const hasEA = !!findField(fields, ["Em andamento","em andamento","emandamento","em_andamento"]);
-      const hasPA = !!findField(fields, ["Pausados","pausados"]);
-
-      return hasCity && hasUF && hasDate && hasV && hasP && hasEA && hasPA;
-    }
-
-    function runAnalysis(){
-      if(state.baseSource === "none" || !state.baseRows.length) return;
-
-      if(!validateBase()){
-        setStatus(`<b>Base inválida</b> · verifique as colunas obrigatórias`, "atenção");
-        return;
+      if(worst){
+        autoCards.push(makeAutoCard(
+          "Destaque negativo",
+          `${scopeLabel}: ${worst.key}`,
+          [
+            { label:"Tx perda", value: pct(worst.lr), tip:"Taxa de perda neste recorte. Priorize diagnóstico (qualificação, proposta, preço, timing)." },
+            { label:"Volume", value: fmtInt(worst.total), tip:"Quanto maior o volume, mais importante agir rápido para reduzir perdas." },
+            { label:"Perdidas", value: fmtInt(worst.perdidos), tip:"Total de perdas. Procure padrões por origem/canal e revise critérios." },
+            { label:"Ganhas", value: fmtInt(worst.vendas), tip:"Mesmo em risco, vitórias mostram que existe caminho — identifique o que funcionou." },
+          ]
+        ));
+      }else{
+        autoCards.push(emptyCard("Insights"));
       }
 
-      state.enriched = enrichBase(state.baseRows);
-      setupFilters(state.enriched);
+      // Saúde do funil (com saldo explicado)
+      const t = agg.totals;
+      const den = rateBaseDenominator(t);
+      const wr = den ? t.vendas/den : 0;
+      const ar = (t.vendas + t.perdidos + t.andamento) ? (t.andamento / (t.vendas + t.perdidos + t.andamento)) : 0;
+      const saldo = (t.vendas - t.perdidos);
 
-      // Ensure UF list restricted if region already selected (rare)
-      state.agg = aggregate(state.enriched);
+      const periodLabel = (state.filters.month === "__all" && agg.months.length)
+        ? `${formatMonthLabel(agg.months[0])} → ${formatMonthLabel(agg.months[agg.months.length-1])}`
+        : (state.filters.month === "__all" ? "—" : formatMonthLabel(state.filters.month));
 
-      resultsSection.hidden = false;
-      renderKPIs(state.agg.rows);
-      renderSignals(state.agg);
-      buildCharts(state.agg);
-      buildTable(state.agg.cities);
+      autoCards.push(makeAutoCard(
+        "Saúde do funil",
+        "Fechamento, ativos e tendência",
+        [
+          { label:"Tx fechadas", value: pct(wr), tip:"Proporção de ganhas sobre a base selecionada. Útil para comparar recortes." },
+          { label:"Tx ativas", value: pct(ar), tip:"Percentual em negociação (abertas) no recorte. Se alto, pode indicar funil travado." },
+          { label:"Período", value: periodLabel, tip:"Janela de análise do recorte atual (com base no filtro de mês)." },
+          { label:"Saldo (Ganhas − Perdidos)", value: (saldo>=0? "↑ " : "↓ ") + fmtInt(Math.abs(saldo)), tip:"Diferença entre ganhas e perdidas no período. Positivo = mais vitórias do que perdas (bom sinal de fechamento)." },
+        ]
+      ));
 
-      // Compact uploads after analysis
-      updateUploadsUI();
-
-      // scroll to results when demo is loaded
-      document.getElementById("resultados").scrollIntoView({behavior:"smooth", block:"start"});
+      renderTriGrid(oppTop, riskTop, autoCards);
     }
 
-    /* =========================================================
-       ACTIONS
-    ========================================================= */
-    async function handlePrimary(){
+    function buildTableRows(agg){
+      const rows = Array.from(agg.byCity.values()).map(r=>{
+        const den = rateBaseDenominator(r);
+        const wr = den ? r.vendas/den : 0;
+        const lr = den ? r.perdidos/den : 0;
+        return {
+          regiao: r.regiao,
+          uf: r.uf,
+          microrregiao: r.microrregiao,
+          cidade: r.cidade,
+          total: Math.round(r.total),
+          vendas: Math.round(r.vendas),
+          perdidos: Math.round(r.perdidos),
+          andamento: Math.round(r.andamento),
+          txGanho: pct(wr),
+          txPerda: pct(lr),
+        };
+      }).sort((a,b)=> b.total - a.total);
+
+      state.tableAllRows = rows;
+      renderTableFromState();
+      applyThemeToTable();
+    }
+
+    /********************
+     * Analyze flow (fix “processando/aguardando” preso)
+     ********************/
+    analyzeBtn.addEventListener("click", async ()=>{
       try{
-        if(state.baseSource === "none"){
+        setUploadsStatus("warn", "Processando...", "aguarde");
+        analyzeBtn.disabled = true;
+
+        // internal map
+        state.mapInternal = await parseInternalMapIfAny();
+
+        let baseRows = [];
+        const baseFile = baseFileInput.files?.[0];
+
+        if(baseFile){
+          baseRows = await readFileAsRows(baseFile);
+        }else{
           // demo
-          const rows = await loadDemo();
-          state.baseSource = "demo";
-          state.baseRows = rows;
-          state.baseFields = rows.length ? Object.keys(rows[0] || {}).filter(Boolean) : [];
-          state.baseFileName = "Demo (rd_demo.csv)";
-          setStatus(`<b>Demo carregada</b> · ${int(rows.length)} registros`, "ok");
-          updateUploadsUI();
-          runAnalysis();
-          return;
+          const resp = await fetch(ASSETS.demoCsv, {cache:"no-store"});
+          if(!resp.ok) throw new Error("Não foi possível carregar a demo (verifique ./assets/demo/rd_demo.csv).");
+          const text = await resp.text();
+          baseRows = await new Promise((resolve, reject)=>{
+            Papa.parse(text, {
+              header:true,
+              skipEmptyLines:true,
+              complete:(res)=> resolve(normalizeRows(res.data)),
+              error: reject
+            });
+          });
         }
 
-        // analyze
-        setStatus(`<b>Processando…</b>`, "aguarde");
-        runAnalysis();
-      }catch(e){
-        setStatus(`<b>Erro</b> · ${e.message}`, "atenção");
-      }
-    }
+        state.raw = baseRows;
+        state.enriched = enrichBaseRows(baseRows, state.mapInternal);
+        state.analyzed = true;
 
-    function handleClearAll(){
-      // reset everything
-      state.baseSource = "none";
-      state.baseFileName = "";
-      state.mapFileName = "";
-      state.baseRows = [];
-      state.baseFields = [];
-      state.mapIndex = null;
-      state.mapHasRegion = false;
-      state.enriched = [];
-      state.agg = null;
+        // populate filters
+        const months = Array.from(new Set(state.enriched.map(r=>r.month).filter(Boolean))).sort();
+        fillSelect(monthFilter, months.map(m=>({value:m,label:formatMonthLabel(m)})), "Todos os meses");
 
-      setFileName(baseName, "");
-      setFileName(mapName, "");
-      baseFile.value = "";
-      mapFile.value = "";
+        const regions = Array.from(new Set(state.enriched.map(r=>r.regiao).filter(Boolean))).sort();
+        fillSelect(regionFilter, regions.map(r=>({value:r,label:r})), "Todas as regiões");
 
-      resultsSection.hidden = true;
-      uploadsChips.hidden = true;
-      uploadsChips.innerHTML = "";
+        const allUFs = Array.from(new Set(state.enriched.map(r=>r.uf).filter(Boolean))).sort();
+        rebuildUFOptionsByRegion(regionFilter.value, allUFs);
 
-      setStatus(`<b>Pronto</b> · carregue uma base ou veja a demo`, "ok");
+        // reset filters default
+        state.filters.month = "__all";
+        state.filters.region = "__all";
+        state.filters.uf = "__all";
+        monthFilter.value = "__all";
+        regionFilter.value = "__all";
+        ufFilter.value = "__all";
 
-      // Back to expanded uploads
-      setUploadsCompact(false);
-      updateUploadsUI();
-    }
+        updateChartRegionClearUI(false);
 
-    function handleTemplateBase(){
-      const header = TEMPLATE.base.required.concat(TEMPLATE.base.optional);
-      const sample = [
-        "Juiz de Fora,MG,2025-10-15,1,0,0,0,1234,Exemplo",
-        "Campinas,SP,2025-11-03,0,1,0,0,1235,Exemplo 2"
-      ];
-      downloadCSV("template_base_crm.csv", header, sample);
-    }
+        // render everything
+        rerender();
 
-    function handleTemplateMap(){
-      const header = TEMPLATE.map.required.concat(TEMPLATE.map.optional);
-      const sample = [
-        "Juiz de Fora,MG,Zona da Mata,Sudeste",
-        "Campinas,SP,Campinas,Sudeste"
-      ];
-      downloadCSV("template_mapa_interno.csv", header, sample);
-    }
+        setUploadsStatus("ok", "Pronto", `${fmtInt(state.enriched.length)} registros`);
+        // compactar uploads depois de analisar (melhora UX)
+        setUploadsOpen(false);
 
-    function handleClearFilters(){
-      monthFilter.value = "__all";
-      regionFilter.value = "__all";
-      rebuildUFOptionsByRegion("__all");
-      ufFilter.value = "__all";
-      rateBase.value = "closed";
-      runAnalysis();
-    }
-
-    function handleExportSummary(){
-      if(!state.agg) return;
-      const rows = state.agg.cities.map(c => {
-        const emNeg = (c.open ?? 0) + (c.paused ?? 0);
-        return [c.regiao,c.uf,c.microrregiao,c.cidade,c.total,c.won,c.lost,emNeg,
-          c.winRate==null?"":String(c.winRate).replace(".",","), c.lossRate==null?"":String(c.lossRate).replace(".",",")
-        ].map(v => `"${String(v??"").replaceAll('"','""')}"`).join(";");
-      });
-      const header = ["regiao","estado","microrregiao","cidade","total","ganhas","perdidas","em_negociacao","tx_ganho","tx_perda"].join(";");
-      const blob = new Blob([header + "\n" + rows.join("\n")], {type:"text/csv;charset=utf-8;"});
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "resumo_cidades.csv";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(()=>URL.revokeObjectURL(a.href), 800);
-    }
-
-    function handleExportTable(){
-      if(!state.table) return;
-      const data = state.table.getData();
-      const header = ["regiao","estado","microrregiao","cidade","total","ganhas","perdidas","em_negociacao","tx_ganho","tx_perda"].join(";");
-      const rows = data.map(r => {
-        const emNeg = (r.open ?? 0) + (r.paused ?? 0);
-        return [r.regiao,r.uf,r.microrregiao,r.cidade,r.total,r.won,r.lost,emNeg,
-          r.winRate==null?"":String(r.winRate).replace(".",","), r.lossRate==null?"":String(r.lossRate).replace(".",",")
-        ].map(v => `"${String(v??"").replaceAll('"','""')}"`).join(";");
-      });
-      const blob = new Blob([header + "\n" + rows.join("\n")], {type:"text/csv;charset=utf-8;"});
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "tabela_filtrada.csv";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(()=>URL.revokeObjectURL(a.href), 800);
-    }
-
-    /* =========================================================
-       EVENTS
-    ========================================================= */
-    basePick.addEventListener("click", () => baseFile.click());
-    mapPick.addEventListener("click", () => mapFile.click());
-
-    baseFile.addEventListener("change", async () => {
-      try{
-        const file = baseFile.files?.[0];
-        if(!file) return;
-
-        setStatus(`<b>Lendo base…</b>`, "aguarde");
-        const rows = await parseAny(file);
-
-        state.baseSource = "file";
-        state.baseFileName = file.name;
-        state.baseRows = rows;
-        state.baseFields = rows.length ? Object.keys(rows[0] || {}).filter(Boolean) : [];
-
-        updateUploadsUI();
-        setStatus(`<b>Base carregada</b> · ${int(rows.length)} registros`, "ok");
-
-        // hide demo automatically (primary becomes Analisar)
-      }catch(e){
-        setStatus(`<b>Erro</b> · ${e.message}`, "atenção");
+      }catch(err){
+        console.error(err);
+        setUploadsStatus("bad", "Erro", err?.message || "Falha ao processar a base.");
+      }finally{
+        analyzeBtn.disabled = false;
+        syncActionButtons();
       }
     });
 
-    mapFile.addEventListener("change", async () => {
-      try{
-        const file = mapFile.files?.[0];
-        if(!file){ state.mapIndex = null; state.mapHasRegion = false; state.mapFileName=""; updateUploadsUI(); return; }
-
-        setStatus(`<b>Lendo mapa interno…</b>`, "aguarde");
-        const {idx, hasRegion} = await parseInternalMap(file);
-        state.mapIndex = idx;
-        state.mapHasRegion = hasRegion;
-        state.mapFileName = file.name;
-
-        updateUploadsUI();
-        setStatus(`<b>Mapa interno carregado</b> · ${int(idx.size)} chaves`, "ok");
-
-        // if already analyzed, refresh
-        if(state.baseSource !== "none" && state.baseRows.length) runAnalysis();
-      }catch(e){
-        setStatus(`<b>Erro</b> · ${e.message}`, "atenção");
-      }
-    });
-
-    primaryAction.addEventListener("click", handlePrimary);
-    clearAllBtn.addEventListener("click", handleClearAll);
-    tplBaseBtn.addEventListener("click", handleTemplateBase);
-    tplMapBtn.addEventListener("click", handleTemplateMap);
-
-    uploadsToggle.addEventListener("click", () => {
-      setUploadsCompact(false);
-      uploadsToggle.style.display = "none";
-    });
-
-    // Filters
-    regionFilter.addEventListener("change", () => {
-      if(!state.enriched.length) return;
-      rebuildUFOptionsByRegion(regionFilter.value);
-      ufFilter.value = "__all";
-      runAnalysis();
-    });
-    [monthFilter, ufFilter, rateBase].forEach(el => el.addEventListener("change", () => {
-      if(!state.enriched.length) return;
-      runAnalysis();
-    }));
-
-    clearFiltersBtn.addEventListener("click", handleClearFilters);
-    exportSummaryBtn.addEventListener("click", handleExportSummary);
-    exportTableBtn.addEventListener("click", handleExportTable);
-
-    pageSizeSel.addEventListener("change", () => {
-      if(!state.table) return;
-      state.table.setPageSize(Number(pageSizeSel.value));
-      updateTableMeta();
-    });
-
-    tableSearch.addEventListener("input", () => {
-      applyTableSearch();
-      updateTableMeta();
-    });
-
-    clearRegionLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      regionFilter.value = "__all";
-      rebuildUFOptionsByRegion("__all");
-      ufFilter.value = "__all";
-      runAnalysis();
-    });
-
-    /* =========================================================
-       BOOT
-    ========================================================= */
-    window.addEventListener("resize", updateScrollPadding);
-
-    function boot(){
-      initTheme();
-      updateScrollPadding();
-      setStatus(`<b>Carregando IBGE…</b>`, "aguarde");
-      loadIBGEIndex().then(() => {
-        // after IBGE, show initial status
-        if(state.baseSource === "none"){
-          setStatus(`<b>Pronto</b> · carregue uma base ou veja a demo`, "ok");
-        }
-      });
-      updateUploadsUI();
-    }
-
-    boot();
+    /********************
+     * Initial empty state
+     ********************/
+    // Pre-fill filters placeholders
+    fillSelect(monthFilter, [], "Todos os meses");
+    fillSelect(regionFilter, [], "Todas as regiões");
+    fillSelect(ufFilter, [], "Todos os estados");
+    renderKPIs(null);
+    ensureTable();
   </script>
 </body>
 </html>
