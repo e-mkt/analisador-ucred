@@ -446,7 +446,13 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    input[type="file"]{ display: none; }
+    input[type="file"]{
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+}
 
     /* Results / Filters */
     .filtersGrid{
@@ -1156,7 +1162,7 @@
     function setTheme(mode){
       const isDark = mode === "dark";
       document.documentElement.classList.toggle("dark", isDark);
-      localStorage.setItem("ucred_theme", mode);
+      try { localStorage.setItem("ucred_theme", mode); } catch(e) {}
 
       logoUcred.src = isDark ? ASSETS.ucredDark : ASSETS.ucredLight;
       logoEmkt.src  = isDark ? ASSETS.emktDark  : ASSETS.emktLight;
@@ -1175,7 +1181,9 @@
       setTheme(isDark ? "light" : "dark");
     });
 
-    setTheme(localStorage.getItem("ucred_theme") || "light");
+    let savedTheme = "light";
+try { savedTheme = localStorage.getItem("ucred_theme") || "light"; } catch(e) {}
+setTheme(savedTheme);
 
     /********************
      * Anchor offset calibration (menos “espaço sobrando”)
