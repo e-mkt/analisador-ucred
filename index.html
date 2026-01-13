@@ -902,6 +902,14 @@
   background: color-mix(in srgb, var(--text) 5%, transparent); /* mais claro */
   color: color-mix(in srgb, var(--text) 45%, transparent);    /* mais neutro */
 }
+    /* "auto" sempre neutro, mesmo em cards good/bad */
+.badge.good,
+.badge.bad{
+  font-weight: 600;
+  font-size: 11px;
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
+}
   </style>
 </head>
 
