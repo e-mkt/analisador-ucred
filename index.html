@@ -895,21 +895,6 @@
       width: auto;
       opacity: .95;
     }
-    /* AUTO — mais leve (não afeta .good / .bad) */
-.badge:not(.good):not(.bad){
-  font-weight: 600; /* mais leve */
-  font-size: 11px;  /* um tiquinho menor */
-  background: color-mix(in srgb, var(--text) 5%, transparent); /* mais claro */
-  color: color-mix(in srgb, var(--text) 45%, transparent);    /* mais neutro */
-}
-    /* "auto" sempre neutro, mesmo em cards good/bad */
-.badge.good,
-.badge.bad{
-  font-weight: 600;
-  font-size: 11px;
-  background: color-mix(in srgb, var(--text) 5%, transparent);
-  color: color-mix(in srgb, var(--text) 45%, transparent);
-}
   </style>
 </head>
 
@@ -1832,7 +1817,7 @@ function fillSelect(sel, items, allLabel) {
     function makeSignalCard(kind, data){
       // kind: "opp" | "risk" | "insight"
       const badgeClass = data.badgeType === "good" ? "badge good" : (data.badgeType === "bad" ? "badge bad" : "badge");
-      const badgeText = data.badgeText || "auto";
+      const badgeText = (data.badgeText && data.badgeText !== "auto") ? data.badgeText : "";
 
       const metricBoxes = data.metrics.map(m => {
         return `
@@ -1852,7 +1837,7 @@ function fillSelect(sel, items, allLabel) {
             <div class="signal-title">${data.title}</div>
             <div class="signal-sub">${data.subtitle}</div>
           </div>
-          <div class="${badgeClass}">${badgeText}</div>
+          ${badgeText ? `<div class="${badgeClass}">${badgeText}</div>` : ""}
         </div>
         <div class="metric-grid">
           ${metricBoxes}
